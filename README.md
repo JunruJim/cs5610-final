@@ -1,27 +1,72 @@
 # Final
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+This is the final project for CS5610. Members including Yuxin Han, Yiyang Zhang and Junru Xu.
 
-## Development server
+### routing
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+login	/login
 
-## Code scaffolding
+register	/register
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+User-edit	/profile
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
+rst-list		/home
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+rst-search	/search
 
-## Running end-to-end tests
+Rst-edit		/rst/:rstId
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Rst-new		/rst/new
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+faq-list		/faq
+
+Faq-edit		/faq/:faqId
+
+Faq-new		/faq/new
+
+
+
+Review-list	/review
+
+Review-edit	/review/:reviewId
+
+Review-new	/review/new
+
+
+
+blog-list		/blog
+
+Blog-edit	/blog/:blogId
+
+Blog-new	/blog/new
+
+
+
+
+
+##Models
+
+users
+
+restaurants
+
+reviews
+
+FAQs
+
+blogs (long review)
+
+## Users
+
+**admin**: CRUD users/restaurants/reviews/FAQs/blogs
+
+anonymous: R restaurants, R FAQs
+
+restaurant owner: CRUD restaurants, CR FAQs
+
+customer: CR reviews, R restaurants
+
