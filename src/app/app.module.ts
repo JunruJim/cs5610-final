@@ -15,6 +15,18 @@ import {RstListComponent} from './views/rst/rst-list/rst-list.component';
 import {AuthGuard} from './services/auth-guard.service';
 import {SharedService} from './services/shared.service';
 import {UserService} from './services/user.service.client';
+import { RstEditComponent } from './views/rst/rst-edit/rst-edit/rst-edit.component';
+import { RstNewComponent } from './views/rst/rst-new/rst-new/rst-new.component';
+import { RstSearchComponent } from './views/rst/rst-search/rst-search/rst-search.component';
+import { FaqEditComponent } from './views/faq/faq-edit/faq-edit.component';
+import { FaqNewComponent } from './views/faq/faq-new/faq-new.component';
+import { FaqListComponent } from './views/faq/faq-list/faq-list.component';
+import { BlogListComponent } from './views/blog/blog-list/blog-list.component';
+import { BlogNewComponent } from './views/blog/blog-new/blog-new.component';
+import { BlogEditComponent } from './views/blog/blog-edit/blog-edit.component';
+import { ReviewListComponent } from './views/review/review-list/review-list.component';
+import { ReviewEditComponent } from './views/review/review-edit/review-edit.component';
+import { ReviewNewComponent } from './views/review/review-new/review-new.component';
 
 
 @NgModule({
@@ -24,6 +36,18 @@ import {UserService} from './services/user.service.client';
     ProfileComponent,
     RegisterComponent,
     RstListComponent,
+    RstEditComponent,
+    RstNewComponent,
+    RstSearchComponent,
+    FaqEditComponent,
+    FaqNewComponent,
+    FaqListComponent,
+    BlogListComponent,
+    BlogNewComponent,
+    BlogEditComponent,
+    ReviewListComponent,
+    ReviewEditComponent,
+    ReviewNewComponent,
   ],
   imports: [
     BrowserModule,
