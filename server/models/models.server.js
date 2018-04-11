@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 //   connectionString += '@ds111648.mlab.com:11648/heroku_jmhwjlk9/webdev'; // use yours
 // }
 
-// local --dbpath/db use final
+
 var db = mongoose.connect('mongodb://localhost:27017/final'); // for local mongodb
 // var db = mongoose.connect('mongodb://xxxxxx', {useMongoClient: true});
 

@@ -5,7 +5,7 @@ var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function (app) {
 
-  var userModel = require("../models/user/user.model.server");
+  var userModel = require("../model/user/user.model.server");
 
   // the former one would be implemented if it is same method and same url
   app.get("/api/user/hello", helloUser);
@@ -69,6 +69,7 @@ module.exports = function (app) {
       .findUserByUserName(username)
       .then(
         function (user) {
+          console.log(user);
           if (user && bcrypt.compareSync(password, user.password)) {
             console.log("local strategy verification success");
             return done(null, user);

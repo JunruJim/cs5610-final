@@ -16,8 +16,30 @@
     <label for="verifyPassword">Verify Password</label>
     <input [(ngModel)]="verifyPwd" type="password" class="form-control" id="verifyPassword" placeholder="verify password" [ngModelOptions]="{standalone: true}"/>
 
+    <label for="firstname">FirstName</label>
+    <input [(ngModel)]="user.firstname" type="text" class="form-control" id="firstname" placeholder="FirstName" [ngModelOptions]="{standalone: true}"/>
+
+    <label for="lastname">LastName</label>
+    <input [(ngModel)]="user.lastname" type="text" class="form-control" id="lastname" placeholder="LastName" [ngModelOptions]="{standalone: true}"/>
+
+    <label for="email">Email</label>
+    <input [(ngModel)]="user.email" type="text" class="form-control" id="email" placeholder="Email" [ngModelOptions]="{standalone: true}"/>
+
+    <label for="usertype">UserType</label>
+    <input [(ngModel)]="user.userType" type="text" class="form-control" id="usertype" placeholder="UserType" [ngModelOptions]="{standalone: true}"/>
+
+    <div class="row">
+      <p>
+        This is a website for searching restaurant information.
+        If you are a restaurant owner and want to show your restaurant, please register as 'owner'.
+        If you are a general customer, please register as 'customer'.
+        If you are a professional critic, please register as 'professional'.
+      </p>
+    </div>
+
     <br/>
     <button class="btn btn-primary btn-block" (click)="register()">Register</button>
     <button class="btn btn-danger  btn-block" routerLink="/login">Cancel</button>
   </form>
 </div>
+

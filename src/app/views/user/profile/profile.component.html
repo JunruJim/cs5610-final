@@ -40,6 +40,9 @@
     <label for="email">Email</label>
     <input [(ngModel)]="user.email" type="text" class="form-control" id="email" placeholder="email" [ngModelOptions]="{standalone: true}"/>
 
+    <label for="usertype">UserType</label>
+    <input [(ngModel)]="user.userType" type="text" class="form-control" id="usertype" placeholder="UserType" [ngModelOptions]="{standalone: true}"/>
+
     <br/>
     <button routerLink="/profile/{{user._id}}/website" class="btn btn-primary btn-block">Websites</button>
     <button routerLink="/login" (click)="deleteUser()" class="btn btn-danger btn-block">Delete User</button>

@@ -73,7 +73,7 @@ export class UserService {
   }
 
   dumpUser() {
-    return new User(undefined, undefined, undefined, undefined, undefined);
+    return new User(undefined, undefined, undefined, undefined, undefined, undefined);
   }
 
   hello() {

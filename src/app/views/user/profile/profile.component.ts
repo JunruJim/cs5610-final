@@ -21,13 +21,16 @@ export class ProfileComponent implements OnInit {
     private router: Router
   ) { }
 
+  // how to update password?
   updateUser() {
+    // this.activatedRoute.params.subscribe(params => {
     this.userService.updateUser(this.user._id, this.user).subscribe(
       (user: User) => {
         console.log(user);
         this.updatedFlag = true;
       }
     );
+    // });
   }
 
   deleteUser() {
@@ -37,17 +40,22 @@ export class ProfileComponent implements OnInit {
   logout() {
     this.userService.logout()
       .subscribe(
-        (data: any) => {
-          this.userService.user = '';
-          this.router.navigate(['/login']);
-        }
+        (data: any) => this.router.navigate(['/login'])
       );
   }
 
   ngOnInit() {
     console.log('profile page');
     this.user = this.sharedService.user;
-    console.log('shared user: ');
-    console.log(this.sharedService.user);
+    // this.activatedRoute.params.subscribe((params: any) => {
+    //   // alert('userId is' + this.userId);
+    //   return this.userService.findUserById(params['userId'])
+    //     .subscribe(
+    //       (user: User) => {
+    //         this.user = user;
+    //         console.log(user);
+    //       }
+    //     );
+    // });
   }
 }
