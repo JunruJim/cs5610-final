@@ -9,13 +9,15 @@
     <a class="cl-text-white navbar-brand cl-text-bold" routerLink="/user/faq">
       Frequently asked Questions
     </a>
+
     <div [ngSwitch]="user.usertype">
-      <div *ngSwitchCase="'owner'">
+      <div *ngSwitchCase="'support'">
         <a routerLink="/user/faq/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
         <span class="glyphicon glyphicon-plus"></span>
       </a>
       </div>>
     </div>
+
     <a routerLink="/user/faq/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
       <span class="glyphicon glyphicon-plus"></span>
     </a>
@@ -23,13 +25,17 @@
 </nav>
 
 <div class="container-fluid">
-  <ul class="list-group cl-list-group-borderless" *ngFor="let website of websites">
+  <ul class="list-group cl-list-group-borderless" *ngFor="let faq of faqs">
     <li class="list-group-item cl-list-item-borderless">
-      <a routerLink="/user/website/{{website._id}}/page">{{website.name}}
+      <a routerLink="/user/faq/{{faq._id}}/page">{{faq.question}}
       </a>
-      <a routerLink="/user/website/{{website._id}}">
-        <span class="glyphicon glyphicon-cog pull-right"></span>
-      </a>
+      <div [ngSwitch]="user.usertype">
+        <div *ngSwitchCase="'support'">
+          <a routerLink="/user/faq/{{faq._id}}">
+            <span class="glyphicon glyphicon-cog pull-right"></span>
+          </a>
+        </div>
+      </div>
     </li>
 
   </ul>
