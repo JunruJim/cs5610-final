@@ -1,3 +1,27 @@
-<p>
-  rst-search works!
-</p>
+<div *ngIf="loadingGeoFlag" class="alert alert-info">
+  {{loadingGeoMsg}}
+</div>
+
+<div class = "container">
+  <div class="input-group">
+    <input [(ngModel)]="latitude" type="text" class="form-control" placeholder="latitude">
+    <input [(ngModel)]="longitude" type="text" class="form-control" placeholder="longitude">
+    <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="keywords">
+    <span class="input-group-btn">
+      <a (click)="searchRst()" class="btn btn-default" type="button">
+          <span class="glyphicon glyphicon-search"></span>
+      </a>
+    </span>
+  </div>
+
+  <div class="row">
+    <div *ngFor = "let searchResult of searchResults['businesses']"
+         class="col-xs-4">
+      <img    (click)="selectPhoto(photo)"
+              width="100%"
+              [src] = "['https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_s.jpg']"/>
+
+      <p></p>
+    </div>
+  </div>
+</div>
