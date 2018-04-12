@@ -11,5 +11,8 @@ export class ReviewEditComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  updateReview(updatedReview) {
+  }
+  deleteReview() {
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {environment} from '../../../../environments/environment';
+import {User} from '../../../models/user.model.client';
 
 @Component({
   selector: 'app-rst-search',
@@ -13,6 +14,7 @@ export class RstSearchComponent implements OnInit {
   longitude: String;
   searchText: String;
   searchResults: any[];
+  user: User;
 
   loadingGeoFlag = false;
   loadingGeoMsg = 'loading location...';

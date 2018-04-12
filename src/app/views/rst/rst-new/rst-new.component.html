@@ -75,8 +75,10 @@
         <label for="website-image">Image URL</label>
         <input [(ngModel)]="newRst.image_url" id="website-image" class="form-control" placeholder="Image URL"
                [ngModelOptions]="{standalone: true}">
-        <img class="img-responsive img-rounded cl-widget-images"
-             src="{{newRst.image_url}}" alt="alt">
+      </div>
+      <div class="form-group cl-8-top">
+        <label for="exampleInputFile">Upload</label>
+        <input type="file" class="form-control" id="exampleInputFile">
       </div>
 
     </form>

@@ -16,6 +16,8 @@ import {ReviewNewComponent} from './views/review/review-new/review-new.component
 import {BlogListComponent} from './views/blog/blog-list/blog-list.component';
 import {BlogEditComponent} from './views/blog/blog-edit/blog-edit.component';
 import {BlogNewComponent} from './views/blog/blog-new/blog-new.component';
+import {BlogPageComponent} from './views/blog/blog-page/blog-page.component';
+import {RstPageComponent} from './views/rst/rst-page/rst-page.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -28,15 +30,17 @@ const appRoutes: Routes = [
   { path: 'user/rst', component: RstListComponent },
   { path: 'user/rst/:rstid', component: RstEditComponent},
   { path: 'user/rst/new', component: RstNewComponent},
+  { path: 'user/rst/:rstid/page', component: RstPageComponent},
   { path: 'user/faq', component: FaqListComponent},
   { path: 'user/faq/new', component: FaqNewComponent},
   { path: 'user/faq/:fid', component: FaqEditComponent},
   { path: 'user/rst/:rstid/review', component: ReviewListComponent},
   { path: 'user/rst/:rstid/review/:revid', component: ReviewEditComponent},
   { path: 'user/rst/:rstid/review/new', component: ReviewNewComponent},
-  { path: 'user/rst/:rstid/blog', component: BlogListComponent},
+  { path: 'user/blog', component: BlogListComponent},
   { path: 'user/rst/:rstid/blog/:bid', component: BlogEditComponent},
-  { path: 'user/rst/:rstid/blog/new', component: BlogNewComponent}
+  { path: 'user/rst/:rstid/blog/new', component: BlogNewComponent},
+  { path: 'user/rst/:rstid/blog/:bid/content', component: BlogPageComponent}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

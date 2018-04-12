@@ -11,5 +11,8 @@ export class FaqEditComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  createFaq(newFaq) {
+  }
+  deleteFaq() {
+  }
 }

@@ -27,6 +27,8 @@ import {YelpSearchService} from './services/yelpSearch.service.client';
 import {AuthGuard} from './services/auth-guard.service';
 import {SharedService} from './services/shared.service';
 import {UserService} from './services/user.service.client';
+import { BlogPageComponent } from './views/blog/blog-page/blog-page.component';
+import { RstPageComponent } from './views/rst/rst-page/rst-page.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import {UserService} from './services/user.service.client';
     ReviewListComponent,
     ReviewEditComponent,
     ReviewNewComponent,
+    BlogPageComponent,
+    RstPageComponent,
   ],
   imports: [
     BrowserModule,

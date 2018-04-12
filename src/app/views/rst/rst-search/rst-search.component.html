@@ -30,25 +30,29 @@
 
 
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <p class="navbar-text pull-left">
-      <a routerLink="/login" class="navbar-link">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-      </a>
-    </p>
+  <div class="container-fluid navbar-text pull-left">
+    <div *ngIf="!user && user.userType == 'undefined'">
+      <a routerLink="/login" class="navbar-link">Log In</a>
+      <a routerLink="/register" class="navbar-link">Register</a>
+    </div>
+
+    <div *ngIf="user">
+      <a routerLink="/profile" class="navbar-link">Profile</a>
+      <a routerLink="/login" class="navbar-link">Log out</a>
+    </div>
 
   </div>
 </nav>
 
-    <span>
-      <p class="navbar-header pull-left">
-        <a class="navbar-brand thick">
-          <b>Search A Restaurant</b>
-        </a>
-      </p>
-    </span>
+    <!--<span>-->
+      <!--<p class="navbar-header pull-left">-->
+        <!--<a class="content content1">-->
+          <h2  class="content content1">Search A Restaurant</h2>
+        <!--</a>-->
+      <!--</p>-->
+    <!--</span>-->
 
-<div class="container cl-body-padding">
+<div class="container-fluid">
   <div class="input-group">
     <input [(ngModel)]="searchText" type="text" class="form-control">
     <span class="input-group-btn">
@@ -61,18 +65,15 @@
 <!--<this part is for listing the searching result of restaurants>-->
 
 
-
-  <a class="btn btn-primary btn-block" routerLink="/login">Log out</a>
-
-
   <div class="row">
-    <div [ngSwitch]="user.usertype">
+    <div [ngSwitch]="user.userType">
       <div *ngSwitchCase="'owner'">
         <a routerLink="../rst">Restaurant List</a>
-      </div>>
+      </div>
+      <div *ngSwitchCase="'professional'">
+        <a routerLink="user/blog">Blog List</a>
+      </div>
     </div>
-
-    <a routerLink="../faq">F & Q</a>
   </div>
 
 </div>
@@ -81,8 +82,8 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a routerLink="/profile">
-        <span class="glyphicon glyphicon-user"></span>
+      <a routerLink="user/faq">FAQ
+        <!--<span class="glyphicon glyphicon-user"></span>-->
       </a>
     </p>
 

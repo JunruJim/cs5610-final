@@ -13,7 +13,7 @@
           </span>
       </a>
     </div>
-    <a class="navbar-brand cl-text-white cl-text-bold" routerLink="/user/faq/""fid">
+    <a class="navbar-brand cl-text-white cl-text-bold" routerLink="/user/faq/{{fid}}">
       New Page
     </a>
   </div>
@@ -32,6 +32,7 @@
     <!--[ngModelOptions]="{standalone: true}">-->
     <!--</div>-->
   </form>
+  <a class="btn btn-danger  btn-block" (click)="deleteFaq()">Delete FAQ</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

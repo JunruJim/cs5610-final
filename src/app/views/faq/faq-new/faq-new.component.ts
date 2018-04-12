@@ -11,5 +11,6 @@ export class FaqNewComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  createFaq(newFaq) {
+  }
 }

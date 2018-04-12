@@ -10,11 +10,11 @@
       Frequently asked Questions
     </a>
 
-    <div [ngSwitch]="user.usertype">
+    <div [ngSwitch]="user.userType">
       <div *ngSwitchCase="'support'">
         <a routerLink="/user/faq/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-        <span class="glyphicon glyphicon-plus"></span>
-      </a>
+          <span class="glyphicon glyphicon-plus"></span>
+        </a>
       </div>>
     </div>
 
@@ -29,7 +29,7 @@
     <li class="list-group-item cl-list-item-borderless">
       <a routerLink="/user/faq/{{faq._id}}/page">{{faq.question}}
       </a>
-      <div [ngSwitch]="user.usertype">
+      <div [ngSwitch]="user.userType">
         <div *ngSwitchCase="'support'">
           <a routerLink="/user/faq/{{faq._id}}">
             <span class="glyphicon glyphicon-cog pull-right"></span>

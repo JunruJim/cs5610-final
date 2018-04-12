@@ -8,7 +8,7 @@
       </a>
     </div>
     <div class="navbar-text pull-right">
-      <a (click)="updateRst(newRst)" class="cl-icon-padding cl-text-black">
+      <a (click)="updateReview(updatedReview)" class="cl-icon-padding cl-text-black">
           <span class="glyphicon glyphicon-ok">
           </span>
       </a>
@@ -23,12 +23,12 @@
   <form>
     <div class="form-group">
       <label for="review-rating">Rating</label>
-      <input [(ngModel)]="newRst.rating" type="number" class="form-control" id="review-rating" placeholder="Rating"
+      <input [(ngModel)]="updatedReview.rating" type="number" class="form-control" id="review-rating" placeholder="Rating"
              [ngModelOptions]="{standalone: true}">
     </div>
     <div class="form-group">
       <label for="review-content">Content</label>
-      <textarea [(ngModel)]="newRst.title" type="text" class="form-control" id="review-content" placeholder="Content"
+      <textarea [(ngModel)]="updatedReview.content" type="text" class="form-control" id="review-content" placeholder="Content"
                 [ngModelOptions]="{standalone: true}"></textarea>
     </div>
   </form>

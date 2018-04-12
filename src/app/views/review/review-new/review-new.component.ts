@@ -11,5 +11,6 @@ export class ReviewNewComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  createReview(newReivew) {
+  }
 }
