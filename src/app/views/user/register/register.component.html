@@ -26,13 +26,24 @@
     <input [(ngModel)]="user.email" type="text" class="form-control" id="email" placeholder="Email" [ngModelOptions]="{standalone: true}"/>
 
     <label for="usertype">UserType</label>
-    <input [(ngModel)]="user.userType" type="text" class="form-control" id="usertype" placeholder="UserType" [ngModelOptions]="{standalone: true}"/>
-
+    <!--<input [(ngModel)]="user.userType" type="text" class="form-control" id="usertype" placeholder="UserType" [ngModelOptions]="{standalone: true}"/>-->
+    <select [(ngModel)]="user.userType" id="usertype" class="form-control custom-select">
+      <option value="0" disabled selected>Select Your User Type</option>
+      <option value="owner">owner</option>
+      <option value="customer">customer</option>
+      <option value="professional">professional</option>
+    </select>
     <div class="row">
       <p>
         This is a website for searching restaurant information.
+      </p>
+      <p>
         If you are a restaurant owner and want to show your restaurant, please register as 'owner'.
+      </p>
+      <p>
         If you are a general customer, please register as 'customer'.
+      </p>
+      <p>
         If you are a professional critic, please register as 'professional'.
       </p>
     </div>
