@@ -16,8 +16,8 @@ export class RstSearchComponent implements OnInit {
   searchResults: any[];
   user: User;
 
-  loadingGeoFlag = false;
-  loadingGeoMsg = 'loading location...';
+  loadingGeoFlag: Boolean = false;
+  loadingGeoMsg: String = 'loading location...';
 
   // use maximumAge to tell browser use the data recently queried
   // use timeout to set maximum waiting time
