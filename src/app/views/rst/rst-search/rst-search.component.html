@@ -1,11 +1,11 @@
-<div *ngIf="loadingGeoFlag" class="alert alert-info">
+<div *ngIf="loadingGeoFlag" class="alert alert-info">aaaa
   {{loadingGeoMsg}}
 </div>
-
 <div class = "container">
+
   <div class="input-group">
-    <input [(ngModel)]="latitude" type="text" class="form-control" placeholder="latitude">
-    <input [(ngModel)]="longitude" type="text" class="form-control" placeholder="longitude">
+    <input [(ngModel)]="latitude" type="text" class="form-control" placeholder="latitude" required>
+    <input [(ngModel)]="longitude" type="text" class="form-control" placeholder="longitude" required>
     <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="keywords">
     <span class="input-group-btn">
       <a (click)="searchRst()" class="btn btn-default" type="button">
@@ -15,30 +15,26 @@
   </div>
 
   <div class="row">
-    <div *ngFor = "let searchResult of searchResults['businesses']"
-         class="col-xs-4">
-      <img    (click)="selectPhoto(photo)"
-              width="100%"
-              [src] = "['https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_s.jpg']"/>
+    <div *ngFor = "let selectRst of searchResults" class="col-xs-12">
+      selectRst
+      {{loadingGeoMsg}}
+      {{selectRst.name}}
+      <img (click)="selectRst(selectRst)" width="100%" [src] = "['' + selectRst.image_url]"/>
 
       <p></p>
     </div>
   </div>
 </div>
 
-
-
-
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid navbar-text pull-left">
-    <div *ngIf="!user && user.userType == 'undefined'">
+    <div *ngIf="!user || !user.userType">
       <a routerLink="/login" class="navbar-link">Log In</a>
       <a routerLink="/register" class="navbar-link">Register</a>
     </div>
 
-    <div *ngIf="user">
+    <div *ngIf="user.userType">
       <a routerLink="/profile" class="navbar-link">Profile</a>
-      <a routerLink="/login" class="navbar-link">Log out</a>
     </div>
 
   </div>
@@ -52,15 +48,9 @@
       <!--</p>-->
     <!--</span>-->
 
-<div class="container-fluid">
-  <div class="input-group">
-    <input [(ngModel)]="searchText" type="text" class="form-control">
-    <span class="input-group-btn">
-      <a (click)="searchRst()" class="btn btn-default" type="button">
-        <span class="glyphicon glyphicon-search"></span>
-      </a>
-    </span>
-  </div>
+<div class="container">
+
+
 
 <!--<this part is for listing the searching result of restaurants>-->
 

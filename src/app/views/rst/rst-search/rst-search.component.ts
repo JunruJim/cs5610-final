@@ -13,7 +13,7 @@ export class RstSearchComponent implements OnInit {
   latitude: String;
   longitude: String;
   searchText: String;
-  searchResults: any[];
+  searchResults;
   user: User;
 
   loadingGeoFlag: Boolean = false;
@@ -23,8 +23,9 @@ export class RstSearchComponent implements OnInit {
   // use timeout to set maximum waiting time
   geoOptions = {
     maximumAge: 5 * 60 * 1000,
-    timeout: 30 * 1000,
-    enableHighAccuracy: false
+    timeout: 60 * 1000,
+    // enableHighAccuracy: false
+
   };
 
   constructor(
@@ -37,17 +38,25 @@ export class RstSearchComponent implements OnInit {
   searchRst() {
     this.yelpSearchService.searchRst(this.latitude, this.longitude, this.searchText).subscribe(
       (data: any) => {
-        console.log(data);
+        this.searchResults = data;
+        console.log(this.searchResults);
+        console.log(this.searchResults[0].name);
       }
     );
   }
+
+  selectRst(rst) {
+
+  }
+
+
   ngOnInit() {
 
     // get current location
     if (navigator.geolocation) {
       this.loadingGeoFlag = true;
-
-      navigator.geolocation.getCurrentPosition(
+      console.log("waiting");
+      navigator.geolocation.watchPosition(
         (position: any) => {
           this.loadingGeoFlag = false;
           this.latitude = position.coords.latitude;
