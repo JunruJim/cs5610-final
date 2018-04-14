@@ -10,6 +10,7 @@ export class RstNewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
