@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     @Inject('UserService') private userService,
+    @Inject('SharedService') private sharedService,
     private router: Router
   ) { }
 

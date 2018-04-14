@@ -18,13 +18,14 @@ import {BlogEditComponent} from './views/blog/blog-edit/blog-edit.component';
 import {BlogNewComponent} from './views/blog/blog-new/blog-new.component';
 import {BlogPageComponent} from './views/blog/blog-page/blog-page.component';
 import {RstPageComponent} from './views/rst/rst-page/rst-page.component';
+import {AuthGuard} from './services/auth-guard.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  // { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  // { path: 'profile', component: ProfileComponent },
   // { path: '**', redirectTo: 'login', pathMatch: 'full' },
   { path: 'search', component: RstSearchComponent },
   { path: 'rst', component: RstListComponent },

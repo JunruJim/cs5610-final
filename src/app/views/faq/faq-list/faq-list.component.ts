@@ -10,6 +10,8 @@ export class FaqListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+
   }
 
 }
