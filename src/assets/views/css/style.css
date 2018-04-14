@@ -453,3 +453,7 @@ nav>ul {
   top: calc(-100px/2);
   left: calc(35%);
 }
+
+.color-black {
+  color: black;
+}
