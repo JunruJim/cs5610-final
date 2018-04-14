@@ -51,7 +51,7 @@ export class RstSearchComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.user = this.sharedService.user;
     // get current location
     if (navigator.geolocation) {
       this.loadingGeoFlag = true;

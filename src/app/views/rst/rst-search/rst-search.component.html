@@ -6,12 +6,12 @@
   <div class="content-fluid navbar-text pull-left">
     <a routerLink="/search" class="navbar-link header-font">FoodPhilia</a>
   </div>
-  <div class="content-fluid navbar-text navbar-right header-user" *ngIf="!user || !user.userType">
+  <div class="content-fluid navbar-text navbar-right header-user" *ngIf="!user">
       <a routerLink="/login" class="navbar-link header-login">Login</a>
       <a routerLink="/register" class="navbar-link">Register</a>
   </div>
 
-  <div *ngIf="user.userType">
+  <div *ngIf="user && user.userType">
     <a routerLink="/profile" class="navbar-link">Profile</a>
   </div>
 

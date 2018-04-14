@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   errorFlag: Boolean = false;
   errorMsg: String = 'Password inconsistent!';
   userType: String;
+  types = ['owner', 'customer', 'professional', 'support'];
 
   constructor(
     @Inject('UserService') private userService,
@@ -21,7 +22,17 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   register() {
+    if (this.user.username === undefined) {
+      this.errorFlag = true;
+      this.errorMsg = 'Username can not be empty';
+    }
+
+    if (this.user.password === undefined) {
+      this.errorFlag = true;
+      this.errorMsg = 'Password can not be empty';
+    }
     console.log('from web' + this.user.userType);
+    this.user.userType = this.userType;
     if (this.user.password === this.verifyPwd) {
       this.errorFlag = false;
       console.log(this.user.userType);
@@ -39,6 +50,10 @@ export class RegisterComponent implements OnInit {
       this.errorFlag = true;
       this.errorMsg = 'Password inconsistent!';
     }
+  }
+
+  onOptionsSelected(event) {
+    console.log(event); // option value will be sent as event
   }
 
   ngOnInit() {

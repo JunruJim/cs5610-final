@@ -65,7 +65,7 @@
 
     <form>
       <label for="username" class="white-color">Username</label>
-      <input [(ngModel)]="user.username" type="text" class="form-control" id="username" placeholder="username" [ngModelOptions]="{standalone: true}"/>
+      <input [(ngModel)]="user.username" type="text" class="form-control" id="username" placeholder="username" name="username" [ngModelOptions]="{standalone: true}"/>
 
       <label for="password" class="white-color">Password</label>
       <input [(ngModel)]="user.password" type="password" class="form-control" id="password" placeholder="password" [ngModelOptions]="{standalone: true}"/>
@@ -82,13 +82,16 @@
       <label for="email" class="white-color">Email</label>
       <input [(ngModel)]="user.email" type="text" class="form-control" id="email" placeholder="Email" [ngModelOptions]="{standalone: true}"/>
 
-      <label for="usertype" class="white-color">UserType</label>
+      <label class="white-color">UserType</label>
       <!--<input [(ngModel)]="user.userType" type="text" class="form-control" id="usertype" placeholder="UserType" [ngModelOptions]="{standalone: true}"/>-->
-      <select [(ngModel)]="user.userType" id="usertype" class="form-control custom-select">
-        <option [(ngModel)]="user.userType" value="0" disabled selected>Select Your User Type</option>
-        <option [(ngModel)]="user.userType" value="owner">owner</option>
-        <option [(ngModel)]="user.userType" value="customer">customer</option>
-        <option [(ngModel)]="user.userType" value="professional">professional</option>
+      <!--<select id="usertype" class="form-control custom-select">-->
+        <!--<option [(ngModel)]="user.userType" value="0" disabled selected>Select Your User Type</option>-->
+        <!--<option [(ngModel)]="user.userType" value="owner">owner</option>-->
+        <!--<option [(ngModel)]="user.userType" value="customer">customer</option>-->
+        <!--<option [(ngModel)]="user.userType" value="professional">professional</option>-->
+      <!--</select>-->
+      <select class="select-option" required [(ngModel)]="userType" (ngModelChange)="onOptionsSelected($event)" name="usertype">
+        <option class='option' *ngFor='let type of types' [value]="type">{{type}}</option>
       </select>
       <!--<div class="row">-->
         <!--&lt;!&ndash;<p>&ndash;&gt;-->
@@ -115,7 +118,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a routerLink="user/faq" class="navbar-link">Frequently asked Question
+      <a routerLink="/faq" class="navbar-link">Frequently asked Question
         <!--<span class="glyphicon glyphicon-user"></span>-->
       </a>
     </p>

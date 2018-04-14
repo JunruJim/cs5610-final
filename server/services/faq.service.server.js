@@ -3,6 +3,7 @@ module.exports = function (app) {
   var FaqModel = require("../models/faq/faq.model.server");
   //Post calls
   app.post('/api/user/:userId/faq', createFaq);
+  // app.post('/api/faq/:faqId', addFollowUp);
   //Get calls
   app.get('/api/user/:userId/faq', findAllFaqsForUser);
   app.get('/api/faq/:faqId', findFaqById);
@@ -20,6 +21,19 @@ module.exports = function (app) {
         console.log("create faq:  " + result);
         res.send(result);
       });
+  }
+
+  function addFollowUp(req, res) {
+    var faqId = req.params['faqId'];
+    var content = req.body;
+    FaqModel.addFollowUp(faqId, content).then(
+      function(faq) {
+        res.json(faq);
+      },
+      function(err) {
+        res.sendStatus(400).send(err);
+      }
+    );
   }
 
   function findAllFaqsForUser(req, res) {
