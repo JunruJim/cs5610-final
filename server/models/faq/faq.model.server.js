@@ -8,6 +8,7 @@ faqModel.findFaqById = findFaqById;
 faqModel.createFaq = createFaq;
 faqModel.deleteFaq = deleteFaq;
 faqModel.findFaqByUser = findFaqByUser;
+faqModel.addFollowUp = addFollowUp;
 // faqModel.updateFaq = updateFaq;
 
 module.exports = faqModel;
@@ -46,6 +47,9 @@ function findFaqByUser(userId) {
     .exec();
 }
 
-function addFollowUp(faqId) {
-
+function addFollowUp(faqId, contents) {
+  return faqModel.findFaqById(faqId).then(function (faq) {
+    faq.followups.push(contents);
+    return faq.save();
+  })
 }

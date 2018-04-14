@@ -29,6 +29,7 @@ import {SharedService} from './services/shared.service';
 import {UserService} from './services/user.service.client';
 import { BlogPageComponent } from './views/blog/blog-page/blog-page.component';
 import { RstPageComponent } from './views/rst/rst-page/rst-page.component';
+import {FaqService} from './services/faq.service.client';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,11 @@ import { RstPageComponent } from './views/rst/rst-page/rst-page.component';
       provide: 'YelpSearchService',
       useClass: YelpSearchService
     },
-    AuthGuard
+    AuthGuard,
+    {
+      provide: 'FaqService',
+      useClass: FaqService
+    }
   ],
   bootstrap: [AppComponent]
 })

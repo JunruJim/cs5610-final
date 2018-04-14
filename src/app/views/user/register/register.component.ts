@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   verifyPwd: String;
   errorFlag: Boolean = false;
   errorMsg: String = 'Password inconsistent!';
+  userType: String;
 
   constructor(
     @Inject('UserService') private userService,
@@ -20,9 +21,11 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   register() {
+    console.log('from web' + this.user.userType);
     if (this.user.password === this.verifyPwd) {
       this.errorFlag = false;
-      this.userService.register(this.user.username, this.user.password).subscribe(
+      console.log(this.user.userType);
+      this.userService.register(this.user).subscribe(
         (user: User) => {
           this.user = user;
           console.log(this.user);

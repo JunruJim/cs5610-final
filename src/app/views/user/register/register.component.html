@@ -27,11 +27,12 @@
 
     <label for="usertype">UserType</label>
     <!--<input [(ngModel)]="user.userType" type="text" class="form-control" id="usertype" placeholder="UserType" [ngModelOptions]="{standalone: true}"/>-->
-    <select [(ngModel)]="user.userType" id="usertype" class="form-control custom-select">
+    <select [(ngModel)]="userType" id="usertype" class="form-control custom-select">
       <option value="0" disabled selected>Select Your User Type</option>
       <option value="owner">owner</option>
       <option value="customer">customer</option>
       <option value="professional">professional</option>
+      <option value="support">support</option>
     </select>
     <div class="row">
       <p>
