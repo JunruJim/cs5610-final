@@ -1,37 +1,70 @@
-<!-- <input [(ngModel)]="username"
-       placeholder="alice"/>
-<br/>
-<label>Password</label>
-<input [(ngModel)]="password"
-       type="password"
-       placeholder="1234###"/>
-<br/>
-<button (click)="login(username, password)">Login</button> -->
+<!--&lt;!&ndash; <input [(ngModel)]="username"-->
+       <!--placeholder="alice"/>-->
+<!--<br/>-->
+<!--<label>Password</label>-->
+<!--<input [(ngModel)]="password"-->
+       <!--type="password"-->
+       <!--placeholder="1234###"/>-->
+<!--<br/>-->
+<!--<button (click)="login(username, password)">Login</button> &ndash;&gt;-->
 
-<div class="container">
-  <h1>Login</h1>
+<!--<div class="container">-->
+  <!--<h1>Login</h1>-->
 
-  <!-- generate error message when there are input errors -->
-  <div *ngIf="errorFlag" class="alert alert-danger">
-    {{errorMsg}}
-  </div>
+  <!--&lt;!&ndash; generate error message when there are input errors &ndash;&gt;-->
+  <!--<div *ngIf="errorFlag" class="alert alert-danger">-->
+    <!--{{errorMsg}}-->
+  <!--</div>-->
 
-  <!-- using angular form (ngForm) instead of traditional <input> tag -->
-  <form (ngSubmit) = "login()" #f="ngForm">
+  <!--&lt;!&ndash; using angular form (ngForm) instead of traditional <input> tag &ndash;&gt;-->
+  <!--<form (ngSubmit) = "login()" #f="ngForm">-->
 
-    <label for="username">Username</label>
-    <input placeholder="username" name="username" type="text" class="form-control" id="username" ngModel required #username="ngModel"/>
-    <span class="help-block" *ngIf="!username.valid && username.touched">
+    <!--<label for="username">Username</label>-->
+    <!--<input placeholder="username" name="username" type="text" class="form-control" id="username" ngModel required #username="ngModel"/>-->
+    <!--<span class="help-block" *ngIf="!username.valid && username.touched">-->
+      <!--Please enter username!-->
+    <!--</span>-->
+
+    <!--<label for="password">Password</label>-->
+    <!--<input placeholder="password" name="password" type="password" class="form-control" id="password" ngModel required #password="ngModel"/>-->
+    <!--<span class="help-block" *ngIf="!password.valid && password.touched">-->
+      <!--Please enter password!-->
+    <!--</span>-->
+
+    <!--<button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Login</button>-->
+    <!--<button class="btn btn-success btn-block" routerLink="/register">Register</button>-->
+  <!--</form>-->
+<!--</div>-->
+
+
+<div class="showcase">
+  <div class="login-box">
+    <img src="http://iconshow.me/media/images/ui/ios7-icons/png/256/contact.png"
+         class="user-icon-login">
+    <h1 class="login-title">Login</h1>
+    <div *ngIf="errorFlag" class="alert alert-danger">
+      {{errorMsg}}
+    </div>
+
+    <!-- using angular form (ngForm) instead of traditional <input> tag -->
+    <form (ngSubmit) = "login()" #f="ngForm">
+
+      <label for="username" class="white-color">Username</label>
+      <input placeholder="username" name="username" type="text" class="form-control" id="username" placeholder="username"
+             ngModel required #username="ngModel"/>
+      <span class="help-block" *ngIf="!username.valid && username.touched">
       Please enter username!
     </span>
 
-    <label for="password">Password</label>
-    <input placeholder="password" name="password" type="password" class="form-control" id="password" ngModel required #password="ngModel"/>
-    <span class="help-block" *ngIf="!password.valid && password.touched">
+      <label for="password" class="white-color">Password</label>
+      <input placeholder="password" name="password" type="password" class="form-control" id="password" placeholder="******"
+             ngModel required #password="ngModel"/>
+      <span class="help-block" *ngIf="!password.valid && password.touched">
       Please enter password!
     </span>
 
-    <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Login</button>
-    <button class="btn btn-success btn-block" routerLink="/register">Register</button>
-  </form>
+      <button class="btn btn-primary btn-block white-color" type="submit" [disabled]="!f.valid">Login</button>
+      <button class="btn btn-success btn-block white-color" routerLink="/register">Register</button>
+    </form>
+  </div>
 </div>

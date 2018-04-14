@@ -1,18 +1,38 @@
-<div *ngIf="loadingGeoFlag" class="alert alert-info">aaaa
-  {{loadingGeoMsg}}
-</div>
-<div class = "container">
+<!--<div *ngIf="loadingGeoFlag" class="alert alert-info">aaaa-->
+<!--{{loadingGeoMsg}}-->
+<!--</div>-->
 
-  <div class="input-group">
-    <input [(ngModel)]="latitude" type="text" class="form-control" placeholder="latitude" required>
-    <input [(ngModel)]="longitude" type="text" class="form-control" placeholder="longitude" required>
-    <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="keywords">
-    <span class="input-group-btn">
-      <a (click)="searchRst()" class="btn btn-default" type="button">
-          <span class="glyphicon glyphicon-search"></span>
-      </a>
-    </span>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="content-fluid navbar-text pull-left">
+    <a routerLink="/search" class="navbar-link header-font">FoodPhilia</a>
   </div>
+  <div class="content-fluid navbar-text navbar-right header-user" *ngIf="!user || !user.userType">
+      <a routerLink="/login" class="navbar-link header-login">Login</a>
+      <a routerLink="/register" class="navbar-link">Register</a>
+  </div>
+
+  <div *ngIf="user.userType">
+    <a routerLink="/profile" class="navbar-link">Profile</a>
+  </div>
+
+</nav>
+
+<div class="showcase" >
+  <div class="background-transparent"></div>
+
+  <div class="logo">Welcome to FoodPhilia</div>
+    <div class="input-group search">
+      <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="keywords">
+      <!--<input [(ngModel)]="latitude" type="text" class="form-control" placeholder="latitude" required >-->
+      <!--<input [(ngModel)]="longitude" type="text" class="form-control" placeholder="longitude" required>-->
+      <span class="input-group-btn">
+        <a (click)="searchRst()" class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+    </span>
+    </div>
+    <p></p>
+
 
   <div class="row">
     <div *ngFor = "let selectRst of searchResults" class="col-xs-12">
@@ -24,35 +44,44 @@
       <p></p>
     </div>
   </div>
+
+  <!--<div class="contact-info">-->
+
+  <!--</div>-->
+  <div class="footer-contact">By Junru Xu, Yuxin Han, Yiyang Zhang</div>
+
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid navbar-text pull-left">
-    <div *ngIf="!user || !user.userType">
-      <a routerLink="/login" class="navbar-link">Log In</a>
-      <a routerLink="/register" class="navbar-link">Register</a>
-    </div>
+<div class = "container">
 
-    <div *ngIf="user.userType">
-      <a routerLink="/profile" class="navbar-link">Profile</a>
-    </div>
+  <!--<div class="input-group">-->
+  <!--<input [(ngModel)]="latitude" type="text" class="form-control" placeholder="latitude" required>-->
+  <!--<input [(ngModel)]="longitude" type="text" class="form-control" placeholder="longitude" required>-->
+  <!--<input [(ngModel)]="searchText" type="text" class="form-control" placeholder="keywords">-->
+  <!--<span class="input-group-btn">-->
+  <!--<a (click)="searchRst()" class="btn btn-default" type="button">-->
+  <!--<span class="glyphicon glyphicon-search"></span>-->
+  <!--</a>-->
+  <!--</span>-->
+  <!--</div>-->
 
-  </div>
-</nav>
+  <!--<div class="row">-->
+  <!--<div *ngFor = "let selectRst of searchResults" class="col-xs-12">-->
+  <!--selectRst-->
+  <!--{{loadingGeoMsg}}-->
+  <!--{{selectRst.name}}-->
+  <!--<img (click)="selectRst(selectRst)" width="100%" [src] = "['' + selectRst.image_url]"/>-->
 
-    <!--<span>-->
-      <!--<p class="navbar-header pull-left">-->
-        <!--<a class="content content1">-->
-          <h2  class="content content1">Search A Restaurant</h2>
-        <!--</a>-->
-      <!--</p>-->
-    <!--</span>-->
+  <!--<p></p>-->
+  <!--</div>-->
+  <!--</div>-->
+</div>
 
 <div class="container">
 
 
 
-<!--<this part is for listing the searching result of restaurants>-->
+  <!--<this part is for listing the searching result of restaurants>-->
 
 
   <div class="row">
@@ -72,10 +101,39 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a routerLink="user/faq">FAQ
+      <a routerLink="user/faq" class="navbar-link">Frequently asked Question
         <!--<span class="glyphicon glyphicon-user"></span>-->
       </a>
     </p>
 
   </div>
 </nav>
+
+
+<!--<div class="images-wrapper">-->
+  <!--<img src="http://www.jackspiceradams.com/wp-content/uploads/2017/05/Minmin-noodle-bar-03.jpg">-->
+  <!--<div class="images-content">-->
+    <!--1111111111-->
+  <!--</div>-->
+<!--</div>-->
+
+
+
+
+
+<!--<div class="bg-image">-->
+  <!--<div class="container">-->
+    <!--<div class="header">-->
+      <!--<nav>-->
+        <!--<ul>-->
+        <!--<li><a href="#">Login</a></li>-->
+        <!--<li><a href="#">Register</a></li>-->
+        <!--<li><a href="#">Contact</a></li>-->
+        <!--<li><a href="#">Restaurants</a></li>-->
+        <!--</ul>-->
+      <!--</nav>-->
+
+    <!--</div>-->
+  <!--</div>-->
+
+<!--</div>-->
