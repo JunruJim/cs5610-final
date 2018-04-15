@@ -46,7 +46,7 @@ export class RstSearchComponent implements OnInit {
     );
   }
 
-  selectRst(rst) {
+  select(rst) {
     this.rstService.createRstWithoutOwner(rst).subscribe(
       (data: Rst) => {
         const rstId = data._id;

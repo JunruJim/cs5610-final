@@ -7,6 +7,6 @@ var FaqSchema = mongoose.Schema({
   ],
   _user: {type: mongoose.Schema.Types.ObjectId, ref: 'userModel'},
   dateCreated: {type: Date, default: Date.now}
-}, {collection:'user'});
+}, {collection:'faq'});
 
 module.exports = FaqSchema;

@@ -38,7 +38,7 @@
     <div *ngFor = "let selectRst of searchResults" class="col-xs-12">
       {{loadingGeoMsg}}
       {{selectRst.name}}
-      <img (click)="selectRst(selectRst)" width="100%" [src] = "[selectRst.image_url]"/>
+      <img (click)="select(selectRst)" width="100%" [src] = "[selectRst.image_url]"/>
 
       <p></p>
     </div>

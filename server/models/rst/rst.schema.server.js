@@ -31,6 +31,6 @@ var RstSchema = mongoose.Schema({
     {type: mongoose.Schema.Types.ObjectId, ref: 'blogModel'}
   ],
   dateCreated: {type: Date, default: Date.now}
-}, {collection:'user'});
+}, {collection:'rst'});
 
 module.exports = RstSchema;

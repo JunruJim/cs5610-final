@@ -6,6 +6,6 @@ var ReviewSchema = mongoose.Schema({
   _user: {type: mongoose.Schema.Types.ObjectId, ref: 'userModel'},
   _rst: {type: mongoose.Schema.Types.ObjectId, ref: 'rstModel'},
   dateCreated: {type: Date, default: Date.now}
-}, {collection:'user'});
+}, {collection:'review'});
 
 module.exports = ReviewSchema;
