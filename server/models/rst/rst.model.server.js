@@ -5,7 +5,8 @@ var rstModel = mongoose.model("rstModel", RstSchema);
 var userModel = require("../user/user.model.server");
 
 rstModel.findRstById = findRstById;
-rstModel.createRst = createRst;
+rstModel.createRstForOwner = createRstForOwner;
+rstModel.createRstWithoutOwner = createRstWithoutOwner;
 rstModel.deleteRst = deleteRst;
 rstModel.findRstByUser = findRstByUser;
 rstModel.updateRst = updateRst;
@@ -16,7 +17,7 @@ function findRstById(rstId) {
   return rstModel.findRstById(rstId);
 }
 
-function createRst(userId, rst) {
+function createRstForOwner(userId, rst) {
   rst._user = userId;
   return rstModel.create(rst)
     .then(function(responseRst) {
@@ -27,6 +28,10 @@ function createRst(userId, rst) {
         });
       return responseRst;
     });
+}
+
+function createRstWithoutOwner(rst) {
+  return rstModel.create(rst);
 }
 
 function deleteRst(rstId) {

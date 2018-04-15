@@ -36,10 +36,13 @@
 
   <div class="row">
     <div *ngFor = "let selectRst of searchResults" class="col-xs-12">
-      selectRst
       {{loadingGeoMsg}}
       {{selectRst.name}}
+<<<<<<< HEAD
       <img (click)="selectRst(selectRst)" width="30%" [src] = "['' + selectRst.image_url]"/>
+=======
+      <img (click)="selectRst(selectRst)" width="100%" [src] = "[selectRst.image_url]"/>
+>>>>>>> e992f02f1d3904a68ba9aab70eecc8e4545d2de9
 
       <p></p>
     </div>

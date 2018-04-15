@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 
 var RstSchema = mongoose.Schema({
+  id: String, // unique id from yelp
   name: String,
   categories: [
     {
