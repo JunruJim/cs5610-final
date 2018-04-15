@@ -64,6 +64,7 @@ export class RstSearchComponent implements OnInit {
       console.log('loading location');
       this.latitude = '47.622611';
       this.longitude = '-122.338192';
+
       navigator.geolocation.watchPosition(
         (position: any) => {
           this.loadingGeoFlag = false;

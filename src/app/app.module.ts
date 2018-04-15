@@ -30,6 +30,7 @@ import {AuthGuard} from './services/auth-guard.service';
 import {SharedService} from './services/shared.service';
 import {UserService} from './services/user.service.client';
 import {FaqService} from './services/faq.service.client';
+import { FaqPageComponent } from './views/faq/faq-page/faq-page.component';
 import {RstService} from './services/rst.service.client';
 
 @NgModule({
@@ -53,6 +54,7 @@ import {RstService} from './services/rst.service.client';
     ReviewNewComponent,
     BlogPageComponent,
     RstPageComponent,
+    FaqPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,7 +5,7 @@ module.exports = function (app) {
   app.post('/api/user/:userId/faq', createFaq);
   // app.post('/api/faq/:faqId', addFollowUp);
   //Get calls
-  app.get('/api/user/:userId/faq', findAllFaqsForUser);
+  app.get('/api/faq', findAllFaqs);
   app.get('/api/faq/:faqId', findFaqById);
   //Put calls
   app.put('/api/faq/:faqId',updateFaq);
@@ -36,16 +36,26 @@ module.exports = function (app) {
     );
   }
 
-  function findAllFaqsForUser(req, res) {
-    var userId = req.params['userId'];
-    FaqModel.findFaqByUser(userId).then(
-      function (faq) {
-        res.json(faq);
+  function findAllFaqs(req, res) {
+    FaqModel.findAllFaqs().then(
+      function(faqs) {
+        res.json(faqs);
       },
-      function (err) {
+      function(err) {
         res.sendStatus(400).send(err);
-      });
+      }
+    )
   }
+  // function findAllFaqsForUser(req, res) {
+  //   var userId = req.params['userId'];
+  //   FaqModel.findFaqByUser(userId).then(
+  //     function (faq) {
+  //       res.json(faq);
+  //     },
+  //     function (err) {
+  //       res.sendStatus(400).send(err);
+  //     });
+  // }
 
   function findFaqById(req, res) {
     var faqId = req.params['faqId'];

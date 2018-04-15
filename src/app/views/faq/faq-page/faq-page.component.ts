@@ -4,11 +4,11 @@ import {Faq} from '../../../models/faq.model.client';
 import {User} from '../../../models/user.model.client';
 
 @Component({
-  selector: 'app-faq-edit',
-  templateUrl: './faq-edit.component.html',
-  styleUrls: ['./faq-edit.component.css']
+  selector: 'app-faq-page',
+  templateUrl: './faq-page.component.html',
+  styleUrls: ['./faq-page.component.css']
 })
-export class FaqEditComponent implements OnInit {
+export class FaqPageComponent implements OnInit {
 
   constructor(
     @Inject('FaqService') private faqService,
@@ -34,20 +34,4 @@ export class FaqEditComponent implements OnInit {
     );
   }
 
-  updateFaq() {
-    this.faqService.updateFaq(this.fid, this.faq)
-      .subscribe(
-        (faq: Faq) => {
-          this.faq = faq;
-          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-        }
-      );
-  }
-
-  deleteFaq() {
-    this.faqService.deleteFaq(this.fid)
-      .subscribe(
-        () => this.router.navigate(['../'], {relativeTo: this.activatedRoute})
-      );
-  }
 }

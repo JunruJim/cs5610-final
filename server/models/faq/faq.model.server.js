@@ -4,6 +4,7 @@ var userModel = require("../user/user.model.server");
 var FaqSchema = require("./user.schema.server");
 var faqModel = mongoose.model("faqModel", FaqSchema);
 
+faqModel.findAllFaqs = findAllFaqs;
 faqModel.findFaqById = findFaqById;
 faqModel.createFaq = createFaq;
 faqModel.deleteFaq = deleteFaq;
@@ -13,6 +14,9 @@ faqModel.addFollowUp = addFollowUp;
 
 module.exports = faqModel;
 
+function findAllFaqs() {
+  return faqModel.find();
+}
 function findFaqById(faqId) {
   return faqModel.findById(faqId);
 }

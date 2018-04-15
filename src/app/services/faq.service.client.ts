@@ -16,8 +16,8 @@ export class FaqService {
 
   baseURL = environment.baseUrl;
 
-  findFaqByUser(userId: String) {
-    const url = this.baseURL + '/api/user/' + userId + '/faq';
+  findALLFaqs() {
+    const url = this.baseURL + '/api/faq';
     return this.http.get(url).map((response: Response) => {
       return response.json();
     });

@@ -1,0 +1,56 @@
+
+<nav class="navbar navbar-fixed-top cl-blue-navbar">
+  <div class="container-fluid">
+    <p class="navbar-text pull-left">
+      <a routerLink=".." class="navbar-link cl-text-white">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </p>
+    <a class="cl-text-white navbar-brand cl-text-bold" routerLink="/user/faq">
+      Frequently asked Questions
+    </a>
+
+    <div [ngSwitch]="user.userType">
+      <div *ngSwitchCase="'support'">
+        <a routerLink="/user/faq/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+          <span class="glyphicon glyphicon-plus"></span>
+        </a>
+      </div>>
+    </div>
+
+    <a routerLink="/user/faq/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="form-group">
+    <label for="faq-question">Question</label>
+    <input [(ngModel)]="faq.question" type="text" class="form-control" id="faq-question" placeholder="Question"
+           [ngModelOptions]="{standalone: true}">
+  </div>
+
+  <ul class="list-group cl-list-group-borderless" *ngFor="let followup of faq.followups">
+    <li class="list-group-item cl-list-item-borderless">
+      {{followup}}
+      <div [ngSwitch]="user.userType">
+        <div *ngSwitchCase="'support'">
+          <a routerLink="/user/faq/{{faq._id}}">
+            <span class="glyphicon glyphicon-cog pull-right"></span>
+          </a>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</div>
+
+<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
+  <div class="container-fuild">
+    <a routerLink="/profile" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+      <span class="glyphicon glyphicon-user"></span>
+    </a>
+  </div>
+</nav>
+
