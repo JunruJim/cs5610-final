@@ -46,12 +46,14 @@ function deleteRst(rstId) {
   return rstModel.deleteOne({_id: rstId});
 }
 
-function findRstByUser() {
-
+function findRstByUser(userId) {
+  return rstModel.find({_user: userId})
+    .populate('_user')
+    .exec();
 }
 
-function updateRst() {
-
+function updateRst(rstId, rst) {
+  return rstModel.update({_id: rstId}, rst);
 }
 
 

@@ -1,9 +1,9 @@
 module.exports = function (app) {
 
-  var FaqModel = require("../models/faq/faq.model.server");
+  var faqModel = require("../models/faq/faq.model.server");
   //Post calls
   app.post('/api/user/:userId/faq', createFaq);
-  // app.post('/api/faq/:faqId', addFollowUp);
+  app.post('/api/faq/:faqId', addFollowUp);
   //Get calls
   app.get('/api/faq', findAllFaqs);
   app.get('/api/faq/:faqId', findFaqById);
@@ -16,7 +16,7 @@ module.exports = function (app) {
   function createFaq(req, res) {
     var userId = req.param['userId'];
     var faq = req.body;
-    FaqModel.createFaq(userId, faq)
+    faqModel.createFaq(userId, faq)
       .then(function(result){
         console.log("create faq:  " + result);
         res.send(result);
@@ -26,7 +26,7 @@ module.exports = function (app) {
   function addFollowUp(req, res) {
     var faqId = req.params['faqId'];
     var content = req.body;
-    FaqModel.addFollowUp(faqId, content).then(
+    faqModel.addFollowUp(faqId, content).then(
       function(faq) {
         res.json(faq);
       },
@@ -37,7 +37,7 @@ module.exports = function (app) {
   }
 
   function findAllFaqs(req, res) {
-    FaqModel.findAllFaqs().then(
+    faqModel.findAllFaqs().then(
       function(faqs) {
         res.json(faqs);
       },
@@ -59,14 +59,16 @@ module.exports = function (app) {
 
   function findFaqById(req, res) {
     var faqId = req.params['faqId'];
-    FaqModel.findFaqById(faqId).then((faq) => res.json(faq));
+    faqModel.findFaqById(faqId).then(function(faq) {
+      res.json(faq);
+    })
   }
 
   function updateFaq(req, res) {
     var faqId = req.params['faqId'];
     var faq = req.body;
 
-    FaqModel.updateFaq(faqId,faq).then(function(faq) {
+    faqModel.updateFaq(faqId,faq).then(function(faq) {
       if(faq) {
         res.status(200).send(faq);
       } else {
@@ -77,7 +79,10 @@ module.exports = function (app) {
 
   function deleteFaq(req, res) {
     var faqId = req.params['faqId'];
-    FaqModel.deleteFaq(faqId).then(() => (
-      res.sendStatus(200)));
+    faqModel.deleteFaq(faqId)
+      .then(function() {
+        res.sendStatus(200);
+      }
+  );
   }
-}
+};

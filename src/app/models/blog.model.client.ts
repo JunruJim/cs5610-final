@@ -1,7 +1,7 @@
 export class Blog {
   _id: String;
   content: String;
-  image_url: String;
+  image_urls: String;
   title: String;
   rating: number;
   dateCreated: String;

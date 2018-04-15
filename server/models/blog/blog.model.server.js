@@ -1,60 +1,61 @@
 var mongoose = require("mongoose");
 
-var RstModel = require("../rst/rst.model.server");
-var BlogModel = mongoose.model('WidgetModel', BlogSchema);
+var BlogSchema = require("./blog.schema.server");
+var blogModel = mongoose.model('blogModel', BlogSchema);
 
-module.exports = BlogModel;
+var rstModel = require("../rst/rst.model.server");
+var userModel = require("../user/user.model.server");
 
-function createBlog(pageId, Widget) {
+blogModel.createBlog = createBlog;
+blogModel.findBlogByUser = findBlogByUser;
+blogModel.updateBlog = updateBlog;
+blogModel.deleteBlog = deleteBlog;
 
-  return BlogModel.create(Widget)
-    .then(function(responseRst){
-      RstModel.findRstById(responseRst._id)
-        .then(function(page){
-          page.widgets.push(responseWidget);
-          return page.save();
+module.exports = blogModel;
+
+function createBlog(userId, rstId, blog) {
+  blog._user = userId;
+  blog._rst = rstId;
+  return blogModel.create(blog)
+    .then(function(responseBlog) {
+      userModel.findUserById(responseBlog._user)
+        .then(function(user) {
+          user.blogs.push(responseBlog);
+          return user.save();
+        });
+      rstModel.findRstById(responseBlog._rst)
+        .then(function(rst) {
+          rst.blogs.push(responseBlog);
+          return rst.save();
         })
-      return responseWidget;
+      ;
+      return responseBlog;
     });
 }
 
-function findAllWidgetsForPage(pageId) {
-  // return WidgetModel.find({'pageId' : pageId})
-  //   .populate('pageId').exec();
-  return PageModel
-    .findPageById(pageId)
-    .populate('widgets')
-    .then(
-      function (page) {
-        // console.log(page.widgets);
-        return page.widgets;
-      }
-    )
+function findBlogByUser(userId) {
+  return blogModel.find({_user: userId})
+    .populate('_user')
+    .exec();
 }
 
-function findWidgetById(widgetId) {
-  return WidgetModel.findById(widgetId);
+function updateBlog(blogId, blog) {
+  return blogModel.update({_id: blogId}, blog);
 }
 
-function updateWidget(widgetId, widget){
-  return WidgetModel.update({_id: widgetId}, widget);
-}
-
-function deleteWidget(widgetId) {
-  widget = WidgetModel.findWidgetById(widgetId).then(function(widget) {
-    PageModel.findPageById(widget.pageId).then(function(page){
-      page.widgets.pull({_id: widgetId});
-      page.save();
-    })
-  });
-  return WidgetModel.remove({_id: widgetId});
-}
-
-function reorderWidget(pageId, start, end) {
-  return PageModel.findPageById(pageId).then(
-    function(page) {
-      page.widgets.splice(end, 0, page.widgets.splice(start, 1)[0]);
-      return page.save();
-    }
-  )
+function deleteBlog(blogId) {
+  blogModel.findById(blogId)
+    .then(function(blog) {
+      userModel.findUserById(blog._user)
+        .then(function(user) {
+          user.blogs.pull({_id: blogId});
+          user.save();
+        });
+      rstModel.findRstById(blog._rst)
+        .then(function(rst) {
+          rst.blogs.pull(({_id: blogId});
+          rst.save();
+        });
+    });
+  return blogModel.deleteOne({_id: blogId});
 }

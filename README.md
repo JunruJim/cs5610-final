@@ -30,3 +30,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 1. register之后sharedService怎么有user的
 2. {{}}的问题
+
+
+
+Points:
+
+1. Used yelp api
+2. Paid attention to data relations: create, delete and update also affects on the related collections
+3. ​

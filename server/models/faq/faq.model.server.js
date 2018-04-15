@@ -17,6 +17,7 @@ module.exports = faqModel;
 function findAllFaqs() {
   return faqModel.find();
 }
+
 function findFaqById(faqId) {
   return faqModel.findById(faqId);
 }
@@ -35,7 +36,7 @@ function createFaq(userId, faq) {
 }
 
 function deleteFaq(faqId) {
-  user = faqModel.findFaq(faqId).then(function(faq) {
+  user = faqModel.findFaqById(faqId).then(function(faq) {
     userModel.findUserById(faq._user).then(function(user){
       user.faqs.pull({_id:faqId});
       user.save();
