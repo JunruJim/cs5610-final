@@ -55,7 +55,7 @@ export class RstSearchComponent implements OnInit {
     // get current location
     if (navigator.geolocation) {
       this.loadingGeoFlag = true;
-      console.log("waiting");
+      console.log('waiting');
       navigator.geolocation.watchPosition(
         (position: any) => {
           this.loadingGeoFlag = false;

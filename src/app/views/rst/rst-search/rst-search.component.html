@@ -1,6 +1,6 @@
-<!--<div *ngIf="loadingGeoFlag" class="alert alert-info">aaaa-->
-<!--{{loadingGeoMsg}}-->
-<!--</div>-->
+<div *ngIf="loadingGeoFlag" class="alert alert-info">aaaa
+{{loadingGeoMsg}}
+</div>
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="content-fluid navbar-text pull-left">
@@ -39,7 +39,7 @@
       selectRst
       {{loadingGeoMsg}}
       {{selectRst.name}}
-      <img (click)="selectRst(selectRst)" width="100%" [src] = "['' + selectRst.image_url]"/>
+      <img (click)="selectRst(selectRst)" width="30%" [src] = "['' + selectRst.image_url]"/>
 
       <p></p>
     </div>

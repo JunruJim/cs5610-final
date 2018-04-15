@@ -18,17 +18,22 @@
       </div>>
     </div>
 
-    <a routerLink="/faq/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+    <a routerLink="/user/faq/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
       <span class="glyphicon glyphicon-plus"></span>
     </a>
   </div>
 </nav>
 
 <div class="container-fluid">
-  <ul class="list-group cl-list-group-borderless" *ngFor="let faq of faqs">
+  <div class="form-group">
+    <label for="faq-question">Question</label>
+    <input [(ngModel)]="faq.question" type="text" class="form-control" id="faq-question" placeholder="Question"
+           [ngModelOptions]="{standalone: true}">
+  </div>
+
+  <ul class="list-group cl-list-group-borderless" *ngFor="let followup of faq.followups">
     <li class="list-group-item cl-list-item-borderless">
-      <a routerLink="/user/faq/{{faq._id}}/page">{{faq.question}}
-      </a>
+      {{followup}}
       <div [ngSwitch]="user.userType">
         <div *ngSwitchCase="'support'">
           <a routerLink="/user/faq/{{faq._id}}">
@@ -48,3 +53,4 @@
     </a>
   </div>
 </nav>
+

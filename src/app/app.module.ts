@@ -30,6 +30,7 @@ import {UserService} from './services/user.service.client';
 import { BlogPageComponent } from './views/blog/blog-page/blog-page.component';
 import { RstPageComponent } from './views/rst/rst-page/rst-page.component';
 import {FaqService} from './services/faq.service.client';
+import { FaqPageComponent } from './views/faq/faq-page/faq-page.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {FaqService} from './services/faq.service.client';
     ReviewNewComponent,
     BlogPageComponent,
     RstPageComponent,
+    FaqPageComponent,
   ],
   imports: [
     BrowserModule,

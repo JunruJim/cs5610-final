@@ -23,7 +23,7 @@ export class FaqListComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.sharedService.user;
-    this.faqs = this.faqService.findFaqByUser(this.user._id)
+    this.faqs = this.faqService.findALLFaqs()
       .subscribe(
         (faqs: Faq[]) => {
           this.faqs = faqs;
