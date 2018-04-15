@@ -1,50 +1,81 @@
 
-<nav class="navbar navbar-fixed-top cl-blue-navbar">
-  <div class="container-fluid">
-    <p class="navbar-text pull-left">
-      <a routerLink=".." class="navbar-link cl-text-white">
-        <span class="glyphicon glyphicon-chevron-left"></span>
+<nav class="navbar navbar-fixed-top navbar-default">
+  <div class="content-fluid navbar-text pull-left">
+    <a routerLink=".." class="navbar-link header-font">
+      <span class="glyphicon glyphicon-chevron-left ">
+      </span>
+    </a>
+  </div>
+  <div class="navbar-text header-position">
+    <a routerLink="/search" class="navbar-link header-font">FoodPhilia</a>
+  </div>
+
+
+  <div [ngSwitch]="user.userType">
+    <div *ngSwitchCase="'support'">
+      <a routerLink="/user/faq/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+        <span class="glyphicon glyphicon-plus icon-size"></span>
       </a>
-    </p>
-    <a class="cl-text-white navbar-brand cl-text-bold" routerLink="/user/faq">
-      Frequently asked Questions
-    </a>
-
-    <div [ngSwitch]="user.userType">
-      <div *ngSwitchCase="'support'">
-        <a routerLink="/user/faq/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-          <span class="glyphicon glyphicon-plus"></span>
-        </a>
-      </div>>
     </div>
-
-    <a routerLink="/user/faq/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-      <span class="glyphicon glyphicon-plus"></span>
-    </a>
   </div>
 </nav>
 
-<div class="container-fluid">
-  <ul class="list-group cl-list-group-borderless" *ngFor="let faq of faqs">
-    <li class="list-group-item cl-list-item-borderless">
-      <a routerLink="/user/faq/{{faq._id}}/page">{{faq.question}}
-      </a>
-      <div [ngSwitch]="user.userType">
-        <div *ngSwitchCase="'support'">
-          <a routerLink="/user/faq/{{faq._id}}">
-            <span class="glyphicon glyphicon-cog pull-right"></span>
+<div class="showcase">
+  <div class="container-box">
+    <!--<div class="container-fluid">-->
+      <ul class="list-group cl-list-group-borderless">
+        <li class="list-group-item-header cl-list-item-borderless">
+          <p>Frequent Asked Questions
+          </p>
+        </li>
+        <li class="list-group-item-element cl-list-item-borderless">
+          <a routerLink="./" class="color-black">FAQ1
           </a>
-        </div>
-      </div>
-    </li>
+        </li>
+        <li class="list-group-item-element cl-list-item-borderless">
+          <a routerLink="./" class="color-black">FAQ2
+          </a>
+        </li>
+        <li class="list-group-item-element cl-list-item-borderless">
+          <a routerLink="./" class="color-black">FAQ3
+            <span class="glyphicon glyphicon-cog pull-right glyphicon-position"></span>
+          </a>
+        </li>
+        <li class="list-group-item-element cl-list-item-borderless">
+          <a routerLink="./" class="color-black">FAQ4
+          </a>
+        </li>
+      </ul>
+      <ul class="list-group cl-list-group-borderless" *ngFor="let faq of faqs">
+        <li class="list-group-item-element cl-list-item-borderless">
+          <a routerLink="/user/faq/{{faq._id}}/page">{{faq.question}}
+          </a>
+          <div [ngSwitch]="user.userType">
+            <div *ngSwitchCase="'support'">
+              <a routerLink="/user/faq/{{faq._id}}">
+                <span class="glyphicon glyphicon-cog pull-right glyphicon-position"></span>
+              </a>
+            </div>
+          </div>
+        </li>
 
-  </ul>
+      </ul>
+    <!--</div>-->
+  </div>
 </div>
 
-<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
-  <div class="container-fuild">
-    <a routerLink="/profile" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-      <span class="glyphicon glyphicon-user"></span>
-    </a>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-text pull-left">
+      <a routerLink="/search">
+      <span class="glyphicon glyphicon glyphicon-home color-black">
+      </span>
+      </a>
+    </div>
+      <a routerLink="/profile" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+
   </div>
 </nav>
+
