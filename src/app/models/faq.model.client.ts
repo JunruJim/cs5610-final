@@ -9,5 +9,6 @@ export class Faq {
     this._id = _id;
     this.question = question;
     this._user = _user;
+    this.followups = [];
   }
 }

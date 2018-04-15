@@ -1,22 +1,23 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid row">
 
-    <div class="navbar-text pull-left">
-      <a routerLink=".." class="cl-text-black cl-icon-padding">
-          <span class="glyphicon glyphicon-chevron-left">
-          </span>
-      </a>
-    </div>
-    <div class="navbar-text pull-right">
-      <a (click)="updateFaq()" class="cl-icon-padding cl-text-black">
-          <span class="glyphicon glyphicon-ok">
-          </span>
-      </a>
-    </div>
-    <a class="navbar-brand cl-text-white cl-text-bold" routerLink="/user/faq/{{fid}}">
-      New Page
+<nav class="navbar navbar-fixed-top navbar-default">
+  <div class="content-fluid navbar-text pull-left">
+    <a routerLink=".." class="navbar-link header-font">
+      <span class="glyphicon glyphicon-chevron-left ">
+      </span>
     </a>
   </div>
+  <div class="navbar-text header-position">
+    <a routerLink="/search" class="navbar-link header-font">FoodPhilia</a>
+  </div>
+
+
+  <!--<div [ngSwitch]="user.userType">-->
+  <!--<div *ngSwitchCase="'support'">-->
+  <a (click)="updateFaq()" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+    <span class="glyphicon glyphicon-ok icon-size"></span>
+  </a>
+  <!--</div>-->
+  <!--</div>-->
 </nav>
 
 <div class="container">
@@ -25,17 +26,14 @@
       <label for="faq-question">Question</label>
       <input [(ngModel)]="faq.question" type="text" class="form-control" id="faq-question" placeholder="Question"
              [ngModelOptions]="{standalone: true}">
-    </div>
 
-    <!--<div class="form-group">-->
-      <!--<label >Answer</label>-->
-      <!--<ul class="list-group cl-list-group-borderless" *ngFor="let followup of faq.followups">-->
-        <!--<li class="list-group-item cl-list-item-borderless">-->
-        <!--<input [(ngModel)]="followup" type="text" class="form-control" placeholder="answer"-->
-             <!--[ngModelOptions]="{standalone: true}">-->
-        <!--</li>-->
-      <!--</ul>-->
-    <!--</div>-->
+      <!--<div *ngFor="let followup of faq.followups; let i = index">-->
+        <!--<label for="faq-followups" class="lable-size">Follow Up {{i}}</label>-->
+        <!--<textarea [(ngModel)]="followup" type="text" class="form-control" id="faq-followups" placeholder="Follow up"-->
+                  <!--[ngModelOptions]="{standalone: true}">-->
+          <!--</textarea>-->
+      <!--</div>-->
+    </div>
     <!--<div class="form-group">-->
     <!--<label for="page-title">Title</label>-->
     <!--<input [(ngModel)]="newPage.title" type="text" class="form-control" id="page-title" placeholder="Page Title"-->
@@ -46,11 +44,17 @@
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container-fluid row">
-    <div class="pull-right navbar-text">
-      <a routerLink="/profile" class="cl-icon-padding">
-        <span class="glyphicon glyphicon-user"></span>
+  <div class="container-fluid">
+    <div class="navbar-link navbar-text pull-left">
+      <a routerLink="/search">
+      <span class="glyphicon glyphicon glyphicon-home color-black">
+      </span>
       </a>
     </div>
+    <a routerLink="/profile" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+      <span class="glyphicon glyphicon-user"></span>
+    </a>
+
   </div>
 </nav>
+
