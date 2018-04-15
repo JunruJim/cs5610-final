@@ -45,8 +45,9 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('profile page');
     this.user = this.sharedService.user;
+    console.log('profile page: shared user:');
+    console.log(this.user);
     // this.activatedRoute.params.subscribe((params: any) => {
     //   // alert('userId is' + this.userId);
     //   return this.userService.findUserById(params['userId'])

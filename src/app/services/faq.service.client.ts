@@ -49,5 +49,5 @@ export class FaqService {
   deleteFaq(faqId: String) {
     const url = this.baseURL + '/api/faq/' + faqId;
     return this.http.delete(url);
-  };
+  }
 }

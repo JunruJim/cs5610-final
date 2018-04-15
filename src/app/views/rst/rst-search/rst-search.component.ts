@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {environment} from '../../../../environments/environment';
 import {User} from '../../../models/user.model.client';
+import {Rst} from '../../../models/rst.model.client';
 
 @Component({
   selector: 'app-rst-search',
@@ -31,6 +32,7 @@ export class RstSearchComponent implements OnInit {
   constructor(
     @Inject('YelpSearchService') private yelpSearchService,
     @Inject('SharedService') private sharedService,
+    @Inject('RstService') private rstService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
@@ -40,13 +42,17 @@ export class RstSearchComponent implements OnInit {
       (data: any) => {
         this.searchResults = data;
         console.log(this.searchResults);
-        console.log(this.searchResults[0].name);
       }
     );
   }
 
   selectRst(rst) {
-
+    this.rstService.createRstWithoutOwner(rst).subscribe(
+      (data: Rst) => {
+        const rstId = data._id;
+        this.router.navigate(['../rst/' + rstId + '/page'], {relativeTo: this.activatedRoute});
+      }
+    );
   }
 
 
@@ -55,10 +61,13 @@ export class RstSearchComponent implements OnInit {
     // get current location
     if (navigator.geolocation) {
       this.loadingGeoFlag = true;
-      console.log("waiting");
+      console.log('loading location');
+      this.latitude = '47.622611';
+      this.longitude = '-122.338192';
       navigator.geolocation.watchPosition(
         (position: any) => {
           this.loadingGeoFlag = false;
+          console.log('location acquired');
           this.latitude = position.coords.latitude;
           this.longitude = position.coords.longitude;
         }, (err: any) => {
@@ -70,7 +79,7 @@ export class RstSearchComponent implements OnInit {
           //   3: timed out
           console.log(err);
           this.loadingGeoFlag = false;
-          alert('Error occurs when acquiring your position');
+          alert('Error occurs when acquiring your position so we use Seattle location');
         }, this.geoOptions);
     } else {
       this.loadingGeoFlag = false;

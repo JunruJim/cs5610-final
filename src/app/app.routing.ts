@@ -21,7 +21,7 @@ import {RstPageComponent} from './views/rst/rst-page/rst-page.component';
 import {AuthGuard} from './services/auth-guard.service';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'search', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },

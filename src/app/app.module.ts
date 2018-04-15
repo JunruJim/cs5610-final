@@ -22,14 +22,15 @@ import { BlogEditComponent } from './views/blog/blog-edit/blog-edit.component';
 import { ReviewListComponent } from './views/review/review-list/review-list.component';
 import { ReviewEditComponent } from './views/review/review-edit/review-edit.component';
 import { ReviewNewComponent } from './views/review/review-new/review-new.component';
+import { BlogPageComponent } from './views/blog/blog-page/blog-page.component';
+import { RstPageComponent } from './views/rst/rst-page/rst-page.component';
 
 import {YelpSearchService} from './services/yelpSearch.service.client';
 import {AuthGuard} from './services/auth-guard.service';
 import {SharedService} from './services/shared.service';
 import {UserService} from './services/user.service.client';
-import { BlogPageComponent } from './views/blog/blog-page/blog-page.component';
-import { RstPageComponent } from './views/rst/rst-page/rst-page.component';
 import {FaqService} from './services/faq.service.client';
+import {RstService} from './services/rst.service.client';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,10 @@ import {FaqService} from './services/faq.service.client';
     {
       provide: 'FaqService',
       useClass: FaqService
+    },
+    {
+      provide: 'RstService',
+      useClass: RstService
     }
   ],
   bootstrap: [AppComponent]
