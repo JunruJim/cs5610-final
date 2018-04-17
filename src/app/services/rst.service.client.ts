@@ -27,4 +27,25 @@ export class RstService {
         return res.json();
       });
   }
+
+  findRstById(rstId: String) {
+    return this.http.get(this.baseUrl + '/api/rst/' + rstId)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
+
+  findRstsByUser(userId: String) {
+    return this.http.get(this.baseUrl + '/api/rst/user/' + userId)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
+
+  findRstByYelpId(rstYelpId: String) {
+    return this.http.get(this.baseUrl + '/api/rst/yelp/' + rstYelpId)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
 }

@@ -8,7 +8,8 @@ module.exports = function (app) {
   app.post("/api/rst/user/:userId", createRstForOwner);
 
   app.get("/api/rst/:rstId", findRstById);
-  app.post("/api/rst", createRstWithoutOwner);
+  app.get("/api/rst/yelp/:rstYelpId", findRstByYelpId);
+  app.get("/api/rst/user/:userId", findRstsByUser);
 
   app.post("/api/rst/:rstId", updateRst);
   app.delete("/api/rst/:rstId", deleteRst);
@@ -16,16 +17,10 @@ module.exports = function (app) {
   var rstModel = require("../models/rst/rst.model.server");
 
   function yelpSearch(req, res) {
-    var latitude = req.query["latitude"];
-    var longitude = req.query["longitude"];
-    var term = req.query["term"];
-
-    console.log(latitude);
-
     const searchRequest = {
       term: req.query["term"],
       latitude: req.query["latitude"],
-      longitude: req.query["longitude"],
+      longitude: req.query["longitude"]
     };
 
     console.log(searchRequest);
@@ -65,16 +60,44 @@ module.exports = function (app) {
       });
   }
 
+  function findRstsByUser(req, res) {
+    var userId = req.params["userId"];
+    rstModel.findRstByUser(userId)
+      .then(function(rsts) {
+        res.json(rsts);
+      }, function(err) {
+        res.status(500).json(err);
+      })
+  }
+
   function findRstById(req, res) {
     var rstId = req.params['rstId'];
     rstModel.findRstById(rstId)
-      .then((rst) => res.json(rst));
+      .then(function(rst) {
+        if (rst) {
+          res.json(rst);
+        } else {
+          res.status(404);
+          res.json(rst);
+        }
+      }, function(err) {
+        res.status(500).json(err);
+      });
   }
 
-  function createRstWithoutOwner(req, res) {
-    const rst  = req.body;
-    rstModel.createRstWithoutOwner(rst)
-      .then((rst) => res.json(rst));
+  function findRstByYelpId(req, res) {
+    var rstId = req.params['rstYelpId'];
+    rstModel.findRstByYelpId(rstId)
+      .then(function(rst) {
+        if (rst) {
+          res.json(rst);
+        } else {
+          res.status(404);
+          res.json(rst);
+        }
+      }, function(err) {
+        res.status(500).json(err);
+      });
   }
 
   function deleteRst(req, res) {

@@ -47,12 +47,21 @@ export class RstSearchComponent implements OnInit {
   }
 
   select(rst) {
-    this.rstService.createRstWithoutOwner(rst).subscribe(
+    const selectId = rst.id;
+    this.rstService.findRstByYelpId(selectId).subscribe(
       (data: Rst) => {
+        console.log('this restaurant has been already in our db');
         const rstId = data._id;
         this.router.navigate(['../rst/' + rstId + '/page'], {relativeTo: this.activatedRoute});
-      }
-    );
+      }, (error: any) => {
+        console.log('add this restaurant into our db');
+        this.rstService.createRstWithoutOwner(rst).subscribe(
+          (data: Rst) => {
+            const rstId = data._id;
+            this.router.navigate(['../rst/' + rstId + '/page'], {relativeTo: this.activatedRoute});
+          }
+        );
+    });
   }
 
 

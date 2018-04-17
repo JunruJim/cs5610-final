@@ -27,9 +27,6 @@ var RstSchema = mongoose.Schema({
   reviews:[
     {type: mongoose.Schema.Types.ObjectId, ref: 'reviewModel'}
   ],
-  blogs:[
-    {type: mongoose.Schema.Types.ObjectId, ref: 'blogModel'}
-  ],
   dateCreated: {type: Date, default: Date.now}
 }, {collection:'rst'});
 

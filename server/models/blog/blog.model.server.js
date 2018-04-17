@@ -25,12 +25,6 @@ function createBlog(userId, rstId, blog) {
           user.blogs.push(responseBlog);
           return user.save();
         });
-      rstModel.findRstById(responseBlog._rst)
-        .then(function(rst) {
-          rst.blogs.push(responseBlog);
-          return rst.save();
-        })
-      ;
       return responseBlog;
     });
 }
@@ -60,11 +54,6 @@ function deleteBlog(blogId) {
         .then(function(user) {
           user.blogs.pull({_id: blogId});
           user.save();
-        });
-      rstModel.findRstById(blog._rst)
-        .then(function(rst) {
-          rst.blogs.pull(({_id: blogId});
-          rst.save();
         });
     });
   return blogModel.deleteOne({_id: blogId});
