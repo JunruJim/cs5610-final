@@ -29,6 +29,7 @@ export class FaqPageComponent implements OnInit {
         this.faqService.findFaqById(this.fid)
           .subscribe((faq: Faq) => {
             this.faq = faq;
+            console.log('faq ' + faq);
           });
       }
     );

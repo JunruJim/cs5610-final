@@ -23,9 +23,10 @@
 <div class="container">
   <form>
     <div class="form-group">
+
       <label for="faq-question">Question</label>
       <input [(ngModel)]="faq.question" type="text" class="form-control" id="faq-question" placeholder="Question"
-             [ngModelOptions]="{standalone: true}">
+             [ngModelOptions]="{standalone: true}" name="question">
 
       <!--<div *ngFor="let followup of faq.followups; let i = index">-->
         <!--<label for="faq-followups" class="lable-size">Follow Up {{i}}</label>-->

@@ -19,6 +19,7 @@ import {BlogNewComponent} from './views/blog/blog-new/blog-new.component';
 import {BlogPageComponent} from './views/blog/blog-page/blog-page.component';
 import {RstPageComponent} from './views/rst/rst-page/rst-page.component';
 import {AuthGuard} from './services/auth-guard.service';
+import {FaqPageComponent} from './views/faq/faq-page/faq-page.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'search', pathMatch: 'full' },
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
   { path: 'faq', component: FaqListComponent},
   { path: 'faq/new', component: FaqNewComponent},
   { path: 'faq/:fid', component: FaqEditComponent},
+  { path: 'faq/:fid/page', component: FaqPageComponent},
   { path: 'rst/:rstid/review', component: ReviewListComponent},
   { path: 'rst/:rstid/review/:revid', component: ReviewEditComponent},
   { path: 'rst/:rstid/review/new', component: ReviewNewComponent},
