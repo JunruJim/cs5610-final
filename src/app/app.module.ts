@@ -32,6 +32,7 @@ import {UserService} from './services/user.service.client';
 import {FaqService} from './services/faq.service.client';
 import { FaqPageComponent } from './views/faq/faq-page/faq-page.component';
 import {RstService} from './services/rst.service.client';
+import {BlogService} from './services/blog.service.client';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,10 @@ import {RstService} from './services/rst.service.client';
     {
       provide: 'RstService',
       useClass: RstService
+    },
+    {
+      provide: 'BlogService',
+      useClass: BlogService
     }
   ],
   bootstrap: [AppComponent]

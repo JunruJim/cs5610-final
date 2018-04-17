@@ -7,7 +7,9 @@ var rstModel = require("../rst/rst.model.server");
 var userModel = require("../user/user.model.server");
 
 blogModel.createBlog = createBlog;
+blogModel.findAllBlog = findAllBlog;
 blogModel.findBlogByUser = findBlogByUser;
+blogModel.findBlogById = findBlogById;
 blogModel.updateBlog = updateBlog;
 blogModel.deleteBlog = deleteBlog;
 
@@ -33,10 +35,18 @@ function createBlog(userId, rstId, blog) {
     });
 }
 
+function findAllBlog() {
+  return blogModel.find();
+}
+
 function findBlogByUser(userId) {
   return blogModel.find({_user: userId})
     .populate('_user')
     .exec();
+}
+
+function findBlogById(blogId) {
+  return blogModel.findById(blogId);
 }
 
 function updateBlog(blogId, blog) {
