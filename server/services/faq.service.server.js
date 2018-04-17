@@ -5,8 +5,8 @@ module.exports = function (app) {
   app.post('/api/user/:userId/faq', createFaq);
   app.post('/api/faq/:faqId', addFollowUp);
   //Get calls
-  app.get('/api/faq', findAllFaqs);
   app.get('/api/faq/:faqId', findFaqById);
+  app.get('/api/faq', findAllFaqs);
   //Put calls
   app.put('/api/faq/:faqId',updateFaq);
   //Delete calls
@@ -16,6 +16,7 @@ module.exports = function (app) {
   function createFaq(req, res) {
     var userId = req.param['userId'];
     var faq = req.body;
+    console.log("it is here");
     faqModel.createFaq(userId, faq)
       .then(function(result){
         console.log("create faq:  " + result);

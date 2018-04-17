@@ -11,7 +11,7 @@
   </div>
 
 
-    <a routerLink="/faq/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+    <a (click)="newFaq()" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
       <span class="glyphicon glyphicon-plus"></span>
     </a>
   <div [ngSwitch]="user.userType">
@@ -26,6 +26,11 @@
 <div class="showcase">
   <div class="container-box">
     <!--<div class="container-fluid">-->
+
+    <div *ngIf="errorFlag" class="alert alert-danger">
+      {{errorMsg}}
+    </div>
+
       <ul class="list-group cl-list-group-borderless">
         <li class="list-group-item-header cl-list-item-borderless">
           <p>Frequent Asked Questions

@@ -11,20 +11,21 @@ export class FaqService {
     private http: Http,
     private router: Router,
     @Inject('SharedService') private sharedService
-  ) {
-  }
+  ) {}
 
   baseURL = environment.baseUrl;
 
-  findALLFaqs() {
+  findAllFaqs() {
     const url = this.baseURL + '/api/faq';
-    return this.http.get(url).map((response: Response) => {
+    return this.http.get(url)
+      .map((response: Response) => {
       return response.json();
     });
   }
 
   createFaq(userId: String, faq: Faq) {
     const url = this.baseURL + '/api/user/' + userId + '/faq';
+    console.log('this is client');
     return this.http.post(url, faq)
       .map((response: Response) => {
         return response.json();

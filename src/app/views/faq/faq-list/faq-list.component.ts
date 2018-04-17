@@ -19,11 +19,21 @@ export class FaqListComponent implements OnInit {
 
   user: User;
   faqs: Faq[];
+  errorFlag: boolean;
+  errorMsg: String = 'Please login before ask question';
 
+  newFaq() {
+    if (this.user._id === undefined) {
+      this.errorFlag = true;
+      return;
+    }
+    this.router.navigate(['./new'], {relativeTo: this.activatedRoute});
+  }
 
   ngOnInit() {
     this.user = this.sharedService.user;
-    this.faqs = this.faqService.findALLFaqs()
+    this.errorFlag = false;
+    this.faqs = this.faqService.findAllFaqs()
       .subscribe(
         (faqs: Faq[]) => {
           this.faqs = faqs;
