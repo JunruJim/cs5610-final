@@ -1,6 +1,7 @@
 module.exports = function (app){
   require("./services/user.service.server")(app);
   require("./services/rst.service.server")(app);
+  require("./services/faq.service.server")(app);
   // require("./services/page.service.server.js")(app);
   // require("./services/widget.service.server")(app);
 

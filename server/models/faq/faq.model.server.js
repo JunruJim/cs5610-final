@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 var userModel = require("../user/user.model.server");
-var FaqSchema = require("./user.schema.server");
+var FaqSchema = require("./faq.schema.server");
 var faqModel = mongoose.model("faqModel", FaqSchema);
 
 faqModel.findAllFaqs = findAllFaqs;
