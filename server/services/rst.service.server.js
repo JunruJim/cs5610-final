@@ -7,6 +7,12 @@ module.exports = function (app) {
   app.post("/api/rst/yelp", createRstFromYelp);
   app.post("/api/rst/user/:userId", createRstForOwner);
 
+  app.get("/api/rst/:rstId", findRstById);
+  app.post("/api/rst", createRstWithoutOwner);
+
+  app.post("/api/rst/:rstId", updateRst);
+  app.delete("/api/rst/:rstId", deleteRst);
+
   var rstModel = require("../models/rst/rst.model.server");
 
   function yelpSearch(req, res) {
@@ -57,5 +63,36 @@ module.exports = function (app) {
       }, function(err) {
         res.status(500).json(err);
       });
+  }
+
+  function findRstById(req, res) {
+    var rstId = req.params['rstId'];
+    rstModel.findRstById(rstId)
+      .then((rst) => res.json(rst));
+  }
+
+  function createRstWithoutOwner(req, res) {
+    const rst  = req.body;
+    rstModel.createRstWithoutOwner(rst)
+      .then((rst) => res.json(rst));
+  }
+
+  function deleteRst(req, res) {
+    var rstId = req.params['rstId'];
+    rstModel.deleteRst(rstId).then(() => (
+      res.sendStatus(200)));
+  }
+
+  function updateRst(req, res) {
+    var rstId = req.params['rstId'];
+    var rst = req.body;
+
+    rstModel.updateRst(rstId, rst).then(function(rst) {
+      if(rst) {
+        res.status(200).send(rst);
+      } else {
+        res.status(404).send('Not find!');
+      }
+    });
   }
 };
