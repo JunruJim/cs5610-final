@@ -16,7 +16,7 @@ rstModel.updateRst = updateRst;
 module.exports = rstModel;
 
 function findRstById(rstId) {
-  return rstModel.findRstById(rstId);
+  return rstModel.findById(rstId);
 }
 
 function findAllRsts() {

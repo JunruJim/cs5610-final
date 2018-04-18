@@ -7,6 +7,9 @@ var rstModel = require("../rst/rst.model.server");
 var userModel = require("../user/user.model.server");
 
 reviewModel.createReview = createReview;
+reviewModel.findReviewById = findReviewById;
+reviewModel.findReviewsByRst = findReviewsByRst;
+reviewModel.findReviewsByUser = findReviewsByUser;
 reviewModel.deleteReview = deleteReview;
 
 module.exports = reviewModel;
@@ -35,6 +38,22 @@ function createReview(userId, rstId, review) {
       ;
       return responseReview;
     });
+}
+
+function findReviewById(reviewId) {
+  return reviewModel.findById(reviewId);
+}
+
+function findReviewsByRst(rstId) {
+  return reviewModel.find({_rst: rstId})
+    .populate('_rst')
+    .exec();
+}
+
+function findReviewsByUser(userId) {
+  return reviewModel.find({_user: userId})
+    .populate('_user')
+    .exec();
 }
 
 function deleteReview(reviewId) {
