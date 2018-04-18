@@ -1,7 +1,9 @@
 module.exports = function (app) {
   var blogModel = require("../models/blog/blog.model.server");
+  var multer = require('multer');
+  var upload = multer({ dest: __dirname+'/../../src/assets/uploads' });
   //Post calls
-  app.post('/api/user/:userId/rst/:rstId/blog', createBlog);
+  app.post('/api/user/:userId/blog', createBlog);
   app.post ("/api/upload", upload.single('myFile'), uploadImage);
   //Get calls
   app.get('/api/blog/:blogId', findBlogById);
@@ -14,9 +16,8 @@ module.exports = function (app) {
 
   function createBlog(req, res) {
     var userId = req.param['userId'];
-    var rstId = req.param['rstId'];
     var blog = req.body;
-    blogModel.createBlog(userId, rstId, blog)
+    blogModel.createBlog(userId, blog)
       .then(function(result){
         console.log("create blog:  " + result);
         res.send(result);
@@ -76,12 +77,10 @@ module.exports = function (app) {
 
   function uploadImage(req, res) {
 
-    var widgetId      = req.body.widgetId;
+    var blogId      = req.body.blogId;
     var width         = req.body.width;
     var myFile        = req.file;
     var userId = req.body.userId;
-    var websiteId = req.body.websiteId;
-    var pageId = req.body.pageId;
 
     var originalname  = myFile.originalname; // file name on user's computer
     var filename      = myFile.filename;     // new file name in upload folder
@@ -92,13 +91,12 @@ module.exports = function (app) {
 
     // find widget by id
     if (widgetId === undefined) {
-      var widget = {_id: undefined, type: 'IMAGE', pageId: pageId,size: size,text: 'text', width:'100%',
-        url:'/uploads/'+filename};
-      WidgetModel.createWidget(pageId, widget)
+      var blog = {_id: undefined, image_urls: '/uploads/'+filename};
+      blogModel.createBlog(userId, blog);
     } else {
-      var widget = { url: '/uploads/'+filename };
-      WidgetModel
-        .updateWidget(widgetId, widget)
+      var blog = { url: '/uploads/'+filename };
+      blogModel
+        .updateBlog(blogId, blog)
         .then(function (stats) {
             res.send(200);
           },
@@ -109,8 +107,8 @@ module.exports = function (app) {
 
 
 
-    var callbackUrl   = "/user/"+ userId+ "/website/" + websiteId + "/page/" + pageId+ "/widget";
+    var callbackUrl   = "/blog";
     res.redirect(callbackUrl);
   }
-}
+
 }

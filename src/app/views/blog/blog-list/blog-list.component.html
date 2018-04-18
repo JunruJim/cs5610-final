@@ -8,7 +8,7 @@
       </a>
     </div>
     <div class="navbar-text pull-right">
-      <a routerLink="/user/rst/{{rstId}}/blog/new" class="cl-icon-padding cl-text-black">
+      <a routerLink="/blog/new" class="cl-icon-padding cl-text-black">
           <span class="glyphicon glyphicon-plus">
           </span>
       </a>
@@ -23,8 +23,8 @@
 <div class="container-fluid cl-container-padding">
   <ul class="list-group cl-list-group-borderless">
     <li class="list-group-item cl-list-item-borderless" *ngFor="let blog of blogs">
-      <a routerLink="/rst/{{rstId}}/blog/{{blog._id}}/content">{{blog.title}}</a>
-      <a routerLink="/rst/{{rstId}}/blog/{{blog._id}}">
+      <a routerLink="/blog/{{blog._id}}/page">{{blog.title}}</a>
+      <a routerLink="/blog/{{blog._id}}">
         <span class="glyphicon glyphicon-cog pull-right"></span>
       </a>
     </li>

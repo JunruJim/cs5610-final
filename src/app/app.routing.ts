@@ -41,9 +41,9 @@ const appRoutes: Routes = [
   { path: 'rst/:rstid/review/:revid', component: ReviewEditComponent},
   { path: 'rst/:rstid/review/new', component: ReviewNewComponent},
   { path: 'blog', component: BlogListComponent},
-  { path: 'rst/:rstid/blog/:bid', component: BlogEditComponent},
-  { path: 'rst/:rstid/blog/new', component: BlogNewComponent},
-  { path: 'rst/:rstid/blog/:bid/page', component: BlogPageComponent}
+  { path: 'blog/:bid', component: BlogEditComponent},
+  { path: 'blog/new', component: BlogNewComponent},
+  { path: 'blog/:bid/page', component: BlogPageComponent}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
