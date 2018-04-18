@@ -38,11 +38,11 @@ const appRoutes: Routes = [
   { path: 'faq/:fid', component: FaqEditComponent},
   { path: 'faq/:fid/page', component: FaqPageComponent},
   { path: 'rst/:rstid/review', component: ReviewListComponent},
-  { path: 'rst/:rstid/review/:revid', component: ReviewEditComponent},
   { path: 'rst/:rstid/review/new', component: ReviewNewComponent},
+  { path: 'rst/:rstid/review/:revid', component: ReviewEditComponent},
   { path: 'blog', component: BlogListComponent},
-  { path: 'blog/:bid', component: BlogEditComponent},
   { path: 'blog/new', component: BlogNewComponent},
+  { path: 'blog/:bid', component: BlogEditComponent},
   { path: 'blog/:bid/page', component: BlogPageComponent}
 ];
 

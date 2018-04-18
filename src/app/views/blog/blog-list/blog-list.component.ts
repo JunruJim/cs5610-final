@@ -20,9 +20,20 @@ export class BlogListComponent implements OnInit {
 
   user: User;
   blogs: Blog[];
+  errorFlag: boolean;
+  errorMsg: String = 'Please login before ask question';
+
+  createBlog() {
+    if (this.user._id === undefined) {
+      this.errorFlag = true;
+      return;
+    }
+    this.router.navigate(['./new'], {relativeTo: this.activatedRoute});
+  }
 
   ngOnInit() {
     this.user = this.sharedService.user;
+    console.log('user' + this.user);
     this.blogs = this.blogService.findAllBlog()
       .subscribe(
         (blogs) => {

@@ -22,6 +22,8 @@ export class BlogNewComponent implements OnInit {
   blogId: String;
   newBlog: Blog;
   baseUrl: String = environment.baseUrl;
+  errFlag: boolean;
+  errMsg: String = 'Please input title';
 
   ngOnInit() {
     this.user = this.sharedService.user;
@@ -29,6 +31,9 @@ export class BlogNewComponent implements OnInit {
   }
 
   createBlog(newBlog) {
+    if (newBlog.title === undefined) {
+      this.errFlag = true;
+    }
     this.blogService.createBlog(this.user._id, newBlog)
       .subscribe(() =>
         this.router.navigate(['../'], {relativeTo: this.activatedRoute});

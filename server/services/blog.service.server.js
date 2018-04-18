@@ -89,8 +89,8 @@ module.exports = function (app) {
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
 
-    // find widget by id
-    if (widgetId === undefined) {
+    // f
+    if (blogId === undefined) {
       var blog = {_id: undefined, image_urls: '/uploads/'+filename};
       blogModel.createBlog(userId, blog);
     } else {

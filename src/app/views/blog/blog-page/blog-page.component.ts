@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {Blog} from '../../../models/blog.model.client';
+import {ActivatedRoute, Router} from '@angular/router';
+import {User} from '../../../models/user.model.client';
 
 @Component({
   selector: 'app-blog-page',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    @Inject('BlogService') private blogService,
+    @Inject('SharedService') private sharedService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) { }
+
+  user: User;
+  blogId: String;
+  blog: Blog;
 
   ngOnInit() {
+    this.user = this.sharedService.user;
+    this.activatedRoute.params.subscribe(
+      (params: any) => {
+        this.blogId = params['bid'];
+        this.blogService.findBlogById(this.blogId)
+          .subscribe((blog: Blog) => {
+            this.blog = blog;
+          });
+      }
+    );
   }
 
 }
