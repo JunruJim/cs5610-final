@@ -24,7 +24,7 @@
         <a class="cl-text-white navbar-brand cl-text-bold" routerLink="/user/rst/rstId">
           Edit Restaurant
         </a>
-        <a (click)="updateRst(newRst)" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+        <a (click)="updateRst()" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </div>
@@ -48,35 +48,35 @@
     <form>
       <div class="form-group cl-8-top">
         <label for="website-name">Name</label>
-        <input [(ngModel)]="newRst.name" type="text" class="form-control" id="website-name" placeholder="Name"
+        <input [(ngModel)]="rst.name" type="text" class="form-control" id="website-name" placeholder="Name"
                [ngModelOptions]="{standalone: true}">
       </div>
       <div class="form-group cl-8-top">
         <label for="website-category">Category</label>
-        <input [(ngModel)]="newRst.category" id="website-category" class="form-control" placeholder="Category"
+        <input [(ngModel)]="rst.category" id="website-category" class="form-control" placeholder="Category"
                [ngModelOptions]="{standalone: true}">
       </div>
       <div class="form-group cl-8-top">
         <label for="website-content">Content</label>
-        <textarea [(ngModel)]="newRst.content" id="website-content" class="form-control" rows="5" placeholder="Content"
+        <textarea [(ngModel)]="rst.content" id="website-content" class="form-control" rows="5" placeholder="Content"
                   [ngModelOptions]="{standalone: true}"></textarea>
       </div>
       <div class="form-group cl-8-top">
         <label for="website-location">Location</label>
-        <input [(ngModel)]="newRst.location" id="website-location" class="form-control" placeholder="Location"
+        <input [(ngModel)]="rst.location" id="website-location" class="form-control" placeholder="Location"
                [ngModelOptions]="{standalone: true}">
       </div>
       <div class="form-group cl-8-top">
         <label for="website-price">Price</label>
-        <input [(ngModel)]="newRst.price" id="website-price" class="form-control" placeholder="Price"
+        <input [(ngModel)]="rst.price" id="website-price" class="form-control" placeholder="Price"
                [ngModelOptions]="{standalone: true}">
       </div>
       <div class="form-group cl-8-top">
         <label for="website-image">Image URL</label>
-        <input [(ngModel)]="newRst.image_url" id="website-image" class="form-control" placeholder="Image URL"
+        <input [(ngModel)]="rst.image_url" id="website-image" class="form-control" placeholder="Image URL"
                [ngModelOptions]="{standalone: true}">
         <img class="img-responsive img-rounded cl-widget-images"
-             src="{{newRst.image_url}}" alt="alt">
+             src="{{rst.image_url}}" alt="alt">
       </div>
       <a (click)="deleteRst()" class="btn btn-danger btn-block cl-8-top"
          routerLink="/user/rst">Delete Restaurant</a>

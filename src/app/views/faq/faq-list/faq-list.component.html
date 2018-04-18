@@ -6,95 +6,48 @@
       </span>
     </a>
   </div>
-  <div class="navbar-text header-position">
-    <a routerLink="/search" class="navbar-link header-font">FoodPhilia</a>
-  </div>
+  <!--<div class="navbar-text header-position">-->
+    <!--<a routerLink="/search" class="navbar-link header-font">FoodPhilia</a>-->
+  <!--</div>-->
 
-
-  <div [ngSwitch]="user.userType">
-    <div *ngSwitchCase="'support'">
-      <a routerLink="/user/faq/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+      <a routerLink="/faq/new" *ngIf="user.userType == 'support'"
+         class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
         <span class="glyphicon glyphicon-plus icon-size"></span>
       </a>
-    </div>
-  </div>
 </nav>
 
 <div class="showcase-faq">
   <div class="container-box-faq">
     <div id="scrollBody" style="position:absolute;top:0;bottom:0;left:0;right:0;overflow:scroll;height:100%;">
     <!--<div class="container-fluid">-->
-      <ul class="list-group cl-list-group-borderless move-li">
+      <ul class="list-group cl-list-group-borderless move-li" *ngFor="let faq of faqs">
         <li class="list-group-item-header cl-list-item-borderless">
           <p>Frequent Asked Questions
           </p>
         </li>
         <li class="list-group-item-element cl-list-item-borderless">
-          <a routerLink="./" class="color-black">FAQ1
+          <a routerLink="/faq/{{faq._id}}/page">{{faq.question}}
           </a>
-        </li>
-        <li class="list-group-item-element cl-list-item-borderless">
-          <a routerLink="./" class="color-black">FAQ2
-          </a>
-        </li>
-        <li class="list-group-item-element cl-list-item-borderless">
-          <a routerLink="./" class="color-black">FAQ3
+          <a routerLink="/faq/{{faq._id}}" *ngIf="user.userType == 'support'">
             <span class="glyphicon glyphicon-cog pull-right glyphicon-position"></span>
           </a>
         </li>
-        <li class="list-group-item-element cl-list-item-borderless">
-          <a routerLink="./" class="color-black">FAQ4
-          </a>
-        </li>
-        <li class="list-group-item-element cl-list-item-borderless">
-          <a routerLink="./" class="color-black">FAQ4
-          </a>
-        </li>
-        <li class="list-group-item-element cl-list-item-borderless">
-          <a routerLink="./" class="color-black">FAQ4
-          </a>
-        </li>
-        <li class="list-group-item-element cl-list-item-borderless">
-          <a routerLink="./" class="color-black">FAQ4
-          </a>
-        </li>
-        <li class="list-group-item-element cl-list-item-borderless">
-          <a routerLink="./" class="color-black">FAQ4
-          </a>
-        </li>
-        <li class="list-group-item-element cl-list-item-borderless">
-          <a routerLink="./" class="color-black">FAQ4
-          </a>
-        </li>
-        <li class="list-group-item-element cl-list-item-borderless">
-          <a routerLink="./" class="color-black">FAQ4
-          </a>
-        </li>
-        <li class="list-group-item-element cl-list-item-borderless">
-          <a routerLink="./" class="color-black">FAQ4
-          </a>
-        </li>
-        <li class="list-group-item-element cl-list-item-borderless">
-          <a routerLink="./" class="color-black">FAQ4
-          </a>
-        </li>
-
       </ul>
 
-      <ul class="list-group cl-list-group-borderless" *ngFor="let faq of faqs">
-        <li class="list-group-item-element cl-list-item-borderless">
-          <a routerLink="/user/faq/{{faq._id}}/page">{{faq.question}}
-          </a>
-          <div [ngSwitch]="user.userType">
-            <div *ngSwitchCase="'support'">
-              <a routerLink="/user/faq/{{faq._id}}">
-                <span class="glyphicon glyphicon-cog pull-right glyphicon-position"></span>
-              </a>
-            </div>
-          </div>
-        </li>
+      <!--<ul class="list-group cl-list-group-borderless move-li" *ngFor="let faq of faqs">-->
+        <!--<li class="list-group-item-element cl-list-item-borderless">-->
+          <!--<a routerLink="/user/faq/{{faq._id}}/page">{{faq.question}}-->
+          <!--</a>-->
+          <!--<div [ngSwitch]="user.userType">-->
+            <!--<div *ngSwitchCase="'support'">-->
+              <!--<a routerLink="/user/faq/{{faq._id}}">-->
+                <!--<span class="glyphicon glyphicon-cog pull-right glyphicon-position"></span>-->
+              <!--</a>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</li>-->
 
-      </ul>
+      <!--</ul>-->
     <!--</div>-->
     <!--<script>-->
       <!--function scrollToTop(){-->

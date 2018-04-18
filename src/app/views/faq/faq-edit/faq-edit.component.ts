@@ -20,15 +20,23 @@ export class FaqEditComponent implements OnInit {
   fid: String;
   faq: Faq;
   user: User;
+  question: String;
+  content: String;
+  // followup: String;
+  // followups: any = [];
 
   ngOnInit() {
     this.user = this.sharedService.user;
     this.activatedRoute.params.subscribe(
       (params: any) => {
         this.fid = params['fid'];
+        console.log(this.fid);
         this.faqService.findFaqById(this.fid)
-          .subscribe((faq: Faq) => {
+          .subscribe((faq: any) => {
             this.faq = faq;
+            console.log(this.faq);
+            this.question = this.faq.question;
+            console.log(this.faq.question);
           });
       }
     );
@@ -37,7 +45,7 @@ export class FaqEditComponent implements OnInit {
   updateFaq() {
     this.faqService.updateFaq(this.fid, this.faq)
       .subscribe(
-        (faq: Faq) => {
+        (faq: any) => {
           this.faq = faq;
           this.router.navigate(['../'], {relativeTo: this.activatedRoute});
         }
@@ -48,6 +56,17 @@ export class FaqEditComponent implements OnInit {
     this.faqService.deleteFaq(this.fid)
       .subscribe(
         () => this.router.navigate(['../'], {relativeTo: this.activatedRoute})
+      );
+  }
+  addFollowUp(content) {
+    this.faqService.addFollowUp(this.fid, content)
+      .subscribe(
+        (faq: any) => {
+          // faq.followups.push(followup);
+          this.faq = faq;
+          console.log(this.faq);
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        }
       );
   }
 }

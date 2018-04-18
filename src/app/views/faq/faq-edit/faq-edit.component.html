@@ -6,9 +6,9 @@
       </span>
     </a>
   </div>
-  <div class="navbar-text header-position">
-    <a routerLink="/search" class="navbar-link header-font">FoodPhilia</a>
-  </div>
+  <!--<div class="navbar-text header-position">-->
+    <!--<a routerLink="/search" class="navbar-link header-font">FoodPhilia</a>-->
+  <!--</div>-->
 
 
   <!--<div [ngSwitch]="user.userType">-->
@@ -20,28 +20,30 @@
   <!--</div>-->
 </nav>
 
-<div class="container">
+<div class="showcase-faq">
+  <div class="container-box-faq">
+    <div id="scrollBody" style="position:absolute;top:0;bottom:0;left:0;right:0;overflow:scroll;height:100%;">
+<div class="container move-faq">
   <form>
     <div class="form-group">
 
-      <label for="faq-question">Question</label>
+      <label for="faq-question" class="header-faq">Question</label>
       <input [(ngModel)]="faq.question" type="text" class="form-control" id="faq-question" placeholder="Question"
              [ngModelOptions]="{standalone: true}" name="question">
 
-      <!--<div *ngFor="let followup of faq.followups; let i = index">-->
-        <!--<label for="faq-followups" class="lable-size">Follow Up {{i}}</label>-->
+      <!--<div *ngFor="let followup of faq.followups">-->
+        <!--<label for="faq-followups" class="lable-size">Follow Up</label>-->
         <!--<textarea [(ngModel)]="followup" type="text" class="form-control" id="faq-followups" placeholder="Follow up"-->
                   <!--[ngModelOptions]="{standalone: true}">-->
           <!--</textarea>-->
       <!--</div>-->
+      <a (click)="addFollowUp(content)" class="btn btn-primary">Add</a>
     </div>
-    <!--<div class="form-group">-->
-    <!--<label for="page-title">Title</label>-->
-    <!--<input [(ngModel)]="newPage.title" type="text" class="form-control" id="page-title" placeholder="Page Title"-->
-    <!--[ngModelOptions]="{standalone: true}">-->
-    <!--</div>-->
   </form>
   <a class="btn btn-danger  btn-block" (click)="deleteFaq()">Delete FAQ</a>
+</div>
+    </div>
+  </div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

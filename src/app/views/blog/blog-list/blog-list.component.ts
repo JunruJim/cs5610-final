@@ -38,6 +38,7 @@ export class BlogListComponent implements OnInit {
       .subscribe(
         (blogs) => {
           this.blogs = blogs;
+          console.log(this.blogs);
         }
       );
   }

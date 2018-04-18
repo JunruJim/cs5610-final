@@ -72,7 +72,7 @@ function deleteReview(reviewId) {
             rst.rating = (rst.rating * rst.review_count - review.rating) / (rst.review_count - 1);
             rst.review_count--;
           }
-          rst.reviews.pull(({_id: reviewId});
+          rst.reviews.pull(({_id: reviewId}));
           rst.save();
         });
     });
