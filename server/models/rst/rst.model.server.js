@@ -5,6 +5,7 @@ var rstModel = mongoose.model("rstModel", RstSchema);
 var userModel = require("../user/user.model.server");
 
 rstModel.findRstById = findRstById;
+rstModel.findAllRsts = findAllRsts;
 rstModel.findRstByYelpId = findRstByYelpId;
 rstModel.createRstForOwner = createRstForOwner;
 rstModel.createRstWithoutOwner = createRstWithoutOwner;
@@ -16,6 +17,10 @@ module.exports = rstModel;
 
 function findRstById(rstId) {
   return rstModel.findRstById(rstId);
+}
+
+function findAllRsts() {
+  return rstModel.find();
 }
 
 function findRstByYelpId(rstYelpId) {

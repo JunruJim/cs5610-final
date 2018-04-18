@@ -9,6 +9,7 @@ import {Rst} from '../../../models/rst.model.client';
 })
 export class RstListComponent implements OnInit {
 
+  // restaurant list for current user
   rsts: Rst[] = [];
 
   // use Inject instead of import
@@ -20,11 +21,24 @@ export class RstListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.rstService.findRstsByUser(this.sharedService.user._id).subscribe(
-      (rsts: Rst[]) => {
-        this.rsts = rsts;
-      }
-    );
+
+    // get all restaurants if the current user is 'admin'
+    if (this.sharedService.userType === String('admin')) {
+      this.rstService.findAllRsts().subscribe(
+        (rsts: Rst[]) => {
+          this.rsts = rsts;
+        }
+      );
+    }
+
+    // get restaurants for current 'owner'
+    else {
+      this.rstService.findRstsByUser(this.sharedService.user._id).subscribe(
+        (rsts: Rst[]) => {
+          this.rsts = rsts;
+        }
+      );
+    }
   }
 
 }

@@ -28,6 +28,13 @@ export class RstService {
       });
   }
 
+  findAllRsts() {
+    return this.http.get(this.baseUrl + '/api/rst')
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
+
   findRstById(rstId: String) {
     return this.http.get(this.baseUrl + '/api/rst/' + rstId)
       .map((res: Response) => {
@@ -47,5 +54,16 @@ export class RstService {
       .map((res: Response) => {
         return res.json();
       });
+  }
+
+  updateRst(rstId: String, rst: Rst) {
+    return this.http.put(this.baseUrl + '/api/rst/' + rstId, rst)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
+
+  deleteRst(rstId: String) {
+    return this.http.delete(this.baseUrl + '/api/rst/' + rstId);
   }
 }

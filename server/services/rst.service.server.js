@@ -7,11 +7,12 @@ module.exports = function (app) {
   app.post("/api/rst/yelp", createRstFromYelp);
   app.post("/api/rst/user/:userId", createRstForOwner);
 
+  app.get("/api/rst", findAllRsts);
   app.get("/api/rst/:rstId", findRstById);
   app.get("/api/rst/yelp/:rstYelpId", findRstByYelpId);
   app.get("/api/rst/user/:userId", findRstsByUser);
 
-  app.post("/api/rst/:rstId", updateRst);
+  app.put("/api/rst/:rstId", updateRst);
   app.delete("/api/rst/:rstId", deleteRst);
 
   var rstModel = require("../models/rst/rst.model.server");
@@ -60,6 +61,15 @@ module.exports = function (app) {
       });
   }
 
+  function findAllRsts(req, res) {
+    rstModel.findAllRsts()
+      .then(function(rsts) {
+        res.json(rsts);
+      }, function(err) {
+        res.status(500).json(err);
+      });
+  }
+
   function findRstsByUser(req, res) {
     var userId = req.params["userId"];
     rstModel.findRstByUser(userId)
@@ -67,7 +77,7 @@ module.exports = function (app) {
         res.json(rsts);
       }, function(err) {
         res.status(500).json(err);
-      })
+      });
   }
 
   function findRstById(req, res) {
@@ -102,20 +112,22 @@ module.exports = function (app) {
 
   function deleteRst(req, res) {
     var rstId = req.params['rstId'];
-    rstModel.deleteRst(rstId).then(() => (
-      res.sendStatus(200)));
+    rstModel.deleteRst(rstId)
+      .then(function(status) {
+        res.json(status);
+      }, function(err) {
+        res.status(500).json(err);
+      });
   }
 
   function updateRst(req, res) {
     var rstId = req.params['rstId'];
     var rst = req.body;
-
-    rstModel.updateRst(rstId, rst).then(function(rst) {
-      if(rst) {
-        res.status(200).send(rst);
-      } else {
-        res.status(404).send('Not find!');
-      }
-    });
+    rstModel.updateRst(rstId, rst)
+      .then(function(status) {
+        res.json(status);
+      }, function(err) {
+        res.status(500).json(err);
+      });
   }
 };

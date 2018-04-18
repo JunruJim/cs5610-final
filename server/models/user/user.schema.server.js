@@ -6,7 +6,7 @@ var UserSchema = mongoose.Schema({
   firstname:String,
   lastname: String,
   email: String,
-  userType: {type: String, enum: ['owner', 'customer', 'professional', 'support', 'admin', 'anonymous']},
+  userType: {type: String, enum: ['owner', 'customer', 'professional', 'support', 'admin']},
   rsts:[
     {type: mongoose.Schema.Types.ObjectId, ref: 'rstModel'}
   ],
