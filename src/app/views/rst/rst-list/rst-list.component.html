@@ -12,9 +12,9 @@
   <h1>Login</h1>
 
   <!-- generate error message when there are input errors -->
-  <div *ngIf="errorFlag" class="alert alert-danger">
-    {{errorMsg}}
-  </div>
+  <!--<div *ngIf="errorFlag" class="alert alert-danger">-->
+    <!--{{errorMsg}}-->
+  <!--</div>-->
 
   <!-- using angular form (ngForm) instead of traditional <input> tag -->
   <form (ngSubmit) = "login()" #f="ngForm">

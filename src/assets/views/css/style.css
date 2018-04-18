@@ -690,3 +690,17 @@ h6 {
   position: relative;
   top: 5%;
 }
+
+.move-faq {
+  position: relative;
+  top: 10%;
+}
+
+.header-faq {
+  font-size: 30px;
+}
+
+.move-blog {
+  position: relative;
+  top: 30%;
+}

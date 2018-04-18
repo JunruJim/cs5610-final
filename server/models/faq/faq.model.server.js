@@ -10,7 +10,7 @@ faqModel.createFaq = createFaq;
 faqModel.deleteFaq = deleteFaq;
 faqModel.findFaqByUser = findFaqByUser;
 faqModel.addFollowUp = addFollowUp;
-// faqModel.updateFaq = updateFaq;
+faqModel.updateFaq = updateFaq;
 
 module.exports = faqModel;
 
@@ -57,4 +57,8 @@ function addFollowUp(faqId, contents) {
     faq.followups.push(contents);
     return faq.save();
   })
+}
+
+function updateFaq(faqId, faq) {
+  return faqModel.findByIdAndUpdate(faqId, faq);
 }

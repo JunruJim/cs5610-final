@@ -59,8 +59,10 @@ module.exports = function (app) {
   // }
 
   function findFaqById(req, res) {
-    var faqId = req.params['faqId'];
+    // var faqId = req.params['faqId'];
+    var faqId = req.params.fid;
     faqModel.findFaqById(faqId).then(function(faq) {
+      console.log('find it!')
       res.json(faq);
     })
   }
@@ -69,9 +71,9 @@ module.exports = function (app) {
     var faqId = req.params['faqId'];
     var faq = req.body;
 
-    faqModel.updateFaq(faqId,faq).then(function(faq) {
+    faqModel.updateFaq(faqId,faq).then(function(status) {
       if(faq) {
-        res.status(200).send(faq);
+        res.json(status);
       } else {
         res.status(404).send('Not find!');
       }
