@@ -29,10 +29,7 @@ export class RstListComponent implements OnInit {
           this.rsts = rsts;
         }
       );
-    }
-
-    // get restaurants for current 'owner'
-    else {
+    } else { // get restaurants for current 'owner'
       this.rstService.findRstsByUser(this.sharedService.user._id).subscribe(
         (rsts: Rst[]) => {
           this.rsts = rsts;

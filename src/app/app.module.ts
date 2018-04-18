@@ -24,15 +24,16 @@ import { ReviewEditComponent } from './views/review/review-edit/review-edit.comp
 import { ReviewNewComponent } from './views/review/review-new/review-new.component';
 import { BlogPageComponent } from './views/blog/blog-page/blog-page.component';
 import { RstPageComponent } from './views/rst/rst-page/rst-page.component';
+import { FaqPageComponent } from './views/faq/faq-page/faq-page.component';
 
 import {YelpSearchService} from './services/yelpSearch.service.client';
 import {AuthGuard} from './services/auth-guard.service';
 import {SharedService} from './services/shared.service';
 import {UserService} from './services/user.service.client';
 import {FaqService} from './services/faq.service.client';
-import { FaqPageComponent } from './views/faq/faq-page/faq-page.component';
 import {RstService} from './services/rst.service.client';
 import {BlogService} from './services/blog.service.client';
+import {ReviewService} from './services/review.service.client';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,10 @@ import {BlogService} from './services/blog.service.client';
     {
       provide: 'BlogService',
       useClass: BlogService
+    },
+    {
+      provide: 'ReviewService',
+      useClass: ReviewService
     }
   ],
   bootstrap: [AppComponent]

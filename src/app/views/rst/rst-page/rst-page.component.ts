@@ -15,6 +15,7 @@ export class RstPageComponent implements OnInit {
 
   constructor(
     @Inject('RstService') private rstService,
+    @Inject('ReviewService') private reviewService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
@@ -26,11 +27,11 @@ export class RstPageComponent implements OnInit {
           this.rst = rst;
         }
       );
-      this.reviewService.findReviewByRst(params['rstid']).subscribe(
+      this.reviewService.findReviewsByRst(params['rstid']).subscribe(
         (reviews: Review[]) => {
           this.reviews = reviews;
         }
-      )
+      );
     });
   }
 
