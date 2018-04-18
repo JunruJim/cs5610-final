@@ -36,6 +36,6 @@ export class BlogNewComponent implements OnInit {
     }
     this.blogService.createBlog(this.user._id, newBlog)
       .subscribe(() =>
-        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        this.router.navigate(['../'], {relativeTo: this.activatedRoute}));
   }
 }
