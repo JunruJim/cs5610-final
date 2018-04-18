@@ -23,8 +23,8 @@ export class BlogService {
       });
   }
 
-  createBlog(userId: String, rstId: String, blog: Blog) {
-    const url = this.baseURL + '/api/user/' + userId + '/rst/' + rstId + '/blog';
+  createBlog(userId: String, blog: Blog) {
+    const url = this.baseURL + '/api/user/' + userId + '/blog';
     return this.http.post(url, blog)
       .map((response: Response) => {
         return response.json();

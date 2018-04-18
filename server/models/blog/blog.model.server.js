@@ -3,7 +3,6 @@ var mongoose = require("mongoose");
 var BlogSchema = require("./blog.schema.server");
 var blogModel = mongoose.model('blogModel', BlogSchema);
 
-var rstModel = require("../rst/rst.model.server");
 var userModel = require("../user/user.model.server");
 
 blogModel.createBlog = createBlog;
@@ -15,9 +14,8 @@ blogModel.deleteBlog = deleteBlog;
 
 module.exports = blogModel;
 
-function createBlog(userId, rstId, blog) {
+function createBlog(userId, blog) {
   blog._user = userId;
-  blog._rst = rstId;
   return blogModel.create(blog)
     .then(function(responseBlog) {
       userModel.findUserById(responseBlog._user)

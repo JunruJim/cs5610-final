@@ -13,7 +13,7 @@
           </span>
       </a>
     </div>
-    <a class="navbar-brand cl-text-white cl-text-bold" routerLink="user/rst/{{rstid}}/blog/new">
+    <a class="navbar-brand cl-text-white cl-text-bold" routerLink="/blog/new">
       New Blog
     </a>
   </div>
@@ -38,13 +38,23 @@
     </div>
     <div class="form-group">
       <label for="blog-image">Image URL</label>
-      <input [(ngModel)]="newBlog.image_url" id="blog-image" class="form-control" placeholder="Image URL"
+      <input [(ngModel)]="newBlog.image_urls" id="blog-image" class="form-control" placeholder="Image URL"
              [ngModelOptions]="{standalone: true}">
     </div>
     <div class="form-group">
-      <label for="exampleInputFile">Browse Image</label>
-      <input type="file" class="form-control" id="exampleInputFile">
+      <label for="exampleInputFile">Upload</label>
+      <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
+        <input  name="myFile"   type="file" class="form-control"  id="exampleInputFile"/>
+        <input  name="widgetId" value="{{blogId}}"   style="display: none"/>
+        <input  name="userId" value="{{user._id}}"   style="display: none"/>
+        <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+        <br/>
+      </form>
     </div>
+    <!--<div class="form-group">-->
+      <!--<label for="exampleInputFile">Browse Image</label>-->
+      <!--<input type="file" class="form-control" id="exampleInputFile">-->
+    <!--</div>-->
   </form>
 </div>
 
