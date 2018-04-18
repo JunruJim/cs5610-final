@@ -60,9 +60,8 @@ module.exports = function (app) {
 
   function findFaqById(req, res) {
     // var faqId = req.params['faqId'];
-    var faqId = req.params.fid;
+    var faqId = req.params.faqId;
     faqModel.findFaqById(faqId).then(function(faq) {
-      console.log('find it!')
       res.json(faq);
     })
   }

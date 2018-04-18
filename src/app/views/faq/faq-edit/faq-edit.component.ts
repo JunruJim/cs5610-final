@@ -23,20 +23,18 @@ export class FaqEditComponent implements OnInit {
   question: String;
   content: String;
   // followup: String;
-  // followups: any = [];
+  followups: any[];
 
   ngOnInit() {
     this.user = this.sharedService.user;
     this.activatedRoute.params.subscribe(
       (params: any) => {
         this.fid = params['fid'];
-        console.log(this.fid);
         this.faqService.findFaqById(this.fid)
           .subscribe((faq: any) => {
             this.faq = faq;
-            console.log(this.faq);
             this.question = this.faq.question;
-            console.log(this.faq.question);
+            this.followups = this.faq.followups;
           });
       }
     );
@@ -58,6 +56,7 @@ export class FaqEditComponent implements OnInit {
         () => this.router.navigate(['../'], {relativeTo: this.activatedRoute})
       );
   }
+
   addFollowUp(content) {
     this.faqService.addFollowUp(this.fid, content)
       .subscribe(

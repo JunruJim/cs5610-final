@@ -57,7 +57,7 @@ module.exports = function (app) {
     var blogId = req.params['blogId'];
     var blog = req.body;
 
-    blogModel.updateFaq(blogId,blog).then(function(blog) {
+    blogModel.updateBlog(blogId, blog).then(function(blog) {
       if(blog) {
         res.status(200).send(blog);
       } else {
