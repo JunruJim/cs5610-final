@@ -57,8 +57,8 @@ export class FaqEditComponent implements OnInit {
       );
   }
 
-  addFollowUp(content) {
-    this.faqService.addFollowUp(this.fid, content)
+  addFollowUp() {
+    this.faqService.addFollowUp(this.fid, this.content)
       .subscribe(
         (faq: any) => {
           // faq.followups.push(followup);
