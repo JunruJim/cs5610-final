@@ -10,6 +10,7 @@ reviewModel.createReview = createReview;
 reviewModel.findReviewById = findReviewById;
 reviewModel.findReviewsByRst = findReviewsByRst;
 reviewModel.findReviewsByUser = findReviewsByUser;
+reviewModel.updateReview = updateReview;
 reviewModel.deleteReview = deleteReview;
 
 module.exports = reviewModel;
@@ -54,6 +55,10 @@ function findReviewsByUser(userId) {
   return reviewModel.find({_user: userId})
     .populate('_user')
     .exec();
+}
+
+function updateReview(reviewId, review) {
+  return reviewModel.update({_id: reviewId}, review);
 }
 
 function deleteReview(reviewId) {

@@ -48,6 +48,13 @@ export class ReviewService {
       });
   }
 
+  updateReview(reviewId: String, review: Review) {
+    return this.http.put(this.baseURL + '/api/review/' + reviewId, review)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
+
   deleteReview(reviewId: String) {
     return this.http.delete(this.baseURL + '/api/review/' + reviewId);
   }

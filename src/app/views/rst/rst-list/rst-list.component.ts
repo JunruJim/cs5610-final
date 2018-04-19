@@ -15,9 +15,7 @@ export class RstListComponent implements OnInit {
   // use Inject instead of import
   constructor(
     @Inject('RstService') private rstService,
-    @Inject('UserService') private userService,
     @Inject('SharedService') private sharedService,
-    private router: Router
   ) {}
 
   ngOnInit() {
