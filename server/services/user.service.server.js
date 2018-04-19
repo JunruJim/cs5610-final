@@ -6,7 +6,7 @@ var bcrypt = require("bcrypt-nodejs");
 var facebookConfig = {
   clientID     : '223719505030518',
   clientSecret : '45d701c58f38c4ca4e941954c76f2257',
-  callbackURL  : 'https://cs5610-final-yyj.herokuapp.com/search/auth/facebook/callback'
+  callbackURL  : 'https://cs5610-final-yyj.herokuapp.com/auth/facebook/callback'
 };
 
 module.exports = function (app) {
@@ -106,7 +106,8 @@ module.exports = function (app) {
             facebook: {
               id: profile.id,
               token: token
-            }
+            },
+            userType: 'customer',
           };
           return userModel.createUser(newFacebookUser);
         }
