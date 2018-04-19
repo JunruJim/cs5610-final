@@ -7,6 +7,10 @@ var UserSchema = mongoose.Schema({
   lastname: String,
   email: String,
   userType: {type: String, enum: ['owner', 'customer', 'professional', 'support', 'admin']},
+  facebook : {
+    token: String,
+    id: String,
+  },
   rsts:[
     {type: mongoose.Schema.Types.ObjectId, ref: 'rstModel'}
   ],

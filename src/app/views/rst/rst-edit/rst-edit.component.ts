@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Rst} from '../../../models/rst.model.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {User} from '../../../models/user.model.client';
 
 @Component({
   selector: 'app-rst-edit',
@@ -10,9 +11,12 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class RstEditComponent implements OnInit {
 
   rst: Rst;
+  rsts: Rst[];
+  user: User;
 
   constructor(
     @Inject('RstService') private rstService,
+    @Inject('SharedService') private sharedService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
@@ -34,10 +38,16 @@ export class RstEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = this.sharedService.user;
     this.activatedRoute.params.subscribe((params: any) => {
       this.rstService.findRstById(params['rstid']).subscribe(
         (rst: Rst) => {
           this.rst = rst;
+        }
+      );
+      this.rstService.findAllRstByUser(this.user._id).subscribe(
+        (rsts: any[]) => {
+          this.rsts = rsts;
         }
       );
     });

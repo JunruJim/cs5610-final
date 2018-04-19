@@ -66,4 +66,13 @@ export class RstService {
   deleteRst(rstId: String) {
     return this.http.delete(this.baseUrl + '/api/rst/' + rstId);
   }
+
+  findAllRstByUser(userId: String) {
+    const url = this.baseUrl + '/api/rst/user/' + userId;
+    return this.http.get(url).map(
+      (res: Response) => {
+        return res.json();
+      }
+    );
+  }
 }

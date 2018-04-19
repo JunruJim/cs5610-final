@@ -1,4 +1,4 @@
-<nav class="navbar navbar-fixed-top cl-blue-navbar">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="row">
     <div class="col-xs-1 col-sm-4">
       <div class="container-fluid row">
@@ -10,10 +10,10 @@
           </p >
         </div>
         <div class="col-xs-10 hidden-xs">
-          <a class="cl-text-white navbar-brand cl-text-bold cl-icon-padding" routerLink="/user/rst/new">
+          <a class="cl-text-white navbar-brand cl-text-bold cl-icon-padding" routerLink="/rst/new">
             Your Restaurants
           </a >
-          <a routerLink="/user/rst/new" class="navbar-link navbar-text pull-right cl-text-white">
+          <a routerLink="/rst/new" class="navbar-link navbar-text pull-right cl-text-white">
             <span class="glyphicon glyphicon-plus"></span>
           </a>
         </div>
@@ -21,10 +21,10 @@
     </div>
     <div class="col-xs-11 col-sm-8">
       <div class="container-fluid">
-        <a class="cl-text-white navbar-brand cl-text-bold" routerLink="/user/rst/new">
+        <a class="cl-text-white navbar-brand cl-text-bold" routerLink="/rst/new">
           New Restaurant
         </a>
-        <a (click)="createRst(newRst)" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+        <a (click)="createRst()" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </div>
@@ -32,14 +32,16 @@
   </div>
 </nav>
 
-
-<div class="contain-fluid">
+<div class="showcase-rst">
+  <div class="container-box-blog">
+    <div class="scrollBody scroll-body">
+      <div class="container-position">
   <div class="col-xs-4 hidden-xs">
     <ul class="list-group cl-list-group-borderless" *ngFor="let rst of rsts">
       <li class="list-group-item cl-list-item-borderless">
-        <a class="cl-left-padding" routerLink="/user/rst/{{rst._id}}/review">{{rst.name}}</a>
-        <a class="pull-right" routerLink="/user/rst/{{rst._id}}">
-          <i class="glyphicon glyphicon-cog text-primary"></i>
+        <a class="cl-left-padding text-font" routerLink="/rst/{{rst._id}}/page">{{rst.name}}</a>
+        <a class="pull-right" routerLink="/rst">
+          <i class="glyphicon glyphicon-cog text-primary text-font"></i>
         </a>
       </li>
     </ul>
@@ -48,32 +50,32 @@
     <form>
       <div class="form-group cl-8-top">
         <label for="website-name">Name</label>
-        <input [(ngModel)]="newRst.name" type="text" class="form-control" id="website-name" placeholder="Name"
+        <input [(ngModel)]="rst.name" type="text" class="form-control" id="website-name" placeholder="Name"
                [ngModelOptions]="{standalone: true}">
       </div>
-      <div class="form-group cl-8-top">
-        <label for="website-category">Category</label>
-        <input [(ngModel)]="newRst.category" id="website-category" class="form-control" placeholder="Category"
-                  [ngModelOptions]="{standalone: true}">
-      </div>
+      <!--<div class="form-group cl-8-top">-->
+        <!--<label for="website-category">Category</label>-->
+        <!--<input [(ngModel)]="rst.category" id="website-category" class="form-control" placeholder="Category"-->
+                  <!--[ngModelOptions]="{standalone: true}">-->
+      <!--</div>-->
       <div class="form-group cl-8-top">
         <label for="website-content">Content</label>
-        <textarea [(ngModel)]="newRst.content" id="website-content" class="form-control" rows="5" placeholder="Content"
+        <textarea [(ngModel)]="rst.content" id="website-content" class="form-control" rows="5" placeholder="Content"
                   [ngModelOptions]="{standalone: true}"></textarea>
       </div>
-      <div class="form-group cl-8-top">
-        <label for="website-location">Location</label>
-        <input [(ngModel)]="newRst.location" id="website-location" class="form-control" placeholder="Location"
-                  [ngModelOptions]="{standalone: true}">
-      </div>
+      <!--<div class="form-group cl-8-top">-->
+        <!--<label for="website-location">Location</label>-->
+        <!--<input [(ngModel)]="rst.location" id="website-location" class="form-control" placeholder="Location"-->
+                  <!--[ngModelOptions]="{standalone: true}">-->
+      <!--</div>-->
       <div class="form-group cl-8-top">
         <label for="website-price">Price</label>
-        <input [(ngModel)]="newRst.price" id="website-price" class="form-control" placeholder="Price"
+        <input [(ngModel)]="rst.price" id="website-price" class="form-control" placeholder="Price"
                [ngModelOptions]="{standalone: true}">
       </div>
       <div class="form-group cl-8-top">
         <label for="website-image">Image URL</label>
-        <input [(ngModel)]="newRst.image_url" id="website-image" class="form-control" placeholder="Image URL"
+        <input [(ngModel)]="rst.image_url" id="website-image" class="form-control" placeholder="Image URL"
                [ngModelOptions]="{standalone: true}">
       </div>
       <div class="form-group cl-8-top">
@@ -84,11 +86,27 @@
     </form>
   </div>
 </div>
+  </div>
+  </div>
+</div>
 
-<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
-  <div class="container-fuild">
-    <a routerLink="/profile" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-      <span class="glyphicon glyphicon-user"></span>
-    </a>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-text pull-left">
+      <a routerLink="/search">
+      <span class="glyphicon glyphicon glyphicon-home color-black">
+      </span>
+      </a>
+    </div>
+    <p class="navbar-text pull-right">
+      <a routerLink="faq" class="navbar-link">Frequently asked Question
+        <!--<span class="glyphicon glyphicon-user"></span>-->
+      </a>
+      <a routerLink="/profile" class="navbar-link">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+
   </div>
 </nav>
