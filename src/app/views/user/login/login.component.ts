@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../../models/user.model.client';
 import { NgForm } from '@angular/forms';
+import {environment} from '../../../../environments/environment';
 
 // Dependency inject: use Inject instead of import to decoupling
 // import { UserService } from '../../../services/user.service.client';
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   password: String; // see usage as two-way data binding
   errorFlag: Boolean = false;
   errorMsg: String = 'Invalid username or password!';
+  baseUrl: String = environment.baseUrl + '/facebook/login';
 
   // use Inject instead of import
   constructor(

@@ -3,6 +3,12 @@ var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var bcrypt = require("bcrypt-nodejs");
 
+var facebookConfig = {
+  clientID     : '223719505030518',
+  clientSecret : '45d701c58f38c4ca4e941954c76f2257',
+  callbackURL  : 'https://cs5610-final-yyj.herokuapp.com/search/auth/facebook/callback'
+};
+
 module.exports = function (app) {
 
   var userModel = require("../models/user/user.model.server");
@@ -27,18 +33,19 @@ module.exports = function (app) {
   app.put("/api/user/:userId", updateUser);
   app.delete("/api/user/:userId", deleteUser);
 
-  // var users = [
-  //   { _id: '1', username: 'alice',    password: 'alice',    firstName: 'Alice',  lastName: 'Wonder' },
-  //   { _id: '2', username: 'bob',      password: 'bob',      firstName: 'Bob',    lastName: 'Marley' },
-  //   { _id: '3', username: 'charly',   password: 'charly',   firstName: 'Charly', lastName: 'Garcia' },
-  //   { _id: '4', username: 'jannunzi', password: 'jannunzi', firstName: 'Jose',   lastName: 'Annunzi' }
-  // ];
+  // auth with Facebook
+  app.get ('/facebook/login', passport.authenticate('facebook', { scope : 'email' }));
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+      successRedirect: '/profile',
+      failureRedirect: '/register'
+    }));
 
   // passport config
   passport.use(new LocalStrategy(localStrategy));
   passport.serializeUser(serializeUser);
   passport.deserializeUser(deserializeUser);
-  // passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+  passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 
   // Store an encrypted representation of the user in a cookie.
   // This will allow Passport to maintain session information for the currently logged in user
@@ -81,6 +88,44 @@ module.exports = function (app) {
         function (err) {
           return done(err);
         });
+  }
+
+  function facebookStrategy(token, refreshToken, profile, done) {
+    userModel.findFacebookUser(profile.id).then(
+      function (user) {
+        if (user) {
+          return done(null, user);
+        } else {
+          var names = profile.displayName.split(" ");
+          var newFacebookUser = {
+            username: '123',
+            password: '123',
+            lastName: names[1],
+            firstName: names[0],
+            email: profile.emails ? profile.emails[0].value : "",
+            facebook: {
+              id: profile.id,
+              token: token
+            }
+          };
+          return userModel.createUser(newFacebookUser);
+        }
+      },
+      function (err) {
+        if (err) {
+          return done(err);
+        }
+      }
+    ).then(
+      function (user) {
+        return done(null, user);
+      },
+      function (err) {
+        if (err) {
+          return done(err);
+        }
+      }
+    );
   }
 
   function login(req, res) {
