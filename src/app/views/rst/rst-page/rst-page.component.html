@@ -1,3 +1,47 @@
-<p>
-  rst-page works!
-</p>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid pull-left">
+    <div class="col-sm">
+      <a class="navbar-brand header-font" href="#"><strong>Foodphilia</strong></a>
+    </div>
+  </div>
+  <div class="content-fluid navbar-text navbar-right header-user pull-right" *ngIf="!user">
+    <a routerLink="/login" class="navbar-link header-login btn btn-outline-white">Login</a>
+    <a routerLink="/register" class="navbar-link header-login btn btn-outline-white">Register</a>
+    <!--</div>-->
+  </div>
+  <div class="content-fluid navbar-text navbar-right header-user pull-right" *ngIf="user && user.userType">
+    <a routerLink="/profile" class="navbar-link header-login btn btn-outline-white">Profile</a>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <img src={{rst.image_url}}>
+      <h2>{{rst.name}}</h2>
+      <h3>{{rst.categories}}</h3>
+      <h3>{{rst.rating}}</h3>
+      <p>{{rst.review_count}}</p>
+      <p>
+        <strong>Address:</strong>
+        {{rst.locaiton}}
+      </p>
+      <a class="btn btn-primary" routerLink="../review/new">Write Review</a>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <table class="table"></table>
+    <tbody>
+    <tr *ngFor="let review of reviews">
+      <td>
+        <h4>{{review.rating}}</h4>
+        <p>{{review.dateCreated}}</p>
+      </td>
+      <td>
+        <p>{{review.content}}</p>
+      </td>
+    </tr>
+    </tbody>
+  </div>
+</div>
