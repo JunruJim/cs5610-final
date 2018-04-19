@@ -19,8 +19,11 @@
   </div>
 </nav>
 
-<div class="container move-blog">
+<div class="showcase-blog">
+  <div class="container-box-blog">
+    <div class="scrollBody scroll-body">
   <form>
+    <div class="form-move">
     <div class="form-group">
       <label for="blog-title">Title</label>
       <input [(ngModel)]="newBlog.title" type="text" class="form-control" id="blog-title" placeholder="Title"
@@ -28,8 +31,11 @@
     </div>
     <div class="form-group">
       <label for="blog-content">Content</label>
-      <textarea [(ngModel)]="newBlog.content" type="text" class="form-control" rows="10" id="blog-content" placeholder="Content"
-                [ngModelOptions]="{standalone: true}"></textarea>
+      <div class="html-bg">
+      <quill-editor [(ngModel)]="newBlog.content" id="blog-content"
+                    [ngModelOptions]="{standalone: true}"></quill-editor>
+    </div>
+
     </div>
     <div class="form-group">
       <label for="blog-rating">Rating</label>
@@ -45,7 +51,10 @@
         <!--<input type="file" class="form-control" id="exampleInputFile">-->
       <!--</div>-->
     </div>
+    </div>
   </form>
+    </div>
+  </div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
