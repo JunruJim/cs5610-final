@@ -10,6 +10,7 @@ export class Rst {
   image_url: String;
   price: String;
   dateCreated: String;
+  coordinates;
 
   constructor(_id: String, id: String, name: String) {
     this._id = _id;

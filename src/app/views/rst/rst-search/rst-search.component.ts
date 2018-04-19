@@ -89,7 +89,7 @@ export class RstSearchComponent implements OnInit {
           //   3: timed out
           console.log(err);
           this.loadingGeoFlag = false;
-          alert('Error occurs when acquiring your position so we use Seattle location');
+          console.log('Error occurs when acquiring your position so we use Seattle location');
         }, this.geoOptions);
     } else {
       this.loadingGeoFlag = false;

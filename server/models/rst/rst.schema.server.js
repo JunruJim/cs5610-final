@@ -12,6 +12,10 @@ var RstSchema = mongoose.Schema({
   content:String,
   rating: Number,
   review_count: Number,
+  coordinates: {
+    latitude: String,
+    longitude: String
+  },
   location: {
     city: String,
     country: String,
