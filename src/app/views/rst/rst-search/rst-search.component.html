@@ -203,12 +203,18 @@
          </span>
       </div>
     </div>
+    <div class="row">
+    <div *ngFor = "let selectRst of searchResults" class="col-xs-12">
+    {{loadingGeoMsg}}
+    {{selectRst.name}}
+    <img (click)="select(selectRst)" width="30%" [src] = "['' + selectRst.image_url]"/>
+
     <div class="row py-5">
 
       <!--Grid column-->
       <div class="col-md-12 text-center footer-copyright">
 
-        <p>Copyright: Junru Xu, Yuxin Han, Yiyang Zhang</p>
+        <p>Copyright: Yuxin Han, Yiyang Zhang, Junru Xu</p>
 
       </div>
       <!--Grid column-->

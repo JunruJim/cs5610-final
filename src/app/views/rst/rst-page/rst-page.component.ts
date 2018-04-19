@@ -13,6 +13,11 @@ export class RstPageComponent implements OnInit {
   rst: Rst;
   reviews: Review[];
 
+  lat = 51.678418;
+  lng = 7.809007;
+
+  locationAcquiredFlag = false;
+
   constructor(
     @Inject('RstService') private rstService,
     @Inject('ReviewService') private reviewService,
@@ -25,6 +30,12 @@ export class RstPageComponent implements OnInit {
       this.rstService.findRstById(params['rstid']).subscribe(
         (rst: Rst) => {
           this.rst = rst;
+          console.log(rst);
+          this.lat = rst.coordinates.latitude.toNumber();
+          this.lng = rst.coordinates.longitude.toNumber();
+          console.log(this.lat);
+          console.log(this.lng);
+          this.locationAcquiredFlag = true;
         }
       );
       this.reviewService.findReviewsByRst(params['rstid']).subscribe(
