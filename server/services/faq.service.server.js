@@ -27,12 +27,13 @@ module.exports = function (app) {
   function addFollowUp(req, res) {
     var faqId = req.params['faqId'];
     var content = req.body;
-    faqModel.addFollowUp(faqId, content).then(
+    // console.log('this is content:' + content.content);
+    faqModel.addFollowUp(faqId, content.content).then(
       function(faq) {
         res.json(faq);
       },
       function(err) {
-        res.sendStatus(400).send(err);
+        res.status(400).send(err);
       }
     );
   }
@@ -43,7 +44,7 @@ module.exports = function (app) {
         res.json(faqs);
       },
       function(err) {
-        res.sendStatus(400).send(err);
+        res.status(400).send(err);
       }
     )
   }
@@ -60,9 +61,8 @@ module.exports = function (app) {
 
   function findFaqById(req, res) {
     // var faqId = req.params['faqId'];
-    var faqId = req.params.fid;
+    var faqId = req.params.faqId;
     faqModel.findFaqById(faqId).then(function(faq) {
-      console.log('find it!')
       res.json(faq);
     })
   }

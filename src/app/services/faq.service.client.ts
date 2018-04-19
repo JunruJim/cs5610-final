@@ -54,7 +54,8 @@ export class FaqService {
 
   addFollowUp(faqId: String, content: String) {
     const url =  this.baseURL + '/api/faq/' + faqId;
-    return this.http.post(url, content)
+    console.log('this is content' + content);
+    return this.http.post(url, {'content': content})
       .map((response: Response) => {
         return response.json();
       });

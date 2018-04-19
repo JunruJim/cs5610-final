@@ -57,7 +57,7 @@ module.exports = function (app) {
     var blogId = req.params['blogId'];
     var blog = req.body;
 
-    blogModel.updateFaq(blogId,blog).then(function(blog) {
+    blogModel.updateBlog(blogId, blog).then(function(blog) {
       if(blog) {
         res.status(200).send(blog);
       } else {
@@ -94,7 +94,7 @@ module.exports = function (app) {
       var blog = {_id: undefined, image_urls: '/uploads/'+filename};
       blogModel.createBlog(userId, blog);
     } else {
-      var blog = { url: '/uploads/'+filename };
+      var blog = { image_urls: '/uploads/'+filename };
       blogModel
         .updateBlog(blogId, blog)
         .then(function (stats) {

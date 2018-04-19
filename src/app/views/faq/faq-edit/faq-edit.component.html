@@ -31,13 +31,20 @@
       <input [(ngModel)]="faq.question" type="text" class="form-control" id="faq-question" placeholder="Question"
              [ngModelOptions]="{standalone: true}" name="question">
 
-      <!--<div *ngFor="let followup of faq.followups">-->
-        <!--<label for="faq-followups" class="lable-size">Follow Up</label>-->
+      <li *ngFor="let followup of followups">
+        <label class="lable-size">Follow Up</label>
+        {{followup}}
         <!--<textarea [(ngModel)]="followup" type="text" class="form-control" id="faq-followups" placeholder="Follow up"-->
                   <!--[ngModelOptions]="{standalone: true}">-->
           <!--</textarea>-->
-      <!--</div>-->
-      <a (click)="addFollowUp(content)" class="btn btn-primary">Add</a>
+      </li>
+    </div>
+    <div class="form-group">
+      <label class="lable-size">Add New Follow Up</label>
+      <textarea [(ngModel)]="content" type="text" class="form-control" id="faq-followups" placeholder="Follow up"
+      [ngModelOptions]="{standalone: true}">
+      </textarea>
+      <a (click)="addFollowUp()" class="btn btn-primary">Add</a>
     </div>
   </form>
   <a class="btn btn-danger  btn-block" (click)="deleteFaq()">Delete FAQ</a>
