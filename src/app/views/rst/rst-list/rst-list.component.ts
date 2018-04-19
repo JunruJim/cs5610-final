@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import {Rst} from '../../../models/rst.model.client';
+import {User} from '../../../models/user.model.client';
 
 @Component({
   selector: 'app-rst-list',
@@ -10,7 +11,8 @@ import {Rst} from '../../../models/rst.model.client';
 export class RstListComponent implements OnInit {
 
   // restaurant list for current user
-  rsts: Rst[] = [];
+  rsts: Rst[];
+  user: User;
 
   // use Inject instead of import
   constructor(
@@ -20,6 +22,7 @@ export class RstListComponent implements OnInit {
 
   ngOnInit() {
 
+    this.user = this.sharedService.user;
     // get all restaurants if the current user is 'admin'
     if (this.sharedService.userType === String('admin')) {
       this.rstService.findAllRsts().subscribe(

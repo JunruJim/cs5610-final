@@ -791,3 +791,25 @@ h6 {
   font-size: 20px;
   color: black;
 }
+
+.showcase-rst {
+  background-image: url('http://www.tradecanvasprints.com/blog/wp-content/uploads/2016/11/bigstock-Healthy-food-choice-121417376.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  /*background:rgba(255,255,255,0.3);*/
+  font-family: 'PT Serif', serif;
+}
+
+.container-position {
+  position: relative;
+  top: 7%;
+}
+
+.list-group-item-list {
+
+}
