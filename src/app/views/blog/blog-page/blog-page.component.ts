@@ -29,6 +29,7 @@ export class BlogPageComponent implements OnInit {
         this.blogService.findBlogById(this.blogId)
           .subscribe((blog: Blog) => {
             this.blog = blog;
+            console.log(this.blog.image_urls);
           });
       }
     );

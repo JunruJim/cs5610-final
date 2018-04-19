@@ -34,6 +34,7 @@ import {FaqService} from './services/faq.service.client';
 import {RstService} from './services/rst.service.client';
 import {BlogService} from './services/blog.service.client';
 import {ReviewService} from './services/review.service.client';
+import {QuillEditorModule} from 'ngx-quill-editor/quillEditor.module';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import {ReviewService} from './services/review.service.client';
     routing,
     FormsModule,
     HttpModule,
+    QuillEditorModule
   ],
   providers: [
     {

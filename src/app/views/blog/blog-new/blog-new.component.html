@@ -19,8 +19,12 @@
   </div>
 </nav>
 
-<div class="container move-blog">
+<div class="showcase-blog">
+  <div class="container-box-blog">
+    <div id="scrollBody scroll-body">
+<!--<div class="container move-blog">-->
   <form>
+    <div class="form-move">
     <div class="form-group">
       <label for="blog-title">Title</label>
       <input [(ngModel)]="newBlog.title" type="text" class="form-control" id="blog-title" placeholder="Title"
@@ -48,7 +52,7 @@
       <label for="exampleInputFile">Upload</label>
       <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
         <input  name="myFile"   type="file" class="form-control"  id="exampleInputFile"/>
-        <input  name="blogId" value="{{blogId}}"   style="display: none"/>
+        <input  name="widgetId" value="{{blogId}}"   style="display: none"/>
         <input  name="userId" value="{{user._id}}"   style="display: none"/>
         <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
         <br/>
@@ -57,8 +61,11 @@
     <!--<div class="form-group">-->
       <!--<label for="exampleInputFile">Browse Image</label>-->
       <!--<input type="file" class="form-control" id="exampleInputFile">-->
-    <!--</div>-->
+    </div>
   </form>
+
+</div>
+  </div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
