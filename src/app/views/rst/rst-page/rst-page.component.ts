@@ -15,10 +15,8 @@ export class RstPageComponent implements OnInit {
   reviews: Review[];
   user: User;
 
-  lat = 51.678418;
-  lng = 7.809007;
-
-  locationAcquiredFlag = false;
+  lat: Number;
+  lng: Number;
 
   constructor(
     @Inject('RstService') private rstService,
@@ -28,18 +26,22 @@ export class RstPageComponent implements OnInit {
     private router: Router
   ) { }
 
+  newReview() {
+    if (this.user === undefined) {
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['../review/new'], {relativeTo: this.activatedRoute});
+    }
+  }
+
   ngOnInit() {
     this.user = this.sharedService.user;
     this.activatedRoute.params.subscribe((params: any) => {
       this.rstService.findRstById(params['rstid']).subscribe(
         (rst: Rst) => {
           this.rst = rst;
-          console.log(rst);
-          this.lat = rst.coordinates.latitude.toNumber();
-          this.lng = rst.coordinates.longitude.toNumber();
-          console.log(this.lat);
-          console.log(this.lng);
-          this.locationAcquiredFlag = true;
+          this.lat = Number(rst.coordinates.latitude);
+          this.lng = Number(rst.coordinates.longitude);
         }
       );
       this.reviewService.findReviewsByRst(params['rstid']).subscribe(

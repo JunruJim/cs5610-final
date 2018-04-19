@@ -6,7 +6,7 @@ export class Rst {
   content: String;
   rating: number;
   review_count: number;
-  locaiton;
+  location;
   image_url: String;
   price: String;
   dateCreated: String;
