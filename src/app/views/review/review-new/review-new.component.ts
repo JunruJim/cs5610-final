@@ -21,6 +21,8 @@ export class ReviewNewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(this.sharedService.user);
+    console.log(this.sharedService.user);
     this.review = this.reviewService.dumpReview();
     this.activatedRoute.params.subscribe((params: any) => {
       this.rstId = params['rstid'];
@@ -28,7 +30,7 @@ export class ReviewNewComponent implements OnInit {
   }
 
   createReview() {
-    this.reviewService.createReview(this.sharedService._id, this.rstId, this.review)
+    this.reviewService.createReview(this.sharedService.user._id, this.rstId, this.review)
       .subscribe((review: Review) => {
         this.review = review;
         this.router.navigate(['../../page'], {relativeTo: this.activatedRoute});
