@@ -37,6 +37,7 @@ module.exports = function (app) {
 
   function findReviewsByUser(req, res) {
     var userId = req.params['userId'];
+    console.log(userId);
     reviewModel.findReviewsByUser(userId)
       .then(function(reviews) {
         res.json(reviews);

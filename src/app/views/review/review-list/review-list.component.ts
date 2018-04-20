@@ -1,5 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Review} from '../../../models/review.model.client';
+import {Rst} from '../../../models/rst.model.client';
+import {User} from '../../../models/user.model.client';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-review-list',
@@ -9,18 +12,31 @@ import {Review} from '../../../models/review.model.client';
 export class ReviewListComponent implements OnInit {
 
   reviews: Review[] = [];
+  // rst: Rst;
+  // user: User;
+  userId: String;
+  rstId: String;
 
-  constructor(
-    @Inject('ReviewService') private reviewService,
-    @Inject('SharedService') private sharedService,
-  ) { }
-
-  ngOnInit() {
-    this.reviewService.findReviewsByUser(this.sharedService.user._id).subscribe(
-      (reviews: Review[]) => {
-        this.reviews = reviews;
-      }
-    );
+  constructor(@Inject('ReviewService') private reviewService,
+              @Inject('SharedService') private sharedService,
+              @Inject('RstService') private rstService,
+              private activatedRoute: ActivatedRoute) {
   }
 
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(
+      (params: any) => {
+        const user = this.sharedService.user;
+        this.userId = user._id;
+        // console.log(this.userId);
+        this.rstId = params['rstId'];
+        console.log(this.rstId);
+        this.reviewService.findReviewsByUser(this.userId).subscribe(
+          (reviews: Review[]) => {
+            this.reviews = reviews;
+          }
+        );
+      });
+  }
 }
+

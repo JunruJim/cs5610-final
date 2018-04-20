@@ -26,7 +26,6 @@ export class RstSearchComponent implements OnInit {
     maximumAge: 5 * 60 * 1000,
     timeout: 60 * 1000,
     // enableHighAccuracy: false
-
   };
 
   constructor(
@@ -61,7 +60,7 @@ export class RstSearchComponent implements OnInit {
             this.router.navigate(['../rst/' + rstId + '/page'], {relativeTo: this.activatedRoute});
           }
         );
-    });
+      });
   }
 
 

@@ -585,10 +585,14 @@ h6 {
   /*margin-right: 40%;*/
   font-size: 15px;
   position: relative;
+  top: 50px;
+  vertical-align: bottom;
+  /*transform: translateY(-50%);*/
 }
 
 .container-size {
   height: 33%;
+  position: relative;
 }
 
 .container-size-small {
@@ -812,4 +816,176 @@ h6 {
 
 .list-group-item-list {
 
+}
+
+.container-position-footer {
+  position: relative;
+  top: 30%;
+}
+
+.showcase-review {
+  background-image: url('https://www.nyfa.edu/student-resources/wp-content/uploads/2014/08/for-the-love-of-the-south.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  /*background:rgba(255,255,255,0.3);*/
+  font-family: 'PT Serif', serif;
+}
+
+.agm-map {
+  height: 300px;
+  width: 300px;
+}
+
+.card-position {
+  position: relative;
+  right: 150px;
+}
+
+.bg-card {
+  /*background-color: black;*/
+}
+
+.image-position {
+  position: relative;
+  left: 10%;
+}
+
+
+
+
+
+.img-list {
+  max-width: 100%;
+  height: 100%;
+  vertical-align: bottom;
+}
+
+.container-search {
+  max-height: 100px;
+  /*max-width: 700px;*/
+  width: 60%;
+  height: 50%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.container-list {
+  margin: auto;
+  width: 90%;
+  max-width: 900px;
+  /*margin: 0 auto;*/
+  position: relative;
+  left: 5%;
+}
+/*@media only screen and (min-width: 815px) {*/
+  /*.container {*/
+    /*margin: 7em auto;*/
+  /*}*/
+/*}*/
+
+.widget {
+  position: relative;
+  margin: 0 auto;
+  max-width: 320px;
+  height: 875px;
+  background: rgba(255, 255, 255, 0.7);
+}
+@media only screen{
+  .widget {
+    margin: 0;
+    max-width: 800px;
+    height: auto;
+    /*min-height: 00px;*/
+  }
+}
+
+figure {
+  margin: 0;
+  border: white 1px;
+}
+figure::after {
+  clear: both;
+  content: "";
+  display: table;
+  margin-bottom: 10px;
+}
+@media only screen{
+  figure img {
+    float: left;
+    width: 45%;
+    height: auto;
+  }
+}
+figure figcaption {
+  padding: 2.25em 2.5em 0;
+}
+@media only screen{
+  figure figcaption {
+    float: left;
+    width: 55%;
+  }
+}
+figure figcaption h3, figure figcaption .tag {
+  font-family: 'Playfair Display', serif;
+}
+figure figcaption h3 {
+  margin: 0;
+  font-size: 2em;
+  font-weight: 700;
+  color: #3b3b3b;
+}
+figure figcaption .tag {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 0.9375em;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #b26943;
+}
+figure figcaption p {
+  margin: 1.3em 0;
+  font-size: 0.875em;
+  line-height: 1.0em;
+}
+figure figcaption .rating {
+  color: #d08946;
+}
+figure figcaption .rating .fa {
+  margin-right: 5px;
+}
+figure figcaption .rating .fa:last-child {
+  margin-right: 0;
+}
+
+.slideshow-nav {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+  width: 100%;
+  height: 125px;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/203277/ricepaper2.png") repeat;
+  -webkit-box-shadow: inset 0px 10px 5px -6px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: inset 0px 10px 5px -6px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0px 10px 5px -6px rgba(0, 0, 0, 0.08);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/*@media only screen and (min-width: 815px) {*/
+  /*.slideshow-nav {*/
+    /*width: 55%;*/
+  /*}*/
+/*}*/
+
+.blue-button:hover{
+  background-color: #dadada;
+  color: #002E5B;
 }
