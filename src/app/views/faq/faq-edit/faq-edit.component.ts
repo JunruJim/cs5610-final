@@ -21,7 +21,6 @@ export class FaqEditComponent implements OnInit {
   faq: Faq;
   user: User;
   question: String;
-  content: String;
   // followup: String;
   followups: any[];
 
@@ -57,15 +56,4 @@ export class FaqEditComponent implements OnInit {
       );
   }
 
-  addFollowUp() {
-    this.faqService.addFollowUp(this.fid, this.content)
-      .subscribe(
-        (faq: any) => {
-          // faq.followups.push(followup);
-          this.faq = faq;
-          console.log(this.faq);
-          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-        }
-      );
-  }
 }

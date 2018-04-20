@@ -15,7 +15,7 @@
         <a routerLink="/user/faq/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
           <span class="glyphicon glyphicon-plus"></span>
         </a>
-      </div>>
+      </div>
     </div>
 
     <a routerLink="/user/faq/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
@@ -29,6 +29,15 @@
     <label for="faq-question">Question</label>
     <input [(ngModel)]="faq.question" type="text" class="form-control" id="faq-question" placeholder="Question"
            [ngModelOptions]="{standalone: true}">
+  </div>
+
+
+  <div class="form-group">
+    <label class="lable-size">Add New Follow Up</label>
+    <textarea [(ngModel)]="content" type="text" class="form-control" id="faq-followups" placeholder="Follow up"
+    [ngModelOptions]="{standalone: true}">
+    </textarea>
+    <a (click)="addFollowUp()" class="btn btn-primary">Add</a>
   </div>
 
   <ul class="list-group cl-list-group-borderless" *ngFor="let followup of faq.followups">

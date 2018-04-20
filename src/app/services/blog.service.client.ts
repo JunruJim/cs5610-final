@@ -31,6 +31,14 @@ export class BlogService {
       });
   }
 
+  addReview(blogId: String, username: String, content: String) {
+    const url =  this.baseURL + '/api/blog/' + blogId + '/review';
+    return this.http.post(url, {'content': username + ': ' + content})
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
+
   findBlogById(blogId: String) {
     return this.http.get(this.baseURL + '/api/blog/' + blogId)
       .map((response: Response) => {

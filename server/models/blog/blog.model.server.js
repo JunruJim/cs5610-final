@@ -10,6 +10,7 @@ blogModel.findAllBlog = findAllBlog;
 blogModel.findBlogByUser = findBlogByUser;
 blogModel.findBlogById = findBlogById;
 blogModel.updateBlog = updateBlog;
+blogModel.addReview = addReview;
 blogModel.deleteBlog = deleteBlog;
 
 module.exports = blogModel;
@@ -43,6 +44,13 @@ function findBlogById(blogId) {
 
 function updateBlog(blogId, blog) {
   return blogModel.update({_id: blogId}, blog);
+}
+
+function addReview(blogId, contents) {
+  return blogModel.findBlogById(blogId).then(function (blog) {
+    blog.reviews.push(contents);
+    return blog.save();
+  })
 }
 
 function deleteBlog(blogId) {

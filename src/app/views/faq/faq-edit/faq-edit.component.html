@@ -39,13 +39,6 @@
           <!--</textarea>-->
       </li>
     </div>
-    <div class="form-group">
-      <label class="lable-size">Add New Follow Up</label>
-      <textarea [(ngModel)]="content" type="text" class="form-control" id="faq-followups" placeholder="Follow up"
-      [ngModelOptions]="{standalone: true}">
-      </textarea>
-      <a (click)="addFollowUp()" class="btn btn-primary">Add</a>
-    </div>
   </form>
   <a class="btn btn-danger  btn-block" (click)="deleteFaq()">Delete FAQ</a>
 </div>

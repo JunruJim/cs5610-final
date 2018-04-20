@@ -20,6 +20,7 @@ export class BlogPageComponent implements OnInit {
   user: User;
   blogId: String;
   blog: Blog;
+  content: String;
 
   ngOnInit() {
     this.user = this.sharedService.user;
@@ -33,6 +34,13 @@ export class BlogPageComponent implements OnInit {
           });
       }
     );
+  }
+
+  addReview() {
+    this.blogService.addReview(this.blogId, this.user.username, this.content)
+      .subscribe(() => {
+        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+      });
   }
 
 }

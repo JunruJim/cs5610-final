@@ -4,7 +4,8 @@ module.exports = function (app) {
   var upload = multer({ dest: __dirname+'/../../src/assets/uploads' });
   //Post calls
   app.post('/api/user/:userId/blog', createBlog);
-  app.post ("/api/upload", upload.single('myFile'), uploadImage);
+  app.post ('/api/upload', upload.single('myFile'), uploadImage);
+  app.post('/api/blog/:blogId/review', addReview);
   //Get calls
   app.get('/api/blog/:blogId', findBlogById);
   app.get('/api/blog', findAllBlog);
@@ -19,7 +20,7 @@ module.exports = function (app) {
     var blog = req.body;
     blogModel.createBlog(userId, blog)
       .then(function(result){
-        console.log("create blog:  " + result);
+        console.log("create blog: " + result);
         res.send(result);
       });
   }
@@ -66,6 +67,20 @@ module.exports = function (app) {
     });
   }
 
+  function addReview(req, res) {
+    var blogId = req.params['blogId'];
+    var content = req.body;
+    // console.log('this is content:' + content.content);
+    blogModel.addReview(blogId, content.content).then(
+      function(faq) {
+        res.json(faq);
+      },
+      function(err) {
+        res.status(400).send(err);
+      }
+    );
+  }
+
   function deleteBlog(req, res) {
     var blogId = req.params['blogId'];
     blogModel.deleteBlog(blogId)
@@ -105,10 +120,8 @@ module.exports = function (app) {
           });
     }
 
-
-
     var callbackUrl   = "/blog";
     res.redirect(callbackUrl);
   }
 
-}
+};

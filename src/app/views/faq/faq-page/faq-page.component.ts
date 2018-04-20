@@ -21,6 +21,8 @@ export class FaqPageComponent implements OnInit {
   faq: Faq;
   user: User;
 
+  content: String;
+
   ngOnInit() {
     this.user = this.sharedService.user;
     this.activatedRoute.params.subscribe(
@@ -33,5 +35,18 @@ export class FaqPageComponent implements OnInit {
           });
       }
     );
+  }
+
+
+  addFollowUp() {
+    this.faqService.addFollowUp(this.fid, this.content)
+      .subscribe(
+        (faq: any) => {
+          // faq.followups.push(followup);
+          this.faq = faq;
+          console.log(this.faq);
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        }
+      );
   }
 }
