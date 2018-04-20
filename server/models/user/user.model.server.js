@@ -8,6 +8,7 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserByUserName = findUserByUserName;
 userModel.updateUser = updateUser;
 userModel.findFacebookUser = findFacebookUser;
+userModel.findAllUsers = findAllUsers;
 
 module.exports = userModel;
 
@@ -31,11 +32,9 @@ function findUserByCredentials(username, password) {
   return userModel.findOne({username: username, password: password});
 }
 
-// function findAllUsers(){
-//   UserModel.find(function (err, doc) {
-//     console.log(docs);
-//   })
-// }
+function findAllUsers(){
+  userModel.find();
+}
 
 function updateUser(userId, user) {
   return userModel.update({_id: userId}, user);

@@ -10,6 +10,7 @@ var UserSchema = mongoose.Schema({
   facebook : {
     token: String,
     id: String,
+    displayName : String
   },
   rsts:[
     {type: mongoose.Schema.Types.ObjectId, ref: 'rstModel'}

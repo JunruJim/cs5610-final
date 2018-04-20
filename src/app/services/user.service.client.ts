@@ -84,19 +84,12 @@ export class UserService {
     return this.http.get(this.baseUrl + '/api/user/hello');
   }
 
-  createUser(user: User) {
-    return this.http.post(this.baseUrl + '/api/user', user)
+  findAllUsers() {
+    return this.http.get(this.baseUrl + '/api/alluser')
       .map((res: Response) => {
         return res.json();
       });
   }
-
-  // findUserByCredential(username: String, password: String) {
-  //   return this.http.get(this.baseUrl + '/api/user?username=' + username + '&password=' + password)
-  //     .map((res: Response) => {
-  //       return res.json();
-  //     });
-  // }
 
   findUserById(userId: String) {
     return this.http.get(this.baseUrl + '/api/user/' + userId)

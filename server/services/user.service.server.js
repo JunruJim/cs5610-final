@@ -27,8 +27,8 @@ module.exports = function (app) {
   // Use the passport.authenticate middleware to have passport handle the request before the login handler
   // The authenticate middleware will parse the username and password from the request and search the user by credentials
   // If the user is found, the login function is invoked and the current user is available in req.user
-  app.post("/api/user", createUser);
   app.get("/api/user", findUserByCredentialOrUsername);
+  app.get("/api/alluser", findAllUsers);
   app.get("/api/user/:userId", findUserById);
   app.put("/api/user/:userId", updateUser);
   app.delete("/api/user/:userId", deleteUser);
@@ -98,14 +98,14 @@ module.exports = function (app) {
         } else {
           var names = profile.displayName.split(" ");
           var newFacebookUser = {
-            username: '123',
-            password: '123',
+            username: 'username',
             lastName: names[1],
             firstName: names[0],
             email: profile.emails ? profile.emails[0].value : "",
             facebook: {
               id: profile.id,
-              token: token
+              token: token,
+              displayName: names[0] + ' ' + names[1]
             },
             userType: 'customer',
           };
@@ -180,16 +180,9 @@ module.exports = function (app) {
     res.send("Hello from user service!" + username);
   }
 
-  // should check if the username exists if username is unique (maybe the database would provide a solution)
-  function createUser(req, res) {
-    var createdUser = req.body;
-
-    // createdUser._id = new Date().getTime().toString();
-    // users.push(createdUser);
-    // res.json(createdUser);
-
-    userModel.createUser(createdUser)
-      .then(function(user){
+  function findAllUsers(req, res) {
+    userModel.findAllUsers()
+      .then(function(user) {
         res.json(user);
       }, function(err) {
         res.status(500).json(err);
