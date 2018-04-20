@@ -36,6 +36,7 @@ import {BlogService} from './services/blog.service.client';
 import {ReviewService} from './services/review.service.client';
 import {QuillEditorModule} from 'ngx-quill-editor/quillEditor.module';
 import { AgmCoreModule } from '@agm/core';
+import {SortableDirective} from '../../server/directives/sortable.directive';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { AgmCoreModule } from '@agm/core';
     BlogPageComponent,
     RstPageComponent,
     FaqPageComponent,
+    SortableDirective,
   ],
   imports: [
     BrowserModule,

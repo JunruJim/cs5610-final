@@ -12,8 +12,19 @@ reviewModel.findReviewsByRst = findReviewsByRst;
 reviewModel.findReviewsByUser = findReviewsByUser;
 reviewModel.updateReview = updateReview;
 reviewModel.deleteReview = deleteReview;
+reviewModel.reorderReviewForUser = reorderReviewForUser;
 
 module.exports = reviewModel;
+
+function reorderReviewForUser(userId, start, end) {
+  return userModel.findUserById(userId)
+    .then(function(user) {
+      const reviewToModify = user.reviews[start];
+      user.reviews.splice(start, 1);
+      user.reviews.splice(end, 0, reviewToModify);
+      return user.save();
+    })
+}
 
 function createReview(userId, rstId, review) {
   review._user = userId;
@@ -52,9 +63,11 @@ function findReviewsByRst(rstId) {
 }
 
 function findReviewsByUser(userId) {
-  return reviewModel.find({_user: userId})
-    .populate('_user')
-    .exec();
+  return userModel.findUserById(userId)
+    .populate('reviews')
+    .then(function(user) {
+      return user.reviews;
+    })
 }
 
 function updateReview(reviewId, review) {

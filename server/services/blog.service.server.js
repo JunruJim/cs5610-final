@@ -113,20 +113,23 @@ module.exports = function (app) {
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
 
-    // f
     if (!blogId) {
-      var blog = {_id: undefined, image_urls: ['/uploads/' + filename]};
-      blogModel.createBlog(userId, blog);
+      var tobeCreated = {_id: undefined, image_urls: ['/uploads/' + filename]};
+      blogModel.createBlog(userId, tobeCreated)
+        .then(function(blog) {
+          res.redirect(callbackUrl);
+        }, function(err) {
+        });
     } else {
-      var blog = { image_urls: '/uploads/'+filename };
-      blogModel
-        .updateBlog(blogId, blog)
-        .then(function (stats) {
-            res.send(200);
-          },
-          function (err) {
-            res.sendStatus(404).send(err);
-          });
+      blogModel.findBlogById(blogId)
+        .then(function(foundBlog) {
+          foundBlog.image_urls.push('/uploads/' + filename);
+          blogModel.updateBlog(foundBlog._id, foundBlog)
+            .then(function(status) {
+              res.redirect(callbackUrl);
+            }, function(err) {
+            });
+        });
     }
 
     res.redirect(callbackUrl);
