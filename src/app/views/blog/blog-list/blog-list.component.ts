@@ -33,7 +33,7 @@ export class BlogListComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.sharedService.user;
-    console.log('user' + this.user);
+    // console.log('user' + this.user);
     this.blogs = this.blogService.findAllBlog()
       .subscribe(
         (blogs) => {

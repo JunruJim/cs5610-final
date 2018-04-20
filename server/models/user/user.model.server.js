@@ -33,7 +33,7 @@ function findUserByCredentials(username, password) {
 }
 
 function findAllUsers(){
-  userModel.find();
+  return userModel.find();
 }
 
 function updateUser(userId, user) {

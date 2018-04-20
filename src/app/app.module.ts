@@ -36,6 +36,7 @@ import {BlogService} from './services/blog.service.client';
 import {ReviewService} from './services/review.service.client';
 import {QuillEditorModule} from 'ngx-quill-editor/quillEditor.module';
 import { AgmCoreModule } from '@agm/core';
+import { AdminUserListComponent } from './views/admin/admin-user-list/admin-user-list.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { AgmCoreModule } from '@agm/core';
     BlogPageComponent,
     RstPageComponent,
     FaqPageComponent,
+    AdminUserListComponent,
   ],
   imports: [
     BrowserModule,

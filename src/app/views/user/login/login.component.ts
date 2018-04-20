@@ -62,7 +62,11 @@ export class LoginComponent implements OnInit {
         (data: any) => {
           this.sharedService.user = data;
           this.errorFlag = false;
-          this.router.navigate(['/profile']);
+          if (this.sharedService.user.username === 'admin') {
+            this.router.navigate(['/admin']);
+          } else {
+            this.router.navigate(['/profile']);
+          }
         },
         (error: any) => {
           this.errorFlag = true;

@@ -20,13 +20,14 @@ import {BlogPageComponent} from './views/blog/blog-page/blog-page.component';
 import {RstPageComponent} from './views/rst/rst-page/rst-page.component';
 import {AuthGuard} from './services/auth-guard.service';
 import {FaqPageComponent} from './views/faq/faq-page/faq-page.component';
+import {AdminUserListComponent} from './views/admin/admin-user-list/admin-user-list.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'search', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  // { path: 'profile', component: ProfileComponent },
+  { path: 'admin', component: AdminUserListComponent, canActivate: [AuthGuard] },
   // { path: '**', redirectTo: 'login', pathMatch: 'full' },
   { path: 'search', component: RstSearchComponent},
   { path: 'rst', component: RstListComponent, canActivate: [AuthGuard] },
