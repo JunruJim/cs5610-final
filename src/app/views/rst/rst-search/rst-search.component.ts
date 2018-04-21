@@ -19,6 +19,7 @@ export class RstSearchComponent implements OnInit {
 
   loadingGeoFlag: Boolean = false;
   loadingGeoMsg: String = 'loading location...';
+  footerFlag: Boolean = true;
 
   // use maximumAge to tell browser use the data recently queried
   // use timeout to set maximum waiting time
@@ -41,6 +42,9 @@ export class RstSearchComponent implements OnInit {
       (data: any) => {
         this.searchResults = data;
         console.log(this.searchResults);
+        if (data) {
+          this.footerFlag = false;
+        }
       }
     );
   }
