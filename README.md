@@ -38,3 +38,14 @@ Points:
 1. Used yelp api
 2. Paid attention to data relations: create, delete and update also affects on the related collections
 3. ​
+
+
+
+Bugs:
+
+Image upload
+
+sortable
+
+fb login
+
