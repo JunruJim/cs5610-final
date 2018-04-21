@@ -24,27 +24,27 @@ import {AdminUserListComponent} from './views/admin/admin-user-list/admin-user-l
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'search', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
-  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: AdminUserListComponent, canActivate: [AuthGuard] },
   // { path: '**', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'search', component: RstSearchComponent},
+  { path: 'search', component: RstSearchComponent, canActivate: [AuthGuard]},
   { path: 'rst', component: RstListComponent, canActivate: [AuthGuard] },
   { path: 'rst/new', component: RstNewComponent, canActivate: [AuthGuard]},
   { path: 'rst/:rstid', component: RstEditComponent, canActivate: [AuthGuard]},
-  { path: 'rst/:rstid/page', component: RstPageComponent},
-  { path: 'faq', component: FaqListComponent},
+  { path: 'rst/:rstid/page', component: RstPageComponent, canActivate: [AuthGuard]},
+  { path: 'faq', component: FaqListComponent, canActivate: [AuthGuard]},
   { path: 'faq/new', component: FaqNewComponent, canActivate: [AuthGuard]},
   { path: 'faq/:fid', component: FaqEditComponent, canActivate: [AuthGuard]},
-  { path: 'faq/:fid/page', component: FaqPageComponent},
+  { path: 'faq/:fid/page', component: FaqPageComponent, canActivate: [AuthGuard]},
   { path: 'rst/:rstid/review', component: ReviewListComponent, canActivate: [AuthGuard]},
   { path: 'rst/:rstid/review/new', component: ReviewNewComponent, canActivate: [AuthGuard]},
   { path: 'rst/:rstid/review/:revid', component: ReviewEditComponent, canActivate: [AuthGuard]},
-  { path: 'blog', component: BlogListComponent},
+  { path: 'blog', component: BlogListComponent, canActivate: [AuthGuard]},
   { path: 'blog/new', component: BlogNewComponent, canActivate: [AuthGuard]},
   { path: 'blog/:bid', component: BlogEditComponent, canActivate: [AuthGuard]},
-  { path: 'blog/:bid/page', component: BlogPageComponent}
+  { path: 'blog/:bid/page', component: BlogPageComponent, canActivate: [AuthGuard]}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

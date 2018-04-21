@@ -31,7 +31,7 @@ var RstSchema = mongoose.Schema({
   reviews:[
     {type: mongoose.Schema.Types.ObjectId, ref: 'reviewModel'}
   ],
-  dateCreated: {type: Date, default: Date.now}
+  dateCreated: {type: String, default: new Date().toLocaleString() }
 }, {collection:'rst'});
 
 module.exports = RstSchema;

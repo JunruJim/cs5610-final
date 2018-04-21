@@ -24,7 +24,7 @@ var UserSchema = mongoose.Schema({
   blogs:[
     {type: mongoose.Schema.Types.ObjectId, ref: 'blogModel'}
   ],
-  dateCreated: {type: Date, default: Date.now}
+  dateCreated: {type: String, default: new Date().toLocaleString() }
 }, {collection:'user'});
 
 module.exports = UserSchema;

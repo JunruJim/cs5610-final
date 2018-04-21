@@ -16,12 +16,12 @@
 
 <div class="view intro-2 hm-gradient size">
   <!--<div class="background-transparent">-->
-    <div class="scrollBody scroll-body">
 <div class="container-box-rst-page container-position-page">
   <!--<div class="background-transparent">-->
+  <div class="scrollBody scroll-body">
   <div class="row">
     <div class="col-md-3">
-      < img src={{rst.image_url}} width="100%">
+      <img src={{rst.image_url}} width="100%">
       <h2>{{rst.name}}</h2>
       <h3>{{rst.categories.title}}</h3>
       <p>
@@ -69,3 +69,21 @@
   </div>
 </div>
 <!--</div>-->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-text pull-left">
+      <a routerLink="/search">
+      <span class="glyphicon glyphicon glyphicon-home color-black">
+      </span>
+      </a>
+    </div>
+    <p class="navbar-text pull-right">
+      <a routerLink="faq" class="navbar-link">Frequently asked Question
+        <!--<span class="glyphicon glyphicon-user"></span>-->
+      </a>
+      <a routerLink="/profile" class="navbar-link">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+  </div>
+</nav>
