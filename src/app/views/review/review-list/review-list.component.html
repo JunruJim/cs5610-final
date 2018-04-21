@@ -39,7 +39,7 @@
           <p>Reviews
           </p>
         </li>
-        <div  appSortable (newIndexes)="reorderWidgets($event)">
+        <div  appSortable (newIndexes)="reorderReviews($event)">
           <li class="list-group-item-element cl-list-item-borderless" *ngFor="let review of reviews">
             <a routerLink="/rst/{{rstId}}/review" class="text-font">{{review.content}}</a>
             <a routerLink="/rst/{{rstId}}/review/review._id" class="text-font">
