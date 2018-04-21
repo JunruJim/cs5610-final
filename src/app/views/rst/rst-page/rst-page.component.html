@@ -1,57 +1,71 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid pull-left">
     <div class="col-sm">
-      <a class="navbar-brand header-font" href="#"><strong>Foodphilia</strong></a>
+      <a class="navbar-brand header-font" href=" "><strong>Foodphilia</strong></a >
     </div>
   </div>
   <div class="content-fluid navbar-text navbar-right header-user pull-right" *ngIf="!user">
-    <a routerLink="/login" class="navbar-link header-login btn btn-outline-white">Login</a>
-    <a routerLink="/register" class="navbar-link header-login btn btn-outline-white">Register</a>
+    <a routerLink="/login" class="navbar-link header-login btn btn-outline-white">Login</a >
+    <a routerLink="/register" class="navbar-link header-login btn btn-outline-white">Register</a >
     <!--</div>-->
   </div>
   <div class="content-fluid navbar-text navbar-right header-user pull-right" *ngIf="user && user.userType">
-    <a routerLink="/profile" class="navbar-link header-login btn btn-outline-white">Profile</a>
+    <a routerLink="/profile" class="navbar-link header-login btn btn-outline-white">Profile</a >
   </div>
 </nav>
 
-<div class="container-fluid">
+<div class="view intro-2 hm-gradient size">
+  <!--<div class="background-transparent">-->
+    <div class="scrollBody scroll-body">
+<div class="container-box-rst-page container-position-page">
+  <!--<div class="background-transparent">-->
   <div class="row">
     <div class="col-md-3">
-      <img src={{rst.image_url}} width="120%">
+      < img src={{rst.image_url}} width="100%">
       <h2>{{rst.name}}</h2>
       <h3>{{rst.categories.title}}</h3>
       <p>
         <strong>Rating: </strong>
         {{rst.rating}}
-      </p>
-      <p>{{rst.review_count}} reviews</p>
-      <p>Price: {{rst.price}}</p>
+      </p >
+      <p>{{rst.review_count}} reviews</p >
+      <p>Price: {{rst.price}}</p >
       <p>
         <strong>Address:</strong>
         {{rst.location.address1}}, {{rst.location.city}}
-      </p>
+      </p >
       <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
         <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
       </agm-map>
-      <a class="btn btn-primary" (click)="newReview()">Write Review</a>
+      <a class="btn btn-primary" (click)="newReview()">Write Review</a >
+    </div>
+
+  <div class="col-md-9 col-position col-width">
+    <h1 class="review-font">Reviews</h1>
+    <table class="table">
+      <thead>
+      <tr>
+        <th class="col-md-3"></th>
+        <th class="col-md-9"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let review of reviews">
+        <td>
+          <h4>{{user.username}}</h4>
+          <h4>{{review.rating}}</h4>
+          <p>{{review.dateCreated}}</p >
+        </td>
+        <td>
+          <p>{{review.content}}</p >
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+<!--</div>-->
     </div>
   </div>
-
-  <div class="col-md-9">
-    <table class="table"></table>
-    <tbody>
-    <tr *ngFor="let review of reviews">
-      <td>
-        <h4>{{review.rating}}</h4>
-        <p>{{review.dateCreated}}</p>
-      </td>
-      <td>
-        <p>{{review.content}}</p>
-      </td>
-    </tr>
-    </tbody>
-  </div>
 </div>
-
-
-
+<!--</div>-->

@@ -815,6 +815,11 @@ h6 {
   top: 7%;
 }
 
+.container-position-page {
+  position: relative;
+  top: 20%;
+}
+
 .list-group-item-list {
 
 }
@@ -884,9 +889,9 @@ h6 {
   right: 12%;
 }
 /*@media only screen and (min-width: 815px) {*/
-  /*.container {*/
-    /*margin: 7em auto;*/
-  /*}*/
+/*.container {*/
+/*margin: 7em auto;*/
+/*}*/
 /*}*/
 
 .widget {
@@ -981,9 +986,9 @@ figure figcaption .rating .fa:last-child {
   user-select: none;
 }
 /*@media only screen and (min-width: 815px) {*/
-  /*.slideshow-nav {*/
-    /*width: 55%;*/
-  /*}*/
+/*.slideshow-nav {*/
+/*width: 55%;*/
+/*}*/
 /*}*/
 
 .blue-button:hover{
@@ -1003,4 +1008,81 @@ figure figcaption .rating .fa:last-child {
 .button-position {
   position: relative;
   padding-bottom: 100px;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+  border-top-color: inherit;
+  border-right-color: inherit;
+  border-bottom-color: inherit;
+  border-left-color: inherit;
+}
+
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+  border-top-color: inherit;
+  border-right-color: inherit;
+  border-bottom-color: inherit;
+  border-left-color: inherit;
+}
+
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+  border-top-color: inherit;
+  border-right-color: inherit;
+  border-bottom-color: inherit;
+  border-left-color: inherit;
+}
+
+.table>thead>tr>th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+
+.col-position {
+  position:relative;
+  left: 5vw;
+}
+
+.col-width {
+  max-width: 60vw;
+}
+
+.container-box-rst-page {
+  position: relative;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 40px 40px;
+  word-wrap:break-word;
+  word-break:break-all;
+}
+
+.review-font {
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  /*font-*/
 }
