@@ -4,13 +4,14 @@ module.exports = function (app) {
   app.post('/api/user/:userId/rst/:rstId/review', createReview);
   app.get('/api/review/:reviewId', findReviewById);
   app.get('/api/user/:userId/review', findReviewsByUser);
+  app.post('/api/user/:userId/review', reorderReviewForUser);
   app.get('/api/rst/:rstId/review', findReviewsByRst);
   app.put('/api/review/:reviewId', updateReview);
   app.delete('/api/review/:reviewId', deleteReview);
 
   function createReview(req, res) {
-    var userId = req.param['userId'];
-    var rstId = req.param['rstId'];
+    var userId = req.params['userId'];
+    var rstId = req.params['rstId'];
     var review = req.body;
     reviewModel.createReview(userId, rstId, review)
       .then(function(createdReview){
@@ -43,6 +44,18 @@ module.exports = function (app) {
         res.json(reviews);
       }, function(err) {
         res.status(500).json(err);
+      });
+  }
+
+  function reorderReviewForUser(req, res) {
+    var userId = req.params.userId;
+    var startIndex = parseInt(req.query.start);
+    var endIndex = parseInt(req.query.end);
+    reviewModel.reorderReviewForUser(userId, startIndex, endIndex)
+      .then(function() {
+        res.send('reorder success');
+      }, function() {
+        res.send('reorder fail');
       });
   }
 

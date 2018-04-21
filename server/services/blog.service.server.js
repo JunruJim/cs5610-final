@@ -1,7 +1,10 @@
 module.exports = function (app) {
+
   var blogModel = require("../models/blog/blog.model.server");
+
   var multer = require('multer');
   var upload = multer({ dest: __dirname+'/../../src/assets/uploads' });
+
   //Post calls
   app.post('/api/user/:userId/blog', createBlog);
   app.post ('/api/upload', upload.single('myFile'), uploadImage);
@@ -97,6 +100,12 @@ module.exports = function (app) {
     var myFile        = req.file;
     var userId = req.body.userId;
 
+    var callbackUrl   = "https://cs5610-final-yyj.herokuapp.com/blog";
+
+    if(myFile == null) {
+      res.redirect(callbackUrl);
+    }
+
     var originalname  = myFile.originalname; // file name on user's computer
     var filename      = myFile.filename;     // new file name in upload folder
     var path          = myFile.path;         // full path of uploaded file
@@ -104,23 +113,25 @@ module.exports = function (app) {
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
 
-    // f
-    if (blogId === undefined) {
-      var blog = {_id: undefined, image_urls: '/uploads/'+filename};
-      blogModel.createBlog(userId, blog);
+    if (!blogId) {
+      var tobeCreated = {_id: undefined, image_urls: ['/uploads/' + filename]};
+      blogModel.createBlog(userId, tobeCreated)
+        .then(function(blog) {
+          res.redirect(callbackUrl);
+        }, function(err) {
+        });
     } else {
-      var blog = { image_urls: '/uploads/'+filename };
-      blogModel
-        .updateBlog(blogId, blog)
-        .then(function (stats) {
-            res.send(200);
-          },
-          function (err) {
-            res.sendStatus(404).send(err);
-          });
+      blogModel.findBlogById(blogId)
+        .then(function(foundBlog) {
+          foundBlog.image_urls.push('/uploads/' + filename);
+          blogModel.updateBlog(foundBlog._id, foundBlog)
+            .then(function(status) {
+              res.redirect(callbackUrl);
+            }, function(err) {
+            });
+        });
     }
 
-    var callbackUrl   = "/blog";
     res.redirect(callbackUrl);
   }
 

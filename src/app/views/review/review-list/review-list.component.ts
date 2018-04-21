@@ -23,6 +23,14 @@ export class ReviewListComponent implements OnInit {
               private activatedRoute: ActivatedRoute) {
   }
 
+  reorderReviews(indexes) {
+    this.reviewService.reorderReviewsForUser(this.userId, indexes.startIndex, indexes.endIndex)
+      .subscribe((data) => {
+        console.log(data);
+        }
+      );
+  }
+
   ngOnInit() {
     this.activatedRoute.params.subscribe(
       (params: any) => {

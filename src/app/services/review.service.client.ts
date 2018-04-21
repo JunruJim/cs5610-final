@@ -55,6 +55,10 @@ export class ReviewService {
       });
   }
 
+  reorderReviewsForUser(userId, startIndex, endIndex) {
+    return this.http.post(this.baseURL, '/api/user/' + userId + '/review?start=' + startIndex + '&end=' + endIndex, '');
+  }
+
   deleteReview(reviewId: String) {
     return this.http.delete(this.baseURL + '/api/review/' + reviewId);
   }

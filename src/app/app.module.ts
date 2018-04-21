@@ -37,6 +37,7 @@ import {ReviewService} from './services/review.service.client';
 import {QuillEditorModule} from 'ngx-quill-editor/quillEditor.module';
 import { AgmCoreModule } from '@agm/core';
 import { AdminUserListComponent } from './views/admin/admin-user-list/admin-user-list.component';
+import {SortableDirective} from '../../server/directives/sortable.directive';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,11 @@ import { AdminUserListComponent } from './views/admin/admin-user-list/admin-user
     BlogPageComponent,
     RstPageComponent,
     FaqPageComponent,
+<<<<<<< HEAD
     AdminUserListComponent,
+=======
+    SortableDirective,
+>>>>>>> d636157f12fb7615a7091387df371d5d40bf6b38
   ],
   imports: [
     BrowserModule,

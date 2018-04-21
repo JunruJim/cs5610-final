@@ -24,7 +24,7 @@ export class RstListComponent implements OnInit {
 
     this.user = this.sharedService.user;
     // get all restaurants if the current user is 'admin'
-    if (this.sharedService.userType === String('admin')) {
+    if (this.sharedService.user.userType === String('admin')) {
       this.rstService.findAllRsts().subscribe(
         (rsts: Rst[]) => {
           this.rsts = rsts;

@@ -6,6 +6,7 @@ var BlogSchema = mongoose.Schema({
   image_urls: [String],
   title: String,
   reviews: [String],
+  position: {type: Number, default: Date.now()},
   _user: {type: mongoose.Schema.Types.ObjectId, ref: 'userModel'},
   dateCreated: {type: Date, default: Date.now}
 }, {collection:'blog'});

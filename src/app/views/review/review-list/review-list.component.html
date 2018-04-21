@@ -39,12 +39,14 @@
           <p>Reviews
           </p>
         </li>
-        <li class="list-group-item-element cl-list-item-borderless" *ngFor="let review of reviews">
-          <a routerLink="/rst/{{rstId}}/review" class="text-font">{{review.content}}</a>
-          <a routerLink="/rst/{{rstId}}/review/review._id" class="text-font">
-            <span class="glyphicon glyphicon-cog pull-right glyphicon-position"></span>
-          </a>
-        </li>
+        <div  appSortable (newIndexes)="reorderWidgets($event)">
+          <li class="list-group-item-element cl-list-item-borderless" *ngFor="let review of reviews">
+            <a routerLink="/rst/{{rstId}}/review" class="text-font">{{review.content}}</a>
+            <a routerLink="/rst/{{rstId}}/review/review._id" class="text-font">
+              <span class="glyphicon glyphicon-cog pull-right glyphicon-position"></span>
+            </a>
+          </li>
+        </div>
       </ul>
     </div>
   </div>
