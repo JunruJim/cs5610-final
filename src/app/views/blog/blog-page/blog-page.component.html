@@ -33,6 +33,23 @@
   </li>
 
   </ul>
+
+
+      <a class="btn btn-primary" (click)="showAdd()">Write Review</a>
+      <div *ngIf="newReview">
+        <label class="lable-size">Add New Review</label>
+        <textarea [(ngModel)]="reviewContent" type="text" class="form-control" placeholder="Follow up"
+                  [ngModelOptions]="{standalone: true}">
+        </textarea>
+        <button class="btn-primary" (click)="addReview()">Submit</button>
+      </div>
+      <div class="scrollBody scroll-body">
+        <ul  *ngFor="let review of blog.reviews">
+          <li>
+            {{review}}
+          </li>
+        </ul>
+      </div>
       <!--<div class="container">-->
       <!--<ul class="list-group cl-list-group-borderless move-blog">-->
 

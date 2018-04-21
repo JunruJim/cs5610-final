@@ -2,6 +2,7 @@ export class Blog {
   _id: String;
   content: String;
   image_urls: String;
+  reviews: [String];
   title: String;
   rating: number;
   dateCreated: String;

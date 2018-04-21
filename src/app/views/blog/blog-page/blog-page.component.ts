@@ -21,6 +21,8 @@ export class BlogPageComponent implements OnInit {
   blogId: String;
   blog: Blog;
   content: String;
+  newReview = false;
+  reviewContent: String;
 
   ngOnInit() {
     this.user = this.sharedService.user;
@@ -36,10 +38,16 @@ export class BlogPageComponent implements OnInit {
     );
   }
 
+  showAdd() {
+    this.newReview = true;
+
+  }
   addReview() {
-    this.blogService.addReview(this.blogId, this.user.username, this.content)
+    this.blogService.addReview(this.blogId, this.user.username, this.reviewContent)
       .subscribe(() => {
-        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        // this.ref.detach();
+        // this.ref.reattach();
+        this.router.navigate(['/blog/', this.blog._id, 'page']);
       });
   }
 
