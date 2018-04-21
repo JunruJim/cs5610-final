@@ -47,7 +47,7 @@ export class BlogPageComponent implements OnInit {
       .subscribe(() => {
         // this.ref.detach();
         // this.ref.reattach();
-        this.router.navigate(['/blog/', this.blog._id, 'page']);
+        this.router.navigate(['/blog']);
       });
   }
 

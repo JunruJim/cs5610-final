@@ -61,11 +61,8 @@ import {SortableDirective} from '../../server/directives/sortable.directive';
     BlogPageComponent,
     RstPageComponent,
     FaqPageComponent,
-<<<<<<< HEAD
     AdminUserListComponent,
-=======
     SortableDirective,
->>>>>>> d636157f12fb7615a7091387df371d5d40bf6b38
   ],
   imports: [
     BrowserModule,
