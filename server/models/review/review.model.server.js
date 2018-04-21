@@ -29,6 +29,7 @@ function reorderReviewForUser(userId, start, end) {
 function createReview(userId, rstId, review) {
   review._user = userId;
   review._rst = rstId;
+  console.log(review);
   return reviewModel.create(review)
     .then(function(responseReview) {
       userModel.findUserById(responseReview._user)

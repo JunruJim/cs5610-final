@@ -10,8 +10,8 @@ module.exports = function (app) {
   app.delete('/api/review/:reviewId', deleteReview);
 
   function createReview(req, res) {
-    var userId = req.param['userId'];
-    var rstId = req.param['rstId'];
+    var userId = req.params['userId'];
+    var rstId = req.params['rstId'];
     var review = req.body;
     reviewModel.createReview(userId, rstId, review)
       .then(function(createdReview){
