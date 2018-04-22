@@ -52,7 +52,7 @@
       <label for="exampleInputFile">Upload</label>
       <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
         <input  name="myFile"   type="file" class="form-control"  id="exampleInputFile"/>
-        <input  name="widgetId" value="{{blogId}}"   style="display: none"/>
+        <input  name="blogId" value="{{blogId}}"   style="display: none"/>
         <input  name="userId" value="{{user._id}}"   style="display: none"/>
         <input  name="title" value="{{newBlog.title}}"   style="display: none"/>
         <input  name="content" value="{{newBlog.content}}"   style="display: none"/>

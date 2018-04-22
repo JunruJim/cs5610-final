@@ -2,10 +2,14 @@
 const yelp = require('yelp-fusion');
 const apiKey = 'OnR09pM7Fjg06is4fE3q4CCiXz96G5j-LMpVxii78aWzRa_hgSEqTJOE1STY5BSlzItCiL4Qc1H6ONIyEb0XBRuJedt4vIqvArls2SnzZAoikgWbeMw9C5ddaUTNWnYx';
 
+var multer = require('multer');
+var upload = multer({ dest: __dirname + '/../../src/assets/uploads' });
+
 module.exports = function (app) {
   app.get("/api/rst/yelp/search", yelpSearch);
   app.post("/api/rst/yelp", createRstFromYelp);
   app.post("/api/rst/user/:userId", createRstForOwner);
+  app.post ('/api/rst/upload', upload.single('myFile'), uploadImage);
 
   app.get("/api/rst", findAllRsts);
   app.get("/api/rst/:rstId", findRstById);
@@ -16,6 +20,51 @@ module.exports = function (app) {
   app.delete("/api/rst/:rstId", deleteRst);
 
   var rstModel = require("../models/rst/rst.model.server");
+
+  function uploadImage(req, res) {
+
+    var rstId      = req.body.rstId;
+    var width         = req.body.width;
+    var myFile        = req.file;
+    var userId = req.body.userId;
+    var name = req.body.name;
+    var content = req.body.content;
+    var price = req.body.price;
+
+    var callbackUrl   = "https://cs5610-final-yyj.herokuapp.com/rst";
+
+    if(myFile == null) {
+      res.redirect(callbackUrl);
+    }
+
+    var originalname  = myFile.originalname; // file name on user's computer
+    var filename      = myFile.filename;     // new file name in upload folder
+    var path          = myFile.path;         // full path of uploaded file
+    var destination   = myFile.destination;  // folder where file is saved to
+    var size          = myFile.size;
+    var mimetype      = myFile.mimetype;
+
+    if (!rstId) {
+      var tobeCreated = {_id: undefined, image_url: '/uploads/' + filename, name: name, content: content, price: price};
+      rstModel.createRstForOwner(userId, tobeCreated)
+        .then(function(rst) {
+          res.redirect(callbackUrl);
+        }, function(err) {
+        });
+    } else {
+      rstModel.findRstById(rstId)
+        .then(function(foundRst) {
+          foundRst.image_url = '/uploads/' + filename;
+          rstModel.updateRst(foundRst._id, foundRst)
+            .then(function(status) {
+              res.redirect(callbackUrl);
+            }, function(err) {
+            });
+        });
+    }
+
+    res.redirect(callbackUrl);
+  }
 
   function yelpSearch(req, res) {
     const searchRequest = {

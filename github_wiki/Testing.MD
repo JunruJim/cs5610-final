@@ -56,7 +56,7 @@
 
    ​
 
-   (2) A customer create a review.
+   (2) A customer create a review (can upload image).
 
    ​
 
@@ -64,9 +64,13 @@
 
    ​
 
-   (4) A professional blogger create a blog.
+   (4) A professional blogger create a blog (can upload image).
 
-   ​
+   ![](/Users/junru/Projects/WebDev/final/github_wiki/6.4.1.png)
+
+   ![](/Users/junru/Projects/WebDev/final/github_wiki/6.4.2.png)
+
+   ![](/Users/junru/Projects/WebDev/final/github_wiki/6.4.3.png)
 
 7. A domain object related to another domain object, e.g., add a song to a playlist, an orderthat contains several products, a recipe that contains several ingredients, etc.
 

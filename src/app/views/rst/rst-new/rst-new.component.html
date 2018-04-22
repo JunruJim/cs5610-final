@@ -78,12 +78,21 @@
         <input [(ngModel)]="rst.image_url" id="website-image" class="form-control" placeholder="Image URL"
                [ngModelOptions]="{standalone: true}">
       </div>
-      <div class="form-group cl-8-top">
-        <label for="exampleInputFile">Upload</label>
-        <input type="file" class="form-control" id="exampleInputFile">
-      </div>
 
     </form>
+    <div class="form-group">
+      <label for="exampleInputFile">Upload</label>
+      <form ngNoForm action="{{baseUrl}}/api/rst/upload" method="post" enctype="multipart/form-data">
+        <input  name="myFile"   type="file" class="form-control"  id="exampleInputFile"/>
+        <input  name="rstId" value="{{rst._id}}"   style="display: none"/>
+        <input  name="userId" value="{{user._id}}"   style="display: none"/>
+        <input  name="name" value="{{rst.name}}"   style="display: none"/>
+        <input  name="content" value="{{rst.content}}"   style="display: none"/>
+        <input  name="price" value="{{rst.price}}"   style="display: none"/>
+        <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+        <br/>
+      </form>
+    </div>
   </div>
 </div>
   </div>
