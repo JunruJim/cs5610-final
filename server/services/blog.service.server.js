@@ -3,7 +3,7 @@ module.exports = function (app) {
   var blogModel = require("../models/blog/blog.model.server");
 
   var multer = require('multer');
-  var upload = multer({ dest: __dirname+'/../../src/assets/uploads' });
+  var upload = multer({ dest: __dirname + '/../../src/assets/uploads' });
 
   //Post calls
   app.post('/api/user/:userId/blog', createBlog);
@@ -117,7 +117,7 @@ module.exports = function (app) {
     var mimetype      = myFile.mimetype;
 
     if (!blogId) {
-      var tobeCreated = {_id: undefined, image_urls: ['/assets/uploads/' + filename], title: title, content: content, rating: rating};
+      var tobeCreated = {_id: undefined, image_urls: ['/uploads/' + filename], title: title, content: content, rating: rating};
       blogModel.createBlog(userId, tobeCreated)
         .then(function(blog) {
           res.redirect(callbackUrl);
@@ -126,7 +126,7 @@ module.exports = function (app) {
     } else {
       blogModel.findBlogById(blogId)
         .then(function(foundBlog) {
-          foundBlog.image_urls.push('/assets/uploads/' + filename);
+          foundBlog.image_urls.push('/uploads/' + filename);
           blogModel.updateBlog(foundBlog._id, foundBlog)
             .then(function(status) {
               res.redirect(callbackUrl);

@@ -23,7 +23,6 @@ export class BlogPageComponent implements OnInit {
   content: String;
   newReview = false;
   reviewContent: String;
-  image_url = this.blog.image_urls[0];
 
   ngOnInit() {
     this.user = this.sharedService.user;
