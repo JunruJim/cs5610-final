@@ -34,12 +34,12 @@ module.exports = function (app) {
   app.delete("/api/user/:userId", deleteUser);
 
   // auth with Facebook
-  app.get ('/facebook/login', passport.authenticate('facebook', { scope : 'email' }));
   app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
       successRedirect: '/profile',
-      failureRedirect: '/register'
+      failureRedirect: '/login'
     }));
+  app.get('/auth/facebook/login', passport.authenticate('facebook', { scope : 'email' }));
 
   // passport config
   passport.use(new LocalStrategy(localStrategy));
@@ -107,7 +107,7 @@ module.exports = function (app) {
               token: token,
               displayName: names[0] + ' ' + names[1]
             },
-            userType: 'customer',
+            userType: 'customer'
           };
           return userModel.createUser(newFacebookUser);
         }
