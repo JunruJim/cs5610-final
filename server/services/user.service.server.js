@@ -4,8 +4,8 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var bcrypt = require("bcrypt-nodejs");
 
 var facebookConfig = {
-  clientID     : '223719505030518',
-  clientSecret : '45d701c58f38c4ca4e941954c76f2257',
+  clientID     : '1495676050540884',
+  clientSecret : 'd6be6ab8639b479b6dcb6072ca3e8c4a',
   callbackURL  : 'https://cs5610-final-yyj.herokuapp.com/auth/facebook/callback'
 };
 

@@ -99,6 +99,9 @@ module.exports = function (app) {
     var width         = req.body.width;
     var myFile        = req.file;
     var userId = req.body.userId;
+    var title = req.body.title;
+    var content = req.body.content;
+    var rating = req.body.rating;
 
     var callbackUrl   = "https://cs5610-final-yyj.herokuapp.com/blog";
 
@@ -114,7 +117,7 @@ module.exports = function (app) {
     var mimetype      = myFile.mimetype;
 
     if (!blogId) {
-      var tobeCreated = {_id: undefined, image_urls: ['/uploads/' + filename]};
+      var tobeCreated = {_id: undefined, image_urls: ['/uploads/' + filename], title: title, content: content, rating: rating};
       blogModel.createBlog(userId, tobeCreated)
         .then(function(blog) {
           res.redirect(callbackUrl);
