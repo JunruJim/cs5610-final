@@ -10,7 +10,7 @@ var mongoose = require('mongoose');
 // }
 
 
-var db = mongoose.connect('mongodb://localhost:27017/final'); // for local mongodb
-// var db = mongoose.connect('mongodb://xxxxxx', {useMongoClient: true});
+// var db = mongoose.connect('mongodb://localhost:27017/final'); // for local mongodb
+var db = mongoose.connect('mongodb://admin:admin@ds149279.mlab.com:49279/heroku_v3d0h0pk', {useMongoClient: true});
 
 module.exports = db;
