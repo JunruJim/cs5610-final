@@ -1,24 +1,43 @@
-<nav class="navbar navbar-fixed-top navbar-default">
-  <div class="content-fluid navbar-text pull-left">
-    <a routerLink=".." class="navbar-link header-font">
-      <span class="glyphicon glyphicon-chevron-left">
-      </span>
-    </a>
-  </div>
-  <div class="content-fluid navbar-text pull-left">
-    <a routerLink="/search" class="navbar-link header-font">FoodPhilia</a>
-
-  </div>
-  <!--<div class="container-fluid">-->
-    <!--<a class="cl-text-white navbar-brand cl-text-bold" routerLink="/profile/{{user._id}}">-->
-      <!--Profile-->
+<!--<nav class="navbar navbar-fixed-top navbar-default">-->
+  <!--<div class="content-fluid navbar-text pull-left">-->
+    <!--<a routerLink=".." class="navbar-link header-font">-->
+      <!--<span class="glyphicon glyphicon-chevron-left">-->
+      <!--</span>-->
     <!--</a>-->
-    <a routerLink="/profile/{{user._id}}" (click)="updateUser()" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-      <span class="glyphicon glyphicon-ok icon-size"></span>
-    </a>
   <!--</div>-->
-</nav>
+  <!--<div class="content-fluid navbar-text pull-left">-->
+    <!--<a routerLink="/search" class="navbar-link header-font">FoodPhilia</a>-->
 
+  <!--</div>-->
+  <!--&lt;!&ndash;<div class="container-fluid">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a class="cl-text-white navbar-brand cl-text-bold" routerLink="/profile/{{user._id}}">&ndash;&gt;-->
+      <!--&lt;!&ndash;Profile&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--<a routerLink="/profile/{{user._id}}" (click)="updateUser()" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">-->
+      <!--<span class="glyphicon glyphicon-ok icon-size"></span>-->
+    <!--</a>-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--</nav>-->
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid row">
+
+    <div class="navbar-text pull-left">
+      <a routerLink="/search" class="cl-text-black cl-icon-padding">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+      </a>
+    </div>
+    <div class="navbar-text pull-right">
+      <a routerLink="/profile/{{user._id}}" (click)="updateUser()" class="cl-icon-padding cl-text-black">
+        <span class="glyphicon glyphicon-ok"></span>
+      </a>
+    </div>
+    <a class="navbar-brand cl-text-white cl-text-bold header-font-profile" routerLink="/rst">
+      FoodPhilia
+    </a>
+  </div>
+</nav>
 
 <div class="showcase">
   <div class="profile-box">
@@ -63,31 +82,48 @@
     <br/>
     <div [ngSwitch]="user.userType">
       <div *ngSwitchCase="'owner'">
-        <button routerLink="/rst" class="btn btn-primary btn-primary">Your Restaurants</button>
-        <button routerLink="/login" (click)="deleteUser()" class="btn btn-danger btn-block">Delete User</button>
-        <button (click)="logout()" class="btn btn-danger btn-block">Log Out</button>
+        <div align="center">
+        <button routerLink="/rst" class="btn btn-primary btn-color btn-primary">Your Restaurants</button>
+        <button routerLink="/login" (click)="deleteUser()" class="btn btn-danger btn-color btn-block">Delete User</button>
+        <button (click)="logout()" class="btn btn-danger btn-color btn-block">Log Out</button>
+        </div>
       </div>
     </div>
     <div [ngSwitch]="user.userType">
       <div *ngSwitchCase="'customer'">
-        <button routerLink="/search" class="btn btn-primary btn-block">Search</button>
-        <button routerLink="/login" (click)="deleteUser()" class="btn btn-danger btn-block">Delete User</button>
-        <button (click)="logout()" class="btn btn-danger btn-block">Log Out</button>
+        <div align="center">
+        <button routerLink="/search" class="btn btn-primary btn-color btn-block">Search</button>
+        <button routerLink="/login" (click)="deleteUser()" class="btn btn-danger btn-color btn-block">Delete User</button>
+        <button (click)="logout()" class="btn btn-danger btn-color btn-block">Log Out</button>
+        </div>
       </div>
     </div>
     <div [ngSwitch]="user.userType">
       <div *ngSwitchCase="'support'">
-        <button routerLink="/faq" class="btn btn-primary btn-block">FAQ</button>
-        <button routerLink="/login" (click)="deleteUser()" class="btn btn-danger btn-block">Delete User</button>
-        <button (click)="logout()" class="btn btn-danger btn-block">Log Out</button>
+        <div align="center">
+        <button routerLink="/faq" class="btn btn-primary btn-color btn-block">FAQ</button>
+        <button routerLink="/login" (click)="deleteUser()" class="btn btn-danger btn-color btn-block">Delete User</button>
+        <button (click)="logout()" class="btn btn-danger btn-color btn-block">Log Out</button>
+        </div>
       </div>
     </div>
     <div [ngSwitch]="user.userType">
       <div *ngSwitchCase="'professional'">
-        <button routerLink="/search" class="btn btn-primary btn-block">Search</button>
-        <button routerLink="/blog" class="btn btn-primary btn-block">Your Blogs</button>
-        <button routerLink="/login" (click)="deleteUser()" class="btn btn-danger btn-block">Delete User</button>
-        <button (click)="logout()" class="btn btn-danger btn-block">Log Out</button>
+        <div align="center">
+        <button routerLink="/search" class="btn btn-primary btn-color btn-block">Search</button>
+        <button routerLink="/blog" class="btn btn-primary btn-color btn-block">Your Blogs</button>
+        <button routerLink="/login" (click)="deleteUser()" class="btn btn-danger btn-color btn-block">Delete User</button>
+        <button (click)="logout()" class="btn btn-danger btn-color btn-block">Log Out</button>
+        </div>
+      </div>
+    </div>
+    <div [ngSwitch]="user.userType">
+      <div *ngSwitchCase="'admin'">
+        <div align="center">
+        <button routerLink="/search" class="btn btn-primary btn-color btn-block">Search</button>
+        <button routerLink="/admin" class="btn btn-primary btn-color btn-block">All Users</button>
+        <button (click)="logout()" class="btn btn-danger btn-color btn-block">Log Out</button>
+        </div>
       </div>
     </div>
     <div *ngIf="!user.userType">
@@ -102,20 +138,24 @@
 </div>
 </div>
 
-  <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-      <div class="navbar-text pull-left">
-        <a routerLink="/search">
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-text pull-left">
+      <a routerLink="/search">
       <span class="glyphicon glyphicon glyphicon-home color-black">
       </span>
-        </a>
-      </div>
-      <p class="navbar-text pull-right">
-        <a routerLink="/faq" class="navbar-link">Frequently asked Question
-          <!--<span class="glyphicon glyphicon-user"></span>-->
-        </a>
-      </p>
-
+      </a>
     </div>
-  </nav>
+    <p class="navbar-text pull-right">
+      <a routerLink="/faq" class="navbar-link">Frequently asked Question
+        <!--<span class="glyphicon glyphicon-user"></span>-->
+      </a>
+      <a routerLink="/profile" class="navbar-link">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+
+  </div>
+</nav>
 

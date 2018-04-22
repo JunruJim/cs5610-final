@@ -1,28 +1,29 @@
 
-<nav class="navbar navbar-fixed-top navbar-default">
-  <div class="content-fluid navbar-text pull-left">
-    <a routerLink=".." class="navbar-link header-font">
-      <span class="glyphicon glyphicon-chevron-left ">
-      </span>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid row">
+
+    <div class="navbar-text pull-left">
+      <a routerLink=".." class="cl-text-black cl-icon-padding">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+      </a>
+    </div>
+    <div class="navbar-text pull-right">
+      <a (click)="updateFaq()" class="cl-icon-padding cl-text-black">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+      </a>
+    </div>
+    <a class="navbar-brand cl-text-white cl-text-bold">
+      Frequently Asked Question
     </a>
   </div>
-  <!--<div class="navbar-text header-position">-->
-    <!--<a routerLink="/search" class="navbar-link header-font">FoodPhilia</a>-->
-  <!--</div>-->
-
-
-  <!--<div [ngSwitch]="user.userType">-->
-  <!--<div *ngSwitchCase="'support'">-->
-  <a (click)="updateFaq()" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-    <span class="glyphicon glyphicon-ok icon-size"></span>
-  </a>
-  <!--</div>-->
-  <!--</div>-->
 </nav>
 
 <div class="showcase-faq">
   <div class="container-box-faq">
-    <div id="scrollBody" style="position:absolute;top:0;bottom:0;left:0;right:0;overflow:scroll;height:100%;">
+    <div class="scrollBody scroll-body">
 <div class="container move-faq">
   <form>
     <div class="form-group">
@@ -31,8 +32,8 @@
       <input [(ngModel)]="faq.question" type="text" class="form-control" id="faq-question" placeholder="Question"
              [ngModelOptions]="{standalone: true}" name="question">
 
-      <li *ngFor="let followup of followups">
-        <label class="lable-size">Follow Up</label>
+      <li class="cl-list-item-borderless list-group-item-element-faq" *ngFor="let followup of followups; let i=index">
+        <label class="lable-size">Follow Up&nbsp;{{i+1}}: &nbsp;</label>
         {{followup}}
         <!--<textarea [(ngModel)]="followup" type="text" class="form-control" id="faq-followups" placeholder="Follow up"-->
                   <!--[ngModelOptions]="{standalone: true}">-->
@@ -48,16 +49,21 @@
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
-    <div class="navbar-link navbar-text pull-left">
+    <div class="navbar-text pull-left">
       <a routerLink="/search">
       <span class="glyphicon glyphicon glyphicon-home color-black">
       </span>
       </a>
     </div>
-    <a routerLink="/profile" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-      <span class="glyphicon glyphicon-user"></span>
-    </a>
+    <p class="navbar-text pull-right">
+      <a routerLink="/faq" class="navbar-link">Frequently asked Question
+        <!--<span class="glyphicon glyphicon-user"></span>-->
+      </a>
+      <a routerLink="/profile" class="navbar-link">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
 
   </div>
 </nav>
-

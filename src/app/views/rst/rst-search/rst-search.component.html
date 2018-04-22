@@ -204,8 +204,8 @@
                 <span class='tag'>Cuisine:&nbsp; {{selectRst.categories[0].title}}</span>
                 <span class='tag'>Price:&nbsp; {{selectRst.price}}</span>
                 <span class='tag'>Rating:&nbsp; {{selectRst.rating}}</span>
-                <p>{{selectRst.location.state}} &nbsp;{{selectRst.location.city}}</p>
                 <p>{{selectRst.location.address1}}</p>
+                <p>{{selectRst.location.city}} &nbsp; {{selectRst.location.state}}</p>
                 <a (click)="select(selectRst)" class="blue-button button-position">Detail</a>
                 <br/>
                 <!--<div class='rating'>-->
@@ -224,19 +224,24 @@
     </div>
   </div>
 </div>
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-      <div class="container-fluid">
-        <div class="navbar-text pull-left">
-          <a routerLink="/search">
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-text pull-left">
+      <a routerLink="/search">
       <span class="glyphicon glyphicon glyphicon-home color-black">
       </span>
-          </a>
-        </div>
-        <p class="navbar-text pull-right">
-          <a routerLink="/faq" class="navbar-link">Frequently asked Question
-            <!--<span class="glyphicon glyphicon-user"></span>-->
-          </a>
-        </p>
+      </a>
+    </div>
+    <p class="navbar-text pull-right">
+      <a routerLink="/faq" class="navbar-link">Frequently asked Question
+        <!--<span class="glyphicon glyphicon-user"></span>-->
+      </a>
+      <a routerLink="/profile" class="navbar-link">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
 
-      </div>
-    </nav>
+
+  </div>
+</nav>

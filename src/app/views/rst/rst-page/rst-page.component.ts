@@ -36,6 +36,7 @@ export class RstPageComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.sharedService.user;
+    console.log(this.user);
     this.activatedRoute.params.subscribe((params: any) => {
       this.rstService.findRstById(params['rstid']).subscribe(
         (rst: Rst) => {
@@ -47,6 +48,12 @@ export class RstPageComponent implements OnInit {
       this.reviewService.findReviewsByRst(params['rstid']).subscribe(
         (reviews: Review[]) => {
           this.reviews = reviews;
+        }
+      );
+      this.reviewService.findReviewsByUser(this.user._id).subscribe(
+        (reviews: Review[]) => {
+          this.reviews = reviews;
+          console.log(this.user.username);
         }
       );
     });
