@@ -39,6 +39,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // enclose these directories to be public
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.static(path.join(__dirname, 'src/assets')));
+app.use(express.static(path.join(__dirname, 'src/assets/uploads')));
 
 // CORS
 app.use(function(req, res, next) {
