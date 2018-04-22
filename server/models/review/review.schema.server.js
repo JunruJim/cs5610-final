@@ -5,7 +5,7 @@ var ReviewSchema = mongoose.Schema({
   rating: Number,
   _user: {type: mongoose.Schema.Types.ObjectId, ref: 'userModel'},
   _rst: {type: mongoose.Schema.Types.ObjectId, ref: 'rstModel'},
-  dateCreated: {type: Date, default: Date.now}
+  dateCreated: {type: String, default: new Date().toLocaleString() }
 }, {collection:'review'});
 
 module.exports = ReviewSchema;

@@ -130,6 +130,14 @@ a:hover{
   color: black;
 }
 
+.list-group-item-element-review {
+  background-color: rgba(255,255,255, 0);
+  margin-top: 5%;
+  text-align: left;
+  /*margin-left: 10%;*/
+  font-size: 20px;
+  color: black;
+}
 .glyphicon-position {
   margin-right: 10%;
   margin-top: 1%;
@@ -356,6 +364,7 @@ input, textarea, select, button {
 .header-login {
   margin-right: 0px;
   font-size: larger;
+  font-family: 'Domine', serif;
 }
 
 .container {
@@ -641,7 +650,7 @@ h6 {
 
 .btn-color {
   /*background-color:rgba(255,255,255,0.2);*/
-  width: 50%;
+  width: 80%;
   filter:alpha(opacity=80);
   -moz-opacity:0.8;
   /*-khtml-opacity: 0.5;*/
@@ -886,7 +895,8 @@ h6 {
   max-width: 900px;
   /*margin: 0 auto;*/
   position: relative;
-  right: 12%;
+  left: 3%;
+  top: 25vh;
 }
 /*@media only screen and (min-width: 815px) {*/
 /*.container {*/
@@ -900,6 +910,9 @@ h6 {
   max-width: 320px;
   height: 875px;
   background: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  vertical-align: center;
+
 }
 @media only screen{
   .widget {
@@ -918,7 +931,7 @@ figure::after {
   clear: both;
   content: "";
   display: table;
-  margin-bottom: 10px;
+  margin-bottom: 1%;
 }
 @media only screen{
   figure img {
@@ -1007,7 +1020,7 @@ figure figcaption .rating .fa:last-child {
 
 .button-position {
   position: relative;
-  padding-bottom: 100px;
+  /*padding-bottom: 100px;*/
 }
 
 .table {
@@ -1084,5 +1097,44 @@ tr {
 .review-font {
   font-family: 'Playfair Display', serif;
   font-weight: bold;
+  position: relative;
+
   /*font-*/
+}
+
+.image-size {
+  max-width: 300px;
+  width: 120%;
+}
+
+.page-user {
+  font-family: 'Lora', serif;
+  font-weight: bold;
+  /*font-size: 30px*/
+}
+
+
+
+.container-position-faq {
+  position: relative;
+  top: 10%;
+}
+
+.list-group-item-element-faq {
+  background-color: rgba(255,255,255, 0);
+  /*margin-top: 2%;*/
+  text-align: left;
+  /*margin-left: 10%;*/
+  font-size: 25px;
+  color: black;
+}
+
+/*.list-group-item-element-faq {}*/
+.header-font-profile {
+  font-family: 'Pacifico', cursive;
+  color: #000000;
+}
+
+.btn-width {
+  width:40%;
 }

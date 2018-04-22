@@ -39,23 +39,26 @@
 
       <div *ngIf="selectUser">
         <form>
-          <label for="username" class="white-color">Username</label>
+          <label for="username">Username</label>
           <input [(ngModel)]="selectUser.username" type="text" class="form-control" id="username" placeholder="username" [ngModelOptions]="{standalone: true}"/>
 
-          <label for="firstname" class="white-color">First Name</label>
+          <label for="firstname">First Name</label>
           <input [(ngModel)]="selectUser.firstname" type="text" class="form-control" id="firstname" placeholder="first name" [ngModelOptions]="{standalone: true}"/>
 
-          <label for="lastname" class="white-color">Last Name</label>
+          <label for="lastname">Last Name</label>
           <input [(ngModel)]="selectUser.lastname" type="text" class="form-control" id="lastname" placeholder="last name" [ngModelOptions]="{standalone: true}"/>
 
-          <label for="email" class="white-color">Email</label>
+          <label for="email">Email</label>
           <input [(ngModel)]="selectUser.email" type="text" class="form-control" id="email" placeholder="email" [ngModelOptions]="{standalone: true}"/>
 
-          <label for="usertype" class="white-color">UserType</label>
+          <label for="usertype">UserType</label>
           <input [(ngModel)]="selectUser.userType" type="text" class="form-control" id="usertype" placeholder="user type" [ngModelOptions]="{standalone: true}"/>
 
-          <button (click)="updateUser()" class="btn btn-danger btn-color btn-block">Update User</button>
-          <button routerLink="/login" (click)="deleteUser()" class="btn btn-danger btn-color btn-block">Delete User</button>
+          <div align="center">
+            <button (click)="updateUser()" class="btn btn-primary btn-color btn-block btn-position">Update User</button>
+            <button routerLink="/login" (click)="deleteUser()" class="btn btn-danger btn-color btn-block">Delete User</button>
+          </div>
+
         </form>
       </div>
     </div>
@@ -71,9 +74,15 @@
       </span>
       </a>
     </div>
-    <a routerLink="/profile" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-      <span class="glyphicon glyphicon-user"></span>
-    </a>
+    <p class="navbar-text pull-right">
+      <a routerLink="/faq" class="navbar-link">Frequently asked Question
+        <!--<span class="glyphicon glyphicon-user"></span>-->
+      </a>
+      <a routerLink="/profile" class="navbar-link">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
 
   </div>
 </nav>

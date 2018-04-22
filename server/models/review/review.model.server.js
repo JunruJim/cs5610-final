@@ -35,6 +35,7 @@ function createReview(userId, rstId, review) {
       userModel.findUserById(responseReview._user)
         .then(function(user) {
           user.reviews.push(responseReview);
+          console.log(user);
           return user.save();
         });
       rstModel.findRstById(responseReview._rst)
