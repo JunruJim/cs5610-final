@@ -35,7 +35,7 @@ For the third, we use Google Maps JS API (not the static one) to enable more ope
 
 ## Users
 
-1. **Admin**
+1. **Admin**: administrator
 2. **Owner**: restaurant owner
 3. **Customer**: usual customer
 4. **Professional**: professional bloggers who can get paid and post some long blogs
@@ -43,6 +43,24 @@ For the third, we use Google Maps JS API (not the static one) to enable more ope
 6. **Anonymous**: users who do not login
 
 ##Users' Goals
+
+1. **Admin**: control the website
+2. **Owner**: control the restaurants ownered by them
+3. **Customer**: seek restaurants and food blogs and then leave reviews
+4. **Professional**: create professional food blogs
+5. **Support**: answer frequently answered questions
+6. **Anonymous**: view restaurants, blogs and faqs
+
+## User Relation with Users
+
+1. **Admin**: control other users
+2. **Owner**: own restaurants which can be viewed by other users
+3. **Customer**: leave message under restaurants, faqs and blogs which can be viewed by other users
+4. **Professional**: own blogs which can be viewed by other users
+5. **Support**: manipulate faqs which can be viewed by other users
+6. **Anonymous**: can view objects created by other users
+
+##User Relation with Domain Objects
 
 **All users** (including anonymous)
 
@@ -88,4 +106,9 @@ For the third, we use Google Maps JS API (not the static one) to enable more ope
 
 6. **Anonymous** do not have special operations
 
-Users
+##Domain Relation with Domains
+
+1. **Restaurant** have multiple reviews.
+2. **Review** is created under restaurant.
+3. **Blog** content can be related to certain restaurants.
+4. **FAQ** content can be related to restaurants, reviews and blogs. 
