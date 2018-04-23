@@ -43,3 +43,7 @@ function updateUser(userId, user) {
 function deleteUser(userId) {
   return userModel.deleteOne({_id: userId});
 }
+
+function findUserByReview(reviewId) {
+  return userModel.findById({reviewId});
+}

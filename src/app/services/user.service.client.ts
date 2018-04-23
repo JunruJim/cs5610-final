@@ -104,7 +104,6 @@ export class UserService {
         return res.json();
       });
   }
-
   updateUser(userId: String, user: User) {
     return this.http.put(this.baseUrl + '/api/user/' + userId, user)
       .map((res: Response) => {

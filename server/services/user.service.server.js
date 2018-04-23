@@ -29,6 +29,7 @@ module.exports = function (app) {
   // If the user is found, the login function is invoked and the current user is available in req.user
   app.get("/api/user", findUserByCredentialOrUsername);
   app.get("/api/alluser", findAllUsers);
+  app.get("/api/user", findUserByReview);
   app.get("/api/user/:userId", findUserById);
   app.put("/api/user/:userId", updateUser);
   app.delete("/api/user/:userId", deleteUser);
@@ -268,5 +269,20 @@ module.exports = function (app) {
     //   }
     // }
     // res.send("success");
+  }
+
+  function findUserByReview(req, res) {
+    var userId = req.params["userId"];
+    var reviewId = req.param["reviewId"]
+    userModel.findUserByReview(reviewId).then(function (user){
+      if (user) {
+        res.json(user);
+      } else {
+        res.status(404);
+        res.json(user);
+      }
+    }, function(err) {
+      res.status(500).json(err);
+    });
   }
 };
