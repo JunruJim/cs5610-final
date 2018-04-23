@@ -42,10 +42,10 @@ function createReview(userId, rstId, review) {
         .then(function(rst) {
 
           // update rating and review_count
-          if (review.rating) {
-            rst.rating = (rst.rating * rst.review_count + review.rating) / (rst.review_count + 1);
-            rst.review_count++;
-          }
+          // if (review.rating) {
+          //   rst.rating = (rst.rating * rst.review_count + review.rating) / (rst.review_count + 1);
+          //   rst.review_count++;
+          // }
           rst.reviews.push(responseReview);
           return rst.save();
         })

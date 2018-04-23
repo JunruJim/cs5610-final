@@ -44,4 +44,10 @@ export class BlogEditComponent implements OnInit {
     );
   }
 
+  deleteBlog() {
+    this.blogService.deleteBlog(this.blogId).subscribe(
+      () => this.router.navigate(['../'], {relativeTo: this.activatedRoute})
+    );
+  }
+
 }

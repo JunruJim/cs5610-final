@@ -657,6 +657,13 @@ h6 {
   opacity: 0.8;
 }
 
+.btn-color-size{
+  width: 100%;
+  filter:alpha(opacity=80);
+  -moz-opacity:0.8;
+  /*-khtml-opacity: 0.5;*/
+  opacity: 0.8;
+}
 .profile-title {
   text-align: center;
   /*color: navy;*/
@@ -751,7 +758,7 @@ h6 {
 .scroll-body {
   position:relative;
   top:0;bottom:0;left:0;right:0;
-  overflow:scroll;
+  overflow:auto;
   height:100%;
 }
 
@@ -1137,4 +1144,9 @@ tr {
 
 .btn-width {
   width:40%;
+}
+
+.position-login {
+  position: relative;
+  top: 5vh;
 }

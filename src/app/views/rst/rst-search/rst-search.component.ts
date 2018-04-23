@@ -37,6 +37,10 @@ export class RstSearchComponent implements OnInit {
     private router: Router
   ) { }
 
+  onEnter() {
+    this.searchRst();
+  }
+
   searchRst() {
     this.yelpSearchService.searchRst(this.latitude, this.longitude, this.searchText).subscribe(
       (data: any) => {

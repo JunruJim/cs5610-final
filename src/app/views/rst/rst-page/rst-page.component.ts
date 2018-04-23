@@ -50,12 +50,6 @@ export class RstPageComponent implements OnInit {
           this.reviews = reviews;
         }
       );
-      this.reviewService.findReviewsByUser(this.user._id).subscribe(
-        (reviews: Review[]) => {
-          this.reviews = reviews;
-          console.log(this.user.username);
-        }
-      );
     });
   }
 

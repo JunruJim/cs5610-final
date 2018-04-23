@@ -1,24 +1,4 @@
-<!--<nav class="navbar navbar-default navbar-fixed-top">-->
-  <!--<div class="container-fluid row">-->
-
-    <!--<div class="navbar-text pull-left">-->
-      <!--<a routerLink="/search" class="cl-text-black cl-icon-padding">-->
-          <!--<span class="glyphicon glyphicon-chevron-left">-->
-          <!--</span>-->
-      <!--</a>-->
-    <!--</div>-->
-    <!--<div class="navbar-text pull-right">-->
-      <!--<a (click)="createBlog()" class="cl-icon-padding cl-text-black">-->
-          <!--<span class="glyphicon glyphicon-plus">-->
-          <!--</span>-->
-      <!--</a>-->
-    <!--</div>-->
-    <!--<a class="navbar-brand cl-text-white cl-text-bold" routerLink="/blog">-->
-      <!--Blogs-->
-    <!--</a>-->
-  <!--</div>-->
-<!--</nav>-->
-
+<!--top nav bar-->
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid row">
 
@@ -44,7 +24,7 @@
   {{errorMsg}}
 </div>
 
-
+<!--body-->
 <div class="showcase-blog">
   <div class="container-box-blog">
     <div class="scrollBody scroll-body">
@@ -64,7 +44,7 @@
   </div>
 </div>
 
-
+<!--bottom nav bar-->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <div class="navbar-text pull-left">
@@ -75,13 +55,10 @@
     </div>
     <p class="navbar-text pull-right">
       <a routerLink="/faq" class="navbar-link">Frequently asked Question
-        <!--<span class="glyphicon glyphicon-user"></span>-->
       </a>
       <a routerLink="/profile" class="navbar-link">
-        <span class="glyphicon glyphicon-user"></span>
+        <span class="glyphicon glyphicon-user cl-icon-padding"></span>
       </a>
     </p>
-
-
   </div>
 </nav>

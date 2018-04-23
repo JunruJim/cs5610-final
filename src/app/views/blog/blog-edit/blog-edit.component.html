@@ -1,6 +1,6 @@
+<!--top nav bar-->
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid row">
-
     <div class="navbar-text pull-left">
       <a routerLink=".." class="cl-text-black cl-icon-padding">
           <span class="glyphicon glyphicon-chevron-left">
@@ -19,6 +19,7 @@
   </div>
 </nav>
 
+<!--body-->
 <div class="showcase-blog">
   <div class="container-box-blog">
     <div class="scrollBody scroll-body">
@@ -46,17 +47,15 @@
       <label for="blog-image">Image URL</label>
       <input [(ngModel)]="newBlog.image_urls" id="blog-image" class="form-control" placeholder="Image URL"
              [ngModelOptions]="{standalone: true}">
-      <!--<div class="form-group">-->
-        <!--<label for="exampleInputFile">Browse Image</label>-->
-        <!--<input type="file" class="form-control" id="exampleInputFile">-->
-      <!--</div>-->
     </div>
+      <button (click)="deleteBlog()" class="btn btn-danger btn-color-size btn-block">Delete</button>
     </div>
   </form>
     </div>
   </div>
 </div>
 
+<!--bottom nav bar-->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <div class="navbar-text pull-left">
@@ -67,13 +66,10 @@
     </div>
     <p class="navbar-text pull-right">
       <a routerLink="/faq" class="navbar-link">Frequently asked Question
-        <!--<span class="glyphicon glyphicon-user"></span>-->
       </a>
       <a routerLink="/profile" class="navbar-link">
-        <span class="glyphicon glyphicon-user"></span>
+        <span class="glyphicon glyphicon-user cl-icon-padding"></span>
       </a>
     </p>
-
-
   </div>
 </nav>

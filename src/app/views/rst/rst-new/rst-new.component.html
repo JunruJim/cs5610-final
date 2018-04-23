@@ -1,3 +1,4 @@
+<!--top nav bar-->
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="row">
     <div class="col-xs-1 col-sm-4">
@@ -32,6 +33,7 @@
   </div>
 </nav>
 
+<!--body -->
 <div class="showcase-rst">
   <div class="container-box-blog">
     <div class="scrollBody scroll-body">
@@ -46,28 +48,18 @@
             </li>
           </ul>
         </div>
-  <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 borders">
+    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 borders">
     <form>
       <div class="form-group cl-8-top">
         <label for="website-name">Name</label>
         <input [(ngModel)]="rst.name" type="text" class="form-control" id="website-name" placeholder="Name"
                [ngModelOptions]="{standalone: true}">
       </div>
-      <!--<div class="form-group cl-8-top">-->
-        <!--<label for="website-category">Category</label>-->
-        <!--<input [(ngModel)]="rst.category" id="website-category" class="form-control" placeholder="Category"-->
-                  <!--[ngModelOptions]="{standalone: true}">-->
-      <!--</div>-->
       <div class="form-group cl-8-top">
         <label for="website-content">Content</label>
         <textarea [(ngModel)]="rst.content" id="website-content" class="form-control" rows="5" placeholder="Content"
                   [ngModelOptions]="{standalone: true}"></textarea>
       </div>
-      <!--<div class="form-group cl-8-top">-->
-        <!--<label for="website-location">Location</label>-->
-        <!--<input [(ngModel)]="rst.location" id="website-location" class="form-control" placeholder="Location"-->
-                  <!--[ngModelOptions]="{standalone: true}">-->
-      <!--</div>-->
       <div class="form-group cl-8-top">
         <label for="website-price">Price</label>
         <input [(ngModel)]="rst.price" id="website-price" class="form-control" placeholder="Price"
@@ -78,8 +70,8 @@
         <input [(ngModel)]="rst.image_url" id="website-image" class="form-control" placeholder="Image URL"
                [ngModelOptions]="{standalone: true}">
       </div>
-
     </form>
+
     <div class="form-group">
       <label for="exampleInputFile">Upload</label>
       <form ngNoForm action="{{baseUrl}}/api/rst/upload" method="post" enctype="multipart/form-data">
@@ -99,6 +91,7 @@
   </div>
 </div>
 
+<!--bottom nav bar-->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <div class="navbar-text pull-left">
@@ -109,13 +102,10 @@
     </div>
     <p class="navbar-text pull-right">
       <a routerLink="/faq" class="navbar-link">Frequently asked Question
-        <!--<span class="glyphicon glyphicon-user"></span>-->
       </a>
       <a routerLink="/profile" class="navbar-link">
-        <span class="glyphicon glyphicon-user"></span>
+        <span class="glyphicon glyphicon-user cl-icon-padding"></span>
       </a>
     </p>
-
-
   </div>
 </nav>
